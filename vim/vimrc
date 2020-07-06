@@ -1,0 +1,64 @@
+"""""""" 插件管理vim-plug""""""""
+set nocompatible
+filetype off
+call plug#begin('~/.vim/plugged')
+" -------------------------------插件列表----------------------------------
+" 被动技能
+Plug 'jiangmiao/auto-pairs'       " 自动补全括号
+Plug 'vim-airline/vim-airline'    " 状态栏增强
+Plug 'vim-airline/vim-airline-themes' " 状态栏增强
+Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
+Plug 'mhinz/vim-startify'
+
+" 主动技能
+Plug 'majutsushi/tagbar'          " <Leader>t tag列表
+Plug 'godlygeek/tabular'          " <Leader>符号 快速对齐
+Plug 'scrooloose/nerdcommenter'	  " 快速注释/解开注释
+Plug 'terryma/vim-expand-region'  " v/V 快速选择区域/取消选择区域
+Plug 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
+Plug 'rking/ag.vim'
+
+"文件目录树
+if has('nvim')
+	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+else
+	Plug 'Shougo/defx.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+"自动补全
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+
+"Snippets are separated from the engine. Add this if you want them:
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+"<Leader>f/b/a 快速打开文件
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
+
+"markdown插件
+Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
+Plug 'plasticboy/vim-markdown'"
+
+call plug#end()
+filetype plugin indent on
+
+let mapleader=','
+let g:mapleader=','
+
+" 引入插件的设置
+source ~/.vim/setting/molokai.vim
+source ~/.vim/setting/tabular.vim
+source ~/.vim/setting/tagbar.vim
+source ~/.vim/setting/vim-airline.vim
+source ~/.vim/setting/vim-expand-region.vim
+source ~/.vim/setting/vim-multiple-cursors.vim
+source ~/.vim/setting/defx.vim
+source ~/.vim/setting/fzf.vim
+source ~/.vim/setting/coc.vim
+source ~/.vim/setting/coc.vim
+source ~/.vim/setting/ag.vim
+" 自定义设置
+source ~/.vim/setting/custome.vim

@@ -1,0 +1,25 @@
+[user]
+	name = amei
+	email = cms1984@msn.com
+[core]
+	quotepath = false
+	autocrlf = false
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+	trustExitCode = true
+[alias]
+	d = difftool
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
+[credential]
+	helper = store
