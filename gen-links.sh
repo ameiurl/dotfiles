@@ -28,7 +28,7 @@ declare -a LINK_PAIRS
 
 # Use array instead of map cause bash < 4 do not supprot
 # associated array
-FISH_CONFIG_DIR="~/.config/fish"
+#FISH_CONFIG_DIR="~/.config/fish"
 LINK_PAIRS=(
     "$CUR_DIR/vim/vimrc | ~/.vimrc"
     "$CUR_DIR/vim/coc-settings.json | ~/.vim/coc-settings.json"
@@ -55,7 +55,7 @@ function addlinks() {
     done
 }
 
-addlinks "$CUR_DIR/fish/functions" $FISH_CONFIG_DIR/functions
+#addlinks "$CUR_DIR/fish/functions" $FISH_CONFIG_DIR/functions
 
 for pair in "${LINK_PAIRS[@]}"; do
     src=$(echo $pair | awk -F'\|' '{print $1}' | awk '{$1=$1};1')
