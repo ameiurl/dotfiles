@@ -49,6 +49,8 @@ let mapleader=','
 let g:mapleader=','
 
 " 引入插件的设置
+
+" monokai ===================================================================={{{
 " monokai原始背景色
 let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -66,8 +68,9 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
+" }}}
 
-"tabular
+" tabular ===================================================================={{{
 nmap <Leader>=       :Tabularize /=<CR>
 vmap <Leader>=       :Tabularize /=<CR>
 nmap <Leader>"       :Tabularize /"<CR>
@@ -110,8 +113,9 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+" }}}
 
-"tagbar
+" tagbar ===================================================================={{{
 nmap <Leader>t :TagbarToggle<CR>
 " 启动时自动focus
 let g:tagbar_autofocus = 1
@@ -131,27 +135,31 @@ let g:tagbar_type_php  = {
     \ 
 	\]
 	\}
+" }}}
 
-"vim-airline
+" vim-airline ===================================================================={{{
 let g:airline_theme="light" 
 set laststatus=2
 let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled=1    " enable tabline
 let g:airline#extensions#tabline#buffer_nr_show=1    " 显示buffer行号
 let g:airline#extensions#tabline#fnamemod = ':t'
+" }}}
 
-"vim-expand-region
+" vim-expand-region ===================================================================={{{
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
+" }}}
 
-"vim-multiple-cursors
+" vim-multiple-cursors ===================================================================={{{
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+" }}}
 
-"defx
+" defx ===================================================================={{{
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
@@ -179,8 +187,9 @@ function! s:defx_toggle_tree() abort
 endfunction
 
 map <Tab> :Defx<cr>
+" }}}
 
-"fzf
+" fzf ===================================================================={{{
 " If installed using Homebrew
  set rtp+=/usr/local/opt/fzf
 " If installed using git
@@ -195,8 +204,9 @@ command! -bang -nargs=* Ag
    		 \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
    		 \                 <bang>0)
 nnoremap <silent> <Leader>A :Ag<CR>
+" }}}
 
-"coc
+" coc ===================================================================={{{
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? coc#_select_confirm() :
 	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -241,6 +251,8 @@ augroup END
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" }}}
 
-"ag
+" ag ===================================================================={{{
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
+" }}}
