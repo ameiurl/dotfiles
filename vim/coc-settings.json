@@ -8,5 +8,6 @@
 				"storagePath": "/tmp/intelephense"
 			}
 		}
-	}
+	},
+	"intelephense.diagnostics.undefinedTypes": false
 }
