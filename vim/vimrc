@@ -192,6 +192,10 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+"ctags
+set tags=tags; 
+set autochdir 
+
 "==========================================
 " FileEncode Settings 文件编码,格式
 "==========================================

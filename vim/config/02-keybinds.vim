@@ -178,4 +178,5 @@ endfunction
 vnoremap <leader>y :<c-u>call Save_visually_selected_text_to_file()<cr>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
 
+"历史记录
 map <F2> :browse oldfiles<cr>
