@@ -8,7 +8,6 @@ Plug 'jiangmiao/auto-pairs'       " 自动补全括号
 Plug 'vim-airline/vim-airline'    " 状态栏增强
 Plug 'vim-airline/vim-airline-themes' " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
-Plug 'mhinz/vim-startify'
 
 " 主动技能
 Plug 'majutsushi/tagbar'          " <Leader>t tag列表
