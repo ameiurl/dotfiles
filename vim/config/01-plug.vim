@@ -19,7 +19,7 @@ Plug 'rking/ag.vim'
 
 "文件目录树
 if has('nvim')
-	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
 else
 	Plug 'Shougo/defx.nvim'
 	Plug 'roxma/nvim-yarp'
@@ -159,6 +159,8 @@ let g:multi_cursor_quit_key='<Esc>'
 " }}}
 
 " defx ===================================================================={{{
+let g:python3_host_prog = '/usr/local/bin/python3' 
+map <Tab> :Defx<cr>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
@@ -184,9 +186,6 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop'])
 endfunction
-
-map <Tab> :Defx<cr>
-" }}}
 
 " fzf ===================================================================={{{
 " If installed using Homebrew
