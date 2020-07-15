@@ -25,6 +25,7 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'scrooloose/nerdtree'
 
 "自动补全
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
@@ -158,9 +159,21 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
 
+let NERDTreeWinPos=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeAutoDeleteBuffer=1
+map <Tab> :NERDTreeToggle<cr>
+" open a NERDTree automatically when vim starts up if no files were specified
+ "autocmd vimenter * if !argc() | NERDTree | endif
+ " close vim if the only window left open is a NERDTree
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
+ b:NERDTreeType == "primary") | q | endif
+ nmap < :vertical resize -1<cr>
+ nmap > :vertical resize +1<cr>
+ "let NERDTreeDirArrows = 0 "目录列表前不显示箭头符，避免乱码
 " defx ===================================================================={{{
-let g:python3_host_prog = '/usr/local/bin/python3' 
-map <Tab> :Defx<cr>
+"map <Tab> :Defx<cr>
+nnoremap <silent> <Leader>e :Defx<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
@@ -250,6 +263,9 @@ augroup END
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " }}}
+
+" disbale syntax highlighting to prevent performence issue
+let g:defx_icons_enable_syntax_highlight = 1
 
 " ag ===================================================================={{{
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
