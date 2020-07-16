@@ -25,7 +25,6 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'scrooloose/nerdtree'
 
 "自动补全
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
@@ -159,21 +158,8 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
 
-let NERDTreeWinPos=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeAutoDeleteBuffer=1
-map <Tab> :NERDTreeToggle<cr>
-" open a NERDTree automatically when vim starts up if no files were specified
-"autocmd vimenter * if !argc() | NERDTree | endif
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nmap < :vertical resize -1<cr>
-nmap > :vertical resize +1<cr>
-"let NERDTreeDirArrows = 0 "目录列表前不显示箭头符，避免乱码
-
 " defx ===================================================================={{{
-"map <Tab> :Defx<cr>
-nnoremap <silent> <Leader>e :Defx<CR>
+map <Tab> :Defx<cr>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
