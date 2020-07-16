@@ -38,7 +38,6 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
 " 突出显示当前行
 set cursorline
 
-
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
 " 好处：误删什么的，如果以前屏幕打开，可以找回
 "set t_ti= t_te=
@@ -46,14 +45,9 @@ set cursorline
 
 " 鼠标暂不启用, 键盘党....
 set mouse-=a
-" 启用鼠标
-" set mouse=a
-" Hide the mouse cursor while typing
-" set mousehide
 
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=7
-
 
 " 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
 set selection=inclusive
@@ -88,6 +82,9 @@ set showcmd
 " 左下角显示当前vim模式
 set showmode
 
+" 三种缩进模式
+set ai si ci
+
 " set winwidth=79
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
@@ -115,6 +112,13 @@ set incsearch
 set ignorecase
 " 有一个或以上大写字母时仍大小写敏感
 set smartcase
+
+" 设置为搜索时不要回卷
+set wrapscan
+
+"split新窗口右侧底部
+set splitright
+set splitbelow
 
 " 代码折叠
 "set foldenable
@@ -192,10 +196,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"ctags
-set tags=tags; 
-set autochdir 
-
 "==========================================
 " FileEncode Settings 文件编码,格式
 "==========================================
@@ -272,14 +272,14 @@ endif
 "au InsertLeave * set nopaste
 "let g:last_active_tab = 1
 
-" set tags+=.tags
-"set tags=tags;
-"set autochdir 
+"ctags
+set tags=tags; 
+set autochdir 
+
 " 每次保存自动生成tags
 " 如启动报错，请先安装ctags
 " 跳转快捷键：<ctrl-]>跳转 <ctrl-t>返回
 "au BufWritePost *.c,*.cpp,*.h,*.php,*.json,*.erl,*.sh,*.html,*.css,*.conf silent! !cmd !(ps -ef|grep ctags|grep -v grep|awk '{print $2}'|xargs -I{} kill -9 {}; rm -f .ctags1; ctags -Rf .tags1 --exclude='*.js' && mv -f .tags1 .tags) &> /dev/null &
-set ai si ci
 
 " 保存时自动将tab转换为相应长度的空格
 " 此行禁止开启，否则会导致撤销到最新时保存后，无法重做！！！
@@ -295,20 +295,8 @@ if &term =~ "xterm"
     let &t_te = "\<Esc>[?47l"
 endif
 
-" 设置为搜索时不要回卷
-set wrapscan
-
 "标签高亮匹配
 runtime macros/matchit.vim 
-
-"虚拟机卡顿问题
-"set re=1
-"set ttyfast
-"set lazyredraw
-
-"split新窗口右侧底部
-set splitright
-set splitbelow
 
 "==========================================
 " Theme Settings  主题设置
