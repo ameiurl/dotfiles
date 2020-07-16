@@ -16,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'	  " 快速注释/解开注释
 Plug 'terryma/vim-expand-region'  " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
 Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
 
 "文件目录树
 if has('nvim')
@@ -202,6 +203,11 @@ command! -bang -nargs=* Ag
    		 \                 <bang>0)
 nnoremap <silent> <Leader>A :Ag<CR>
 " }}}
+
+"CtrlP
+nnoremap <silent> <Leader>h :CtrlPMRU<CR>
+let g:ctrlp_map = '<c-l>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " coc ===================================================================={{{
 inoremap <silent><expr> <TAB>
