@@ -30,18 +30,17 @@ endif
 "自动补全
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 
-"Snippets are separated from the engine. Add this if you want them:
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 "<Leader>f/b/a 快速打开文件
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
 
+"Snippets are separated from the engine. Add this if you want them:
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 "markdown插件
 Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
 Plug 'plasticboy/vim-markdown'"
-
 call plug#end()
 filetype plugin indent on
 
@@ -49,71 +48,6 @@ let mapleader=','
 let g:mapleader=','
 
 " 引入插件的设置
-
-" monokai ===================================================================={{{
-" monokai原始背景色
-let g:molokai_original = 1
-"let g:rehash256 = 1
-" Make Vim recognize XTerm escape sequences for Page and Arrow
-" keys combined with modifiers such as Shift, Control, and Alt.
-" See http://www.reddit.com/r/vim/comments/1a29vk/_/c8tze8p
-if &term =~ '^screen'
-  " Page keys http://sourceforge.net/p/tmux/tmux-code/ci/master/tree/FAQ
-  execute "set t_kP=\e[5;*~"
-  execute "set t_kN=\e[6;*~"
-
-  " Arrow keys http://unix.stackexchange.com/a/34723
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
-" }}}
-
-" tabular ===================================================================={{{
-nmap <Leader>=       :Tabularize /=<CR>
-vmap <Leader>=       :Tabularize /=<CR>
-nmap <Leader>"       :Tabularize /"<CR>
-nmap <Leader>"       :Tabularize /"<CR>
-vmap <Leader>'       :Tabularize /'<CR>
-vmap <Leader>'       :Tabularize /'<CR>
-nmap <Leader>(       :Tabularize /(<CR>
-vmap <Leader>(       :Tabularize /(<CR>
-nmap <Leader>)       :Tabularize /)<CR>
-vmap <Leader>)       :Tabularize /)<CR>
-nmap <Leader>;       :Tabularize /,<CR>
-vmap <Leader>;       :Tabularize /,<CR>
-nmap <Leader>[       :Tabularize /[<CR>
-vmap <Leader>[       :Tabularize /[<CR>
-nmap <Leader>]       :Tabularize /]<CR>
-vmap <Leader>]       :Tabularize /]<CR>
-nmap <Leader>{       :Tabularize /{<CR>
-vmap <Leader>{       :Tabularize /{<CR>
-nmap <Leader>}       :Tabularize /}<CR>
-vmap <Leader>}       :Tabularize /}<CR>
-nmap <Leader>-       :Tabularize /-<CR>
-vmap <Leader>-       :Tabularize /-<CR>
-nmap <Leader>/       :Tabularize //<CR>
-vmap <Leader>/       :Tabularize //<CR>
-nmap <Leader>:       :Tabularize /:<CR>
-vmap <Leader>:       :Tabularize /:<CR>
-nmap <Leader><space> :Tabularize / <CR>
-vmap <Leader><space> :Tabularize / <CR>
-nmap <Leader>\|      :Tabularize /\|<CR>
-vmap <Leader>\|      :Tabularize /\|<CR>
-" in insert mode，if code is already aligned by |, then vim can auto aligned code when input |
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-" }}}
 
 " tagbar ===================================================================={{{
 nmap <Leader>t :TagbarToggle<CR>
@@ -186,6 +120,7 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop'])
 endfunction
+" }}}
 
 " fzf ===================================================================={{{
 " If installed using Homebrew
@@ -204,10 +139,11 @@ command! -bang -nargs=* Ag
 nnoremap <silent> <Leader>A :Ag<CR>
 " }}}
 
-"CtrlP
+" CtrlP ===================================================================={{{
 nnoremap <silent> <Leader>h :CtrlPMRU<CR>
-let g:ctrlp_map = '<c-m>'
+let g:ctrlp_map = '<c-y>'
 let g:ctrlp_cmd = 'CtrlP'
+" }}}
 
 " coc ===================================================================={{{
 inoremap <silent><expr> <TAB>
@@ -233,7 +169,6 @@ function! CocTimerStart(timer)
 endfunction
 call timer_start(500,'CocTimerStart',{'repeat':1})
 
-
 "解决coc.nvim大文件卡死状况
 let g:trigger_size = 0.5 * 1048576
 
@@ -256,8 +191,50 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " }}}
 
-" disbale syntax highlighting to prevent performence issue
-let g:defx_icons_enable_syntax_highlight = 1
+" tabular ===================================================================={{{
+nmap <Leader>=       :Tabularize /=<CR>
+vmap <Leader>=       :Tabularize /=<CR>
+nmap <Leader>"       :Tabularize /"<CR>
+nmap <Leader>"       :Tabularize /"<CR>
+vmap <Leader>'       :Tabularize /'<CR>
+vmap <Leader>'       :Tabularize /'<CR>
+nmap <Leader>(       :Tabularize /(<CR>
+vmap <Leader>(       :Tabularize /(<CR>
+nmap <Leader>)       :Tabularize /)<CR>
+vmap <Leader>)       :Tabularize /)<CR>
+nmap <Leader>;       :Tabularize /,<CR>
+vmap <Leader>;       :Tabularize /,<CR>
+nmap <Leader>[       :Tabularize /[<CR>
+vmap <Leader>[       :Tabularize /[<CR>
+nmap <Leader>]       :Tabularize /]<CR>
+vmap <Leader>]       :Tabularize /]<CR>
+nmap <Leader>{       :Tabularize /{<CR>
+vmap <Leader>{       :Tabularize /{<CR>
+nmap <Leader>}       :Tabularize /}<CR>
+vmap <Leader>}       :Tabularize /}<CR>
+nmap <Leader>-       :Tabularize /-<CR>
+vmap <Leader>-       :Tabularize /-<CR>
+nmap <Leader>/       :Tabularize //<CR>
+vmap <Leader>/       :Tabularize //<CR>
+nmap <Leader>:       :Tabularize /:<CR>
+vmap <Leader>:       :Tabularize /:<CR>
+nmap <Leader><space> :Tabularize / <CR>
+vmap <Leader><space> :Tabularize / <CR>
+nmap <Leader>\|      :Tabularize /\|<CR>
+vmap <Leader>\|      :Tabularize /\|<CR>
+" in insert mode，if code is already aligned by |, then vim can auto aligned code when input |
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+" }}}
 
 " ag ===================================================================={{{
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
