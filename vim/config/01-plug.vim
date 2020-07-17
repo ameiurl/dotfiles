@@ -206,7 +206,7 @@ nnoremap <silent> <Leader>A :Ag<CR>
 
 "CtrlP
 nnoremap <silent> <Leader>h :CtrlPMRU<CR>
-let g:ctrlp_map = '<c-l>'
+let g:ctrlp_map = '<c-m>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " coc ===================================================================={{{
