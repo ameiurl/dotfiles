@@ -16,7 +16,6 @@ Plug 'scrooloose/nerdcommenter'	  " 快速注释/解开注释
 Plug 'terryma/vim-expand-region'  " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
 Plug 'rking/ag.vim'
-Plug 'kien/ctrlp.vim'
 
 "文件目录树
 if has('nvim')
@@ -30,9 +29,8 @@ endif
 "自动补全
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 
-"<Leader>f/b/a 快速打开文件
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
+"<Leader>f/b/h 快速打开文件
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  }
 
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
@@ -46,6 +44,7 @@ filetype plugin indent on
 
 let mapleader=','
 let g:mapleader=','
+let g:maplocalleader=';'
 
 " 引入插件的设置
 
@@ -95,6 +94,11 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " defx ===================================================================={{{
 map <Tab> :Defx<cr>
+ " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
+"nnoremap <silent> <LocalLeader>e
+			"\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
+"nnoremap <silent> <LocalLeader>a
+			"\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
@@ -111,6 +115,10 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
 	nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> u  defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> <CR>
+	                \ defx#is_directory() ? 
+	                \ defx#do_action('open_tree') : 
+	                \ defx#do_action('multi', ['drop'])
 endfunction
 
 function! s:defx_toggle_tree() abort
@@ -122,27 +130,13 @@ function! s:defx_toggle_tree() abort
 endfunction
 " }}}
 
-" fzf ===================================================================={{{
-" If installed using Homebrew
- set rtp+=/usr/local/opt/fzf
-" If installed using git
- set rtp+=~/.fzf"
-
- nnoremap <silent> <Leader>f :Files<CR>
- nnoremap <silent> <Leader>b :Buffers<CR>
-
-command! -bang -nargs=* Ag
-   		 \ call fzf#vim#ag(<q-args>,
-   		 \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-   		 \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-   		 \                 <bang>0)
-nnoremap <silent> <Leader>A :Ag<CR>
-" }}}
-
-" CtrlP ===================================================================={{{
-nnoremap <silent> <Leader>h :CtrlPMRU<CR>
-let g:ctrlp_map = '<c-y>'
-let g:ctrlp_cmd = 'CtrlP'
+" LeaderF ===================================================================={{{
+ let g:Lf_ReverseOrder = 1
+ nnoremap <silent> <Leader>h :LeaderfMru<CR>
+ nnoremap <silent> <Leader>f :LeaderfFile<CR>
+ nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
+ nnoremap <silent> <LocalLeader>t :LeaderfFunction<CR>
+ nnoremap <LocalLeader>f :LeaderfFile 
 " }}}
 
 " coc ===================================================================={{{
