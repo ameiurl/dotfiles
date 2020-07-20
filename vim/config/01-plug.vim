@@ -2,6 +2,9 @@
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'    " 状态栏增强
+Plug 'vim-airline/vim-airline-themes' " 状态栏增强
+Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
 " -------------------------------插件列表----------------------------------
 "Plug 'majutsushi/tagbar'          " <Leader>t tag列表
 Plug 'godlygeek/tabular'           " <Leader>符号 快速对齐
@@ -34,10 +37,6 @@ Plug 'honza/vim-snippets'
 "markdown插件
 Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
 Plug 'plasticboy/vim-markdown'"
-
-Plug 'vim-airline/vim-airline'    " 状态栏增强
-Plug 'vim-airline/vim-airline-themes' " 状态栏增强
-Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
 call plug#end()
 filetype plugin indent on
 
