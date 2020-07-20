@@ -3,18 +3,12 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 " -------------------------------插件列表----------------------------------
-" 被动技能
-Plug 'jiangmiao/auto-pairs'       " 自动补全括号
-Plug 'vim-airline/vim-airline'    " 状态栏增强
-Plug 'vim-airline/vim-airline-themes' " 状态栏增强
-Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
-
-" 主动技能
-Plug 'majutsushi/tagbar'          " <Leader>t tag列表
-Plug 'godlygeek/tabular'          " <Leader>符号 快速对齐
-Plug 'scrooloose/nerdcommenter'	  " 快速注释/解开注释
-Plug 'terryma/vim-expand-region'  " v/V 快速选择区域/取消选择区域
+"Plug 'majutsushi/tagbar'          " <Leader>t tag列表
+Plug 'godlygeek/tabular'           " <Leader>符号 快速对齐
+Plug 'terryma/vim-expand-region'   " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
+Plug 'scrooloose/nerdcommenter'	   " 快速注释/解开注释
+Plug 'jiangmiao/auto-pairs'       " 自动补全括号
 Plug 'rking/ag.vim'
 
 "文件目录树
@@ -39,6 +33,10 @@ Plug 'honza/vim-snippets'
 "markdown插件
 Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
 Plug 'plasticboy/vim-markdown'"
+
+Plug 'vim-airline/vim-airline'    " 状态栏增强
+Plug 'vim-airline/vim-airline-themes' " 状态栏增强
+Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
 call plug#end()
 filetype plugin indent on
 
@@ -47,50 +45,6 @@ let g:mapleader=','
 let g:maplocalleader=';'
 
 " 引入插件的设置
-
-" tagbar ===================================================================={{{
-nmap <Leader>t :TagbarToggle<CR>
-" 启动时自动focus
-let g:tagbar_autofocus = 1
-let g:tagbar_left=0 " 在左边显示
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-let g:tagbar_width = 30
-let g:tagbar_sort = 0
-
-let g:tagbar_type_php  = {
-    \ 'ctagstype' : 'php',
-	\ 'kinds'     : [
-        \ 'i:interfaces',
-        \ 'c:classes',
-        \ 'd:constants',
-        \ 'f:functions',
-        \ 'j:javascript functions:1'
-    \ 
-	\]
-	\}
-" }}}
-
-" vim-airline ===================================================================={{{
-let g:airline_theme="light" 
-set laststatus=2
-let g:airline_powerline_fonts=0
-let g:airline#extensions#tabline#enabled=1    " enable tabline
-let g:airline#extensions#tabline#buffer_nr_show=1    " 显示buffer行号
-let g:airline#extensions#tabline#fnamemod = ':t'
-" }}}
-
-" vim-expand-region ===================================================================={{{
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
-" }}}
-
-" vim-multiple-cursors ===================================================================={{{
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-" }}}
 
 " defx ===================================================================={{{
 map <Tab> :Defx<cr>
@@ -131,12 +85,19 @@ endfunction
 " }}}
 
 " LeaderF ===================================================================={{{
+function! s:ProjectRootDirectory() abort
+	return fnamemodify(finddir('.git', '.;'), ':h')
+endfunction
+
  let g:Lf_ReverseOrder = 1
+ let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
+ let g:Lf_WorkingDirectoryMode = 'a'
+ "let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
  nnoremap <silent> <Leader>h :LeaderfMru<CR>
- nnoremap <silent> <Leader>f :LeaderfFile<CR>
  nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
- nnoremap <silent> <LocalLeader>t :LeaderfFunction<CR>
- nnoremap <LocalLeader>f :LeaderfFile 
+ nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
+ nnoremap <silent> <Leader>f :LeaderfFile<CR>
+ nnoremap <silent> <LocalLeader>f :LeaderfFile
 " }}}
 
 " coc ===================================================================={{{
@@ -228,6 +189,50 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+" }}}
+
+" tagbar ===================================================================={{{
+nmap <Leader>t :TagbarToggle<CR>
+" 启动时自动focus
+let g:tagbar_autofocus = 1
+let g:tagbar_left=0 " 在左边显示
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width = 30
+let g:tagbar_sort = 0
+
+let g:tagbar_type_php  = {
+    \ 'ctagstype' : 'php',
+	\ 'kinds'     : [
+        \ 'i:interfaces',
+        \ 'c:classes',
+        \ 'd:constants',
+        \ 'f:functions',
+        \ 'j:javascript functions:1'
+    \ 
+	\]
+	\}
+" }}}
+
+" vim-airline ===================================================================={{{
+let g:airline_theme="light" 
+set laststatus=2
+let g:airline_powerline_fonts=0
+let g:airline#extensions#tabline#enabled=1    " enable tabline
+let g:airline#extensions#tabline#buffer_nr_show=1    " 显示buffer行号
+let g:airline#extensions#tabline#fnamemod = ':t'
+" }}}
+
+" vim-expand-region ===================================================================={{{
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+" }}}
+
+" vim-multiple-cursors ===================================================================={{{
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 " }}}
 
 " ag ===================================================================={{{
