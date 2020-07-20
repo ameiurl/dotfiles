@@ -21,7 +21,8 @@ else
 endif
 
 "自动补全
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "<Leader>f/b/h 快速打开文件
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  }
@@ -49,10 +50,10 @@ let g:maplocalleader=';'
 " defx ===================================================================={{{
 map <Tab> :Defx<cr>
  " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
-"nnoremap <silent> <LocalLeader>e
-			"\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
-"nnoremap <silent> <LocalLeader>a
-			"\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+nnoremap <silent> <LocalLeader>e
+			\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
+nnoremap <silent> <LocalLeader>a
+			\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
