@@ -15,16 +15,11 @@ Plug 'jiangmiao/auto-pairs'       " 自动补全括号
 Plug 'rking/ag.vim'
 
 "文件目录树
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
-else
-	Plug 'Shougo/defx.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 "自动补全
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "<Leader>f/b/h 快速打开文件
