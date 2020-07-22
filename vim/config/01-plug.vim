@@ -89,7 +89,7 @@ function! s:ProjectRootDirectory() abort
 	return fnamemodify(finddir('.git', '.;'), ':h')
 endfunction
 
- let g:Lf_ReverseOrder = 1
+ "let g:Lf_ReverseOrder = 1
  let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
  let g:Lf_WorkingDirectoryMode = 'a'
  "let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
