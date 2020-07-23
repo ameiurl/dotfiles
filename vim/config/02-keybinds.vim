@@ -76,11 +76,11 @@ map <leader>d :bd<cr>
 vnoremap < <gv
 vnoremap > >gv
 
-"map Y y$
+map Y y$
 
 " Go to home and end using capitalized directions
-"noremap H ^
-"noremap L $
+noremap H ^
+noremap L $
 
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
@@ -120,8 +120,8 @@ noremap <silent><leader>/ :nohls<CR>
 "map <Leader>sa ggVG
 
 " Quickly edit/reload the vimrc file
-"nmap <silent> <leader>ev :e $MYVIMRC<CR>
-"nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 "cnoremap <C-a> <Home>
@@ -177,6 +177,3 @@ endfunction
 "this goes in the vimrc
 vnoremap <leader>y :<c-u>call Save_visually_selected_text_to_file()<cr>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
-
-"历史记录
-map <F2> :browse oldfiles<cr>
