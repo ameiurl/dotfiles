@@ -76,11 +76,11 @@ map <leader>d :bd<cr>
 vnoremap < <gv
 vnoremap > >gv
 
-map Y y$
+"map Y y$
 
 " Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+"noremap H ^
+"noremap L $
 
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
