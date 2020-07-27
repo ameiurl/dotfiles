@@ -2,16 +2,16 @@
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'    " 状态栏增强
+
+Plug 'vim-airline/vim-airline'        " 状态栏增强
 Plug 'vim-airline/vim-airline-themes' " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
-" -------------------------------插件列表----------------------------------
-"Plug 'majutsushi/tagbar'          " <Leader>t tag列表
-Plug 'godlygeek/tabular'           " <Leader>符号 快速对齐
-Plug 'terryma/vim-expand-region'   " v/V 快速选择区域/取消选择区域
-Plug 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
-Plug 'scrooloose/nerdcommenter'	   " 快速注释/解开注释
-Plug 'jiangmiao/auto-pairs'       " 自动补全括号
+Plug 'godlygeek/tabular'              " <Leader>符号 快速对齐
+Plug 'plasticboy/vim-markdown'        " markdown插件
+Plug 'terryma/vim-expand-region'      " v/V 快速选择区域/取消选择区域
+Plug 'terryma/vim-multiple-cursors'   " ctrl-m 多光标操作
+Plug 'scrooloose/nerdcommenter'       " 快速注释/解开注释
+Plug 'jiangmiao/auto-pairs'           " 自动补全括号
 Plug 'rking/ag.vim'
 
 "文件目录树
@@ -29,9 +29,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-"markdown插件
-Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
-Plug 'plasticboy/vim-markdown'"
 call plug#end()
 filetype plugin indent on
 
@@ -144,6 +141,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " tabular ===================================================================={{{
 nmap <Leader>=       :Tabularize /=<CR>
 vmap <Leader>=       :Tabularize /=<CR>
+nmap <Leader>==       :Tabularize /=><CR>
+vmap <Leader>==       :Tabularize /=><CR>
 nmap <Leader>"       :Tabularize /"<CR>
 nmap <Leader>"       :Tabularize /"<CR>
 vmap <Leader>'       :Tabularize /'<CR>
@@ -187,25 +186,25 @@ endfunction
 " }}}
 
 " tagbar ===================================================================={{{
-nmap <Leader>t :TagbarToggle<CR>
+"nmap <Leader>t :TagbarToggle<CR>
 " 启动时自动focus
-let g:tagbar_autofocus = 1
-let g:tagbar_left=0 " 在左边显示
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-let g:tagbar_width = 30
-let g:tagbar_sort = 0
+"let g:tagbar_autofocus = 1
+"let g:tagbar_left=0 " 在左边显示
+"let g:tagbar_ctags_bin='/usr/bin/ctags'
+"let g:tagbar_width = 30
+"let g:tagbar_sort = 0
 
-let g:tagbar_type_php  = {
-    \ 'ctagstype' : 'php',
-	\ 'kinds'     : [
-        \ 'i:interfaces',
-        \ 'c:classes',
-        \ 'd:constants',
-        \ 'f:functions',
-        \ 'j:javascript functions:1'
-    \ 
-	\]
-	\}
+"let g:tagbar_type_php  = {
+    "\ 'ctagstype' : 'php',
+	"\ 'kinds'     : [
+        "\ 'i:interfaces',
+        "\ 'c:classes',
+        "\ 'd:constants',
+        "\ 'f:functions',
+        "\ 'j:javascript functions:1'
+    "\ 
+	"\]
+	"\}
 " }}}
 
 " vim-airline ===================================================================={{{
