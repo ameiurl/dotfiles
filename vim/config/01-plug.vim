@@ -109,29 +109,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 let g:coc_snippet_next = '<tab>'
 
-"解决启动稍微延迟问题
-let g:coc_start_at_startup=0
-function! CocTimerStart(timer)
-	exec "CocStart"
-endfunction
-call timer_start(500,'CocTimerStart',{'repeat':1})
-
-"解决coc.nvim大文件卡死状况
-let g:trigger_size = 0.5 * 1048576
-
-augroup hugefile
-	autocmd!
-	autocmd BufReadPre *
-				\ let size = getfsize(expand('<afile>')) |
-				\ if (size > g:trigger_size) || (size == -2) |
-				\   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
-				\   exec 'CocDisable' |
-				\ else |
-				\   exec 'CocEnable' |
-				\ endif |
-				\ unlet size
-augroup END
-
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -183,28 +160,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-" }}}
-
-" tagbar ===================================================================={{{
-"nmap <Leader>t :TagbarToggle<CR>
-" 启动时自动focus
-"let g:tagbar_autofocus = 1
-"let g:tagbar_left=0 " 在左边显示
-"let g:tagbar_ctags_bin='/usr/bin/ctags'
-"let g:tagbar_width = 30
-"let g:tagbar_sort = 0
-
-"let g:tagbar_type_php  = {
-    "\ 'ctagstype' : 'php',
-	"\ 'kinds'     : [
-        "\ 'i:interfaces',
-        "\ 'c:classes',
-        "\ 'd:constants',
-        "\ 'f:functions',
-        "\ 'j:javascript functions:1'
-    "\ 
-	"\]
-	"\}
 " }}}
 
 " vim-airline ===================================================================={{{
