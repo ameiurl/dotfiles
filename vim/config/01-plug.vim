@@ -2,33 +2,26 @@
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
-
-Plug 'vim-airline/vim-airline'        " 状态栏增强
-Plug 'vim-airline/vim-airline-themes' " 状态栏增强
-Plug 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
-Plug 'godlygeek/tabular'              " <Leader>符号 快速对齐
-Plug 'plasticboy/vim-markdown'        " markdown插件
-Plug 'terryma/vim-expand-region'      " v/V 快速选择区域/取消选择区域
-Plug 'terryma/vim-multiple-cursors'   " ctrl-m 多光标操作
-Plug 'scrooloose/nerdcommenter'       " 快速注释/解开注释
-Plug 'jiangmiao/auto-pairs'           " 自动补全括号
-Plug 'rking/ag.vim'
-
-"文件目录树
+Plug 'vim-airline/vim-airline'                     " 状态栏增强
+Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
+Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
+Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
+Plug 'plasticboy/vim-markdown'                     " markdown插件
+Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
+Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
+Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
+Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
+Plug 'rking/ag.vim'                                " 搜索
+Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
+                                                   
+" 文件目录树
 Plug 'Shougo/defx.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-
-"自动补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"<Leader>f/b/h 快速打开文件
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  }
-
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
 call plug#end()
 filetype plugin indent on
 
