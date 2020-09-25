@@ -58,7 +58,7 @@ ZSH_THEME="example"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# 
+ 
 # z命令快速跳转目录     x命令解压一切文件         命令行可以直接google  
 plugins=(
   git z zsh-autosuggestions extract zsh-syntax-highlighting 
