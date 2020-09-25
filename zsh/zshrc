@@ -107,6 +107,8 @@ alias mv='mv -i'
 alias tmux='tmux -2'
 alias vi=vim
 
+export EDITOR=/usr/local/bin/vim
+
 export PATH=$PATH:/usr/local/node/bin
 export NODE_PATH=$PATH:/usr/local/node/lib/node_modules
 
