@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
-Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
 Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
@@ -24,6 +23,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 call plug#end()
 filetype plugin indent on
@@ -179,6 +179,11 @@ let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+" }}}
+
+"禁止自动折叠
+" vim-markdown ===================================================================={{{
+let g:vim_markdown_folding_disabled=1
 " }}}
 
 " ag ===================================================================={{{
