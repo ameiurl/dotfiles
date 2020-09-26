@@ -9,6 +9,7 @@ for fpath in split(globpath(expand(s:curdir.'/config'), '*.vim'), '\n')
   exe 'source' fpath
 endfor
 
+
 "==========================================
 " General Settings 基础设置
 "==========================================

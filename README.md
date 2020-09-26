@@ -1,1 +1,1 @@
-Use gen-lniks.sh to generate soft links
+Use gen-lniks.sh to generate soft links!
