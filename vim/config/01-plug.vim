@@ -15,9 +15,13 @@ Plug 'rking/ag.vim'                                " 搜索
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
                                                    
 " 文件目录树
-Plug 'Shougo/defx.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+else
+	Plug 'Shougo/defx.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
