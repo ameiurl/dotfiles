@@ -105,9 +105,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias tmux='tmux -2'
-alias vi=vim
+alias vi=nvim
 
-export EDITOR=/usr/local/vim/bin/vim
+export EDITOR=/usr/local/vim/bin/nvim
 
 export PATH=$PATH:/usr/local/vim/bin
 export PATH=$PATH:/usr/local/node/bin
