@@ -61,7 +61,7 @@ ZSH_THEME="ys"
  
 # z命令快速跳转目录     x命令解压一切文件         命令行可以直接google  
 plugins=(
-  git z zsh-autosuggestions extract zsh-syntax-highlighting 
+  git z extract zsh-syntax-highlighting
 )
  
 source $ZSH/oh-my-zsh.sh
@@ -123,3 +123,8 @@ if [[ -z "$TMUX"  ]] ;then
 fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+__git_files () { 
+	_wanted files expl 'local files' _files     
+}
+#compdef -d git
