@@ -23,3 +23,5 @@
 	hide-dirty = 1
 [credential]
 	helper = store
+[pull]
+	rebase = false
