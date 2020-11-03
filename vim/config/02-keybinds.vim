@@ -93,7 +93,7 @@ nnoremap U <C-r>
 "nnoremap ` '
 
 " 选中并高亮最后一次插入的内容
-"nnoremap gv `[v`]
+nnoremap gv `[v`]
 
 " Quickly save the current file
 nnoremap <leader>w :w<CR>
@@ -105,13 +105,7 @@ nnoremap <leader>q :q<CR>
 "vnoremap <leader>y "+y
 
 " select block
-"nnoremap <leader>v V`}
-
-"解决tmux复制粘贴问题
-"vmap <leader>y :w! /tmp/vitmp<CR> 
-"nmap <leader>p :r! cat /tmp/vitmp<CR>
-"vmap <leader>y y:new /tmp/vitmp<CR>VGp:x<CR> 
-"nmap <leader>p :r /tmp/vitmp<CR>
+nnoremap <leader>v V`}
 
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>
