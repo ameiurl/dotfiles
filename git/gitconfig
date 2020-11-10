@@ -4,11 +4,12 @@
 [core]
 	quotepath = false
 	autocrlf = false
+[difftool]
+	prompt = false
+	trustExitCode = true
 [diff]
 	tool = nvimdiff
 [difftool "nvimdiff"]
-	prompt = false
-	trustExitCode = true
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [alias]
 	d = difftool
