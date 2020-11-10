@@ -9,7 +9,7 @@
 [difftool "nvimdiff"]
 	prompt = false
 	trustExitCode = true
-	cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [alias]
 	d = difftool
 [color "diff"]
@@ -26,7 +26,3 @@
 	helper = store
 [pull]
 	rebase = false
-[merge]
-	tool = vimdiff
-[mergetool]
-	path = nvim
