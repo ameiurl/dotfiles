@@ -274,7 +274,8 @@ endif
 "au InsertLeave * set nopaste
 "let g:last_active_tab = 1
 
-set tags=tags; 
+"set tags=tags; 
+set tags=./.tags;,.tags
 "set autochdir 
 " 每次保存自动生成tags
 " 如启动报错，请先安装ctags
