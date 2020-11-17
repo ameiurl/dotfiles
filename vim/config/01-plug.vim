@@ -31,6 +31,8 @@ else
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'liuchengxu/vista.vim'
+
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -99,6 +101,9 @@ endfunction
  nnoremap <silent> <Leader>h :LeaderfMru<CR>
  nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
  nnoremap <silent> <LocalLeader>f :LeaderfFile
+let g:Lf_WindowPosition = 'popup'
+"let g:Lf_PreviewInPopup = 1
+
 " }}}
 
 " coc ===================================================================={{{
@@ -267,4 +272,38 @@ autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 noremap <Leader>u :PreviewScroll -1<cr>
 noremap <leader>d :PreviewScroll +1<cr>
+" }}}
+
+" vista ===================================================================={{{
+" vista.vim
+function! NearestMethodOrFunction() abort
+	return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista_executive_for = {
+			\ 'cpp': 'coc',
+			\ 'php': 'coc',
+			\ }
+let g:vista_ctags_cmd = {
+			\ 'haskell': 'hasktags -x -o - -c',
+			\ }
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+			\   "function": "\uf794",
+			\   "variable": "\uf71b",
+			\  }
+"nnoremap <silent><nowait> <space>m :<C-u>Vista!!<cr>
+ nnoremap <silent> <Leader>t :Vista!!<CR>
+ nnoremap <silent> <Esc> :Vista!<CR>
+let g:vista_ignore_kinds = ['Variable']
 " }}}

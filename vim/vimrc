@@ -347,3 +347,8 @@ colorscheme zend
 " 设置选中背景
 hi Visual term=reverse cterm=reverse ctermbg=black guibg=grey60
 hi VisualNOS term=underline,bold cterm=underline,bold gui=underline,bold
+
+aug QFClose
+	au!
+	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
