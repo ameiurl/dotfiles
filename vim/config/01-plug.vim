@@ -71,6 +71,7 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
 	nnoremap <silent><buffer><expr> <C-r> defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> u     defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> <Esc> defx#do_action('quit')
 	nnoremap <silent><buffer><expr> <CR>
 	                \ defx#is_directory() ? 
 	                \ defx#do_action('open_tree') : 
