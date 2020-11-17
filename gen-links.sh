@@ -32,6 +32,8 @@ declare -a LINK_PAIRS
 LINK_PAIRS=(
     "$CUR_DIR/vim/vimrc | ~/.vimrc"
     "$CUR_DIR/vim/coc-settings.json | ~/.vim/coc-settings.json"
+    "$CUR_DIR/gtags/gtags.vim | ~/.vim/gtags.vim"
+    "$CUR_DIR/gtags/gtags-cscope.vim | ~/.vim/gtags-cscope.vim"
     "$CUR_DIR/git/gitconfig | ~/.gitconfig"
     "$CUR_DIR/tmux/tmux.conf | ~/.tmux.conf"
     "$CUR_DIR/zsh/zshrc | ~/.zshrc"
