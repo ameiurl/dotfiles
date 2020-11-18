@@ -42,7 +42,35 @@ nmap <C-l> <C-W>l
 "endfunction
 "inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
-"map <leader>zz :call ToggleFold()<cr>
+" F2 行号开关，用于鼠标复制代码用
+" 为方便复制，用<F2>开启/关闭行号显示:
+"function! HideNumber()
+  "if(&relativenumber == &number)
+    "set relativenumber! number!
+  "elseif(&number)
+    "set number!
+  "else
+    "set relativenumber!
+  "endif
+  "set number?
+"endfunc
+" disbale paste mode when leaving insert mode
+"au InsertLeave * set nopaste
+"let g:last_active_tab = 1
+
+" 代码折叠自定义快捷键 <leader>zz
+let g:FoldMethod = 0
+fun! ToggleFold()
+    if g:FoldMethod == 0
+        exe "normal! zM"
+        let g:FoldMethod = 1
+    else
+        exe "normal! zR"
+        let g:FoldMethod = 0
+    endif
+endfun
+
+map <leader>zz :call ToggleFold()<cr>
 
 map <C-n> :bnext<cr>
 map <C-p> :bprev<cr>
@@ -140,8 +168,6 @@ nnoremap <silent> g* g*zz
 
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
-
-set clipboard+=unnamedplus
 
 "function! VisualSelection()
 "	if mode()=="v"
