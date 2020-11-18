@@ -273,8 +273,10 @@ endif
 "标签高亮匹配
 runtime macros/matchit.vim 
 
+" 系统剪贴板
 set clipboard+=unnamedplus
 
+"最后一个窗口，quickfix一起关闭
 aug QFClose
 	au!
 	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif

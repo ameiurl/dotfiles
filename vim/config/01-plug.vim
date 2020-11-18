@@ -16,11 +16,6 @@ Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'rking/ag.vim'                                " 搜索
-
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
-Plug 'skywind3000/vim-preview'
-
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
                                                    
 " 文件目录树
@@ -32,6 +27,12 @@ else
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+" gtags 函数跳转
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+Plug 'skywind3000/vim-preview'
+
+" taglist
 Plug 'liuchengxu/vista.vim'
 
 "Snippets are separated from the engine. Add this if you want them:
