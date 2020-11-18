@@ -13,7 +13,7 @@ Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取�
 Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
 Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
-Plug 'Lokaltog/vim-easymotion'						" <Leader><Leader>w/b/h/k/j/l 快速跳转
+Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'rking/ag.vim'                                " 搜索
 
@@ -305,11 +305,12 @@ let g:vista#renderer#icons = {
 			\   "variable": "\uf71b",
 			\  }
 "nnoremap <silent><nowait> <space>m :<C-u>Vista!!<cr>
- nnoremap <silent> <Leader>t :Vista!!<CR>
- nnoremap <silent> <Esc> :Vista!<CR>
+nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
+autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
 let g:vista_ignore_kinds = ['Variable']
 " }}}
 
+" vim-easymotion ===================================================================={{{
 let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 map <Leader><leader>h <Plug>(easymotion-linebackward)
@@ -318,3 +319,18 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)"
+
+let g:easymotion#is_active = 0
+function! EasyMotionCoc() abort
+	if EasyMotion#is_active()
+		let g:easymotion#is_active = 1
+		CocDisable
+	else
+		if g:easymotion#is_active == 1
+			let g:easymotion#is_active = 0
+			CocEnable
+		endif
+	endif
+endfunction
+autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+" }}}
