@@ -112,6 +112,7 @@ alias vi=nvim
 export EDITOR=/usr/local/bin/nvim
 export PATH=$PATH:/usr/local/node/bin
 export NODE_PATH=$PATH:/usr/local/node/lib/node_modules
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 if [[ -z "$TMUX"  ]] ;then
 	ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
@@ -121,8 +122,6 @@ if [[ -z "$TMUX"  ]] ;then
 		tmux attach-session -t "$ID" # if available attach to it
 	fi
 fi
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 __git_files () { 
 	_wanted files expl 'local files' _files     
