@@ -30,10 +30,8 @@ declare -a LINK_PAIRS
 # associated array
 #FISH_CONFIG_DIR="~/.config/fish"
 LINK_PAIRS=(
-    "$CUR_DIR/vim/vimrc | ~/.vimrc"
-    "$CUR_DIR/vim/coc-settings.json | ~/.vim/coc-settings.json"
-    "$CUR_DIR/gtags/gtags.vim | ~/.vim/gtags.vim"
-    "$CUR_DIR/gtags/gtags-cscope.vim | ~/.vim/gtags-cscope.vim"
+    "$CUR_DIR/vim/vimrc | ~/.config/nvim/init.vim"
+    "$CUR_DIR/vim/coc-settings.json | ~/.config/nvim/coc-settings.json"
     "$CUR_DIR/git/gitconfig | ~/.gitconfig"
     "$CUR_DIR/tmux/tmux.conf | ~/.tmux.conf"
     "$CUR_DIR/zsh/zshrc | ~/.zshrc"

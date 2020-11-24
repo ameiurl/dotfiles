@@ -1,8 +1,4 @@
 """""""" 插件管理vim-plug""""""""
-if empty(glob('~/.vim/autoload/plug.vim'))
-	silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-	autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
@@ -13,7 +9,6 @@ Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取�
 Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
 Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
-Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'rking/ag.vim'                                " 搜索
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
@@ -31,9 +26,6 @@ endif
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
-
-" taglist
-Plug 'liuchengxu/vista.vim'
 
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
@@ -210,9 +202,10 @@ let g:vim_markdown_folding_disabled=1
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
 " }}}
 
+
 " vim-gutentags ===================================================================={{{
-source ~/.vim/gtags.vim
-source ~/.vim/gtags-cscope.vim
+source ~/dotfiles/gtags/gtags.vim
+source ~/dotfiles/gtags/gtags-cscope.vim
 
 " gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
@@ -269,69 +262,11 @@ noremap <silent> <leader>gz :GscopeFind z <C-R><C-W><cr>
 let g:gutentags_plus_switch = 1
 " }}}
 
+
 " vim-preview ===================================================================={{{
 "P 预览 大p关闭
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 noremap <Leader>u :PreviewScroll -1<cr>
 noremap <leader>d :PreviewScroll +1<cr>
-" }}}
-
-" vista ===================================================================={{{
-" vista.vim
-function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
-let g:vista_executive_for = {
-			\ 'cpp': 'coc',
-			\ 'php': 'coc',
-			\ }
-let g:vista_ctags_cmd = {
-			\ 'haskell': 'hasktags -x -o - -c',
-			\ }
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-			\   "function": "\uf794",
-			\   "variable": "\uf71b",
-			\  }
-"nnoremap <silent><nowait> <space>m :<C-u>Vista!!<cr>
-nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
-autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
-let g:vista_ignore_kinds = ['Variable']
-" }}}
-
-" vim-easymotion ===================================================================={{{
-let g:EasyMotion_smartcase = 1
-"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
-" 重复上一次操作, 类似repeat插件, 很强大
-map <Leader><leader>. <Plug>(easymotion-repeat)"
-
-let g:easymotion#is_active = 0
-function! EasyMotionCoc() abort
-	if EasyMotion#is_active()
-		let g:easymotion#is_active = 1
-		CocDisable
-	else
-		if g:easymotion#is_active == 1
-			let g:easymotion#is_active = 0
-			CocEnable
-		endif
-	endif
-endfunction
-autocmd TextChanged,CursorMoved * call EasyMotionCoc()
 " }}}
