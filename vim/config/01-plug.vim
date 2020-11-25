@@ -49,7 +49,7 @@ nnoremap <silent> <LocalLeader>e
 			\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
 nnoremap <silent> <LocalLeader>a
 			\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
-autocmd FileType defx call defx#custom#option('_', {
+call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
