@@ -1,7 +1,7 @@
 """""""" 插件管理vim-plug""""""""
 set nocompatible
 filetype off
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
@@ -49,7 +49,7 @@ nnoremap <silent> <LocalLeader>e
 			\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
 nnoremap <silent> <LocalLeader>a
 			\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
-call defx#custom#option('_', {
+autocmd FileType defx call defx#custom#option('_', {
       \ 'winwidth': 30,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
