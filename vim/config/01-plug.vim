@@ -301,6 +301,6 @@ let g:vista#renderer#icons = {
 			\  }
 "nnoremap <silent><nowait> <space>m :<C-u>Vista!!<cr>
 nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
-autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
+"autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
 let g:vista_ignore_kinds = ['Variable']
 " }}}
