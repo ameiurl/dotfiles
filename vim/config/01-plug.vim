@@ -37,7 +37,9 @@ Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 call plug#end()
