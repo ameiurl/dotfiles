@@ -106,6 +106,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias tmux='tmux -2'
 alias vi=nvim
+alias lg='lazygit'
 
 export EDITOR=/usr/local/bin/nvim
 export PATH=$PATH:/usr/local/node/bin
