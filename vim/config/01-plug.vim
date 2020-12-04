@@ -13,6 +13,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'rking/ag.vim'                                " 搜索
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
+Plug 'mattn/emmet-vim'							   " <c-y>, html代码补全
                                                    
 " 文件目录树
 if has('nvim')
@@ -32,8 +33,13 @@ Plug 'skywind3000/vim-preview'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
+
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 call plug#end()
 filetype plugin indent on
 
@@ -303,4 +309,17 @@ let g:vista#renderer#icons = {
 nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
 "autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
 let g:vista_ignore_kinds = ['Variable']
+" }}}
+
+" emmet.vim ===================================================================={{{
+let g:user_emmet_expandabbr_key = '<C-e>'
+" }}}
+
+" vim-easy-align ===================================================================={{{
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+	let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']  }
 " }}}
