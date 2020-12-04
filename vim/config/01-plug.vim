@@ -33,10 +33,12 @@ Plug 'skywind3000/vim-preview'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" 对齐
 Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 
+"Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
