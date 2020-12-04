@@ -13,7 +13,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'rking/ag.vim'                                " 搜索
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
-Plug 'mattn/emmet-vim'							   " <c-y>, html代码补全
+Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
                                                    
 " 文件目录树
 if has('nvim')
