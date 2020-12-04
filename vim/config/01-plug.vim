@@ -39,11 +39,11 @@ Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 
 "Git
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'						  " yss\' ysiw\" cs\"\' ds\"
+Plug 'tpope/vim-repeat'							  " 重复上一次操作
 call plug#end()
 filetype plugin indent on
 
