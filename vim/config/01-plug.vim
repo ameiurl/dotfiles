@@ -14,7 +14,8 @@ Plug 'rking/ag.vim'                                " 搜索
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
-                                                   
+Plug 'tpope/vim-surround'						  " yss\' ysiw\" cs\"\' ds\"
+Plug 'tpope/vim-repeat'							  " 重复上一次操作
 " 文件目录树
 if has('nvim')
 	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
@@ -23,27 +24,20 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
-
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
-
 "Snippets are separated from the engine. Add this if you want them:
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
 " 对齐
 Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
-
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'
-
-Plug 'tpope/vim-surround'						  " yss\' ysiw\" cs\"\' ds\"
-Plug 'tpope/vim-repeat'							  " 重复上一次操作
 call plug#end()
 filetype plugin indent on
 
