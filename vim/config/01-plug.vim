@@ -5,26 +5,21 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
+Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
+Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
-Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
+Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
+Plug 'tpope/vim-repeat'							   " 重复上一次操作
+" 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
-Plug 'rking/ag.vim'                                " 搜索
+Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
+" 文件查找
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
-Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
-Plug 'tpope/vim-surround'						  " yss\' ysiw\" cs\"\' ds\"
-Plug 'tpope/vim-repeat'							  " 重复上一次操作
-Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
-" 文件目录树
-if has('nvim')
-	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
-else
-	Plug 'Shougo/defx.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'rking/ag.vim'                                " 搜索
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
