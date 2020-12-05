@@ -38,7 +38,6 @@ Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'
-
 call plug#end()
 filetype plugin indent on
 
