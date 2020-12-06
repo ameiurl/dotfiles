@@ -9,9 +9,9 @@ Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
 Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
-Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
+Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
@@ -34,6 +34,8 @@ Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status
+
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 filetype plugin indent on
 
@@ -97,7 +99,7 @@ endfunction
  nnoremap <silent> <Leader>h :LeaderfMru<CR>
  nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
  nnoremap <silent> <LocalLeader>f :LeaderfFile
-let g:Lf_WindowPosition = 'popup'
+"let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
 
 " }}}
@@ -341,4 +343,31 @@ function! EasyMotionCoc() abort
 	endif
 endfunction
 autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+" }}}"
+
+" vim-floaterm ===================================================================={{{
+let g:floaterm_wintype='normal'
+let g:floaterm_height=8
+
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+let g:floaterm_title=''
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1"
+
+map <Leader>g :FloatermNew lazygit<cr> 
+
+" Set floaterm window's background to black
+hi Floaterm guibg=black
+" Set floating window border line color to cyan, and background to orange
+hi FloatermBorder guibg=orange guifg=cyan
+hi FloatermNC guibg=gray
 " }}}"

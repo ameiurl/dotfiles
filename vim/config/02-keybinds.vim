@@ -17,15 +17,15 @@ nmap <C-l> <C-W>l
 
 " F1 废弃这个键,防止调出系统帮助
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
-noremap <F1> <Esc>"
-nnoremap <F2> :call HideNumber()<CR>
+"noremap <F1> <Esc>"
+"nnoremap <F2> :call HideNumber()<CR>
 " F3 显示可打印字符开关
-nnoremap <F3> :set list! list?<CR>
+"nnoremap <F3> :set list! list?<CR>
 " F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
+"nnoremap <F4> :set wrap! wrap?<CR>
 " F6 语法开关，关闭语法可以加快大文件的展示
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+"nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+"set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 
