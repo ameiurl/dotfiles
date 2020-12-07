@@ -98,7 +98,7 @@ endfunction
  nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
  nnoremap <silent> <Leader>h :LeaderfMru<CR>
  nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
- nnoremap <silent> <LocalLeader>f :LeaderfFile
+"nnoremap <silent> <LocalLeader>f :LeaderfFile
 "let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
 
@@ -347,7 +347,7 @@ autocmd TextChanged,CursorMoved * call EasyMotionCoc()
 
 " vim-floaterm ===================================================================={{{
 let g:floaterm_wintype='normal'
-let g:floaterm_height=8
+"let g:floaterm_height=8
 
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_next   = '<F2>'
@@ -364,6 +364,7 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
+map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
