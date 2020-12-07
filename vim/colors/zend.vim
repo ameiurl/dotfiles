@@ -95,49 +95,49 @@ hi        Todo           ctermfg=Black				ctermbg=231				cterm=BOLD        "ä»»ä
 
 " - PHP -
 hi		  phpVarSelector ctermfg=88
-"hi		  phpKeyword	 ctermfg=21
-"hi		  phpRepeat		 ctermfg=21
-"hi		  phpConditional ctermfg=21
-"hi		  phpStatement	 ctermfg=21
-"hi		  phpFunctions	 ctermfg=21
-"hi		  phpType		 ctermfg=21
-"hi		  phpTodo		 ctermfg=red
-"hi		  phpMemberSelector	ctermfg=black
-"
-"" - HTML -
-"hi		  htmlTag				ctermfg=29
-"hi		  htmlEndTag			ctermfg=29
-"hi		  htmlTagName			ctermfg=29
-"hi	      htmlArg				ctermfg=90
-"hi		  htmlString			ctermfg=21 
-"hi		  htmlScript			ctermfg=21
-"hi		  htmlScriptTag			ctermfg=21
-"hi	      htmlScriptEndTag		ctermfg=21
-"hi	      htmlSpecialTagName    ctermfg=21
-"hi	      htmlError				ctermfg=black
-"hi		  htmlLink				ctermfg=black
-"
-"" JavaScript Highlighting
-"hi		  javaScriptBoolean            ctermfg=brown
-"hi		  javaScriptConditional        ctermfg=90
-"hi		  javaScriptRepeat             ctermfg=90
-"hi		  javaScriptStatement          ctermfg=90
-"hi		  javaScriptIdentifier         ctermfg=90
-"hi		  javaScriptException          ctermfg=90
-"hi		  javaScriptBranch             ctermfg=90
-"hi		  javaScriptLabel              ctermfg=90
-"hi		  javaScriptFunction           ctermfg=90
-"hi		  javaScriptGlobal             ctermfg=31
-"hi		  javaScriptMember             ctermfg=darkgrey
-"hi		  javaScriptMessage            ctermfg=darkgrey
-"hi		  javaScriptOperator           ctermfg=darkgrey
-"hi		  javaScriptParens             ctermfg=black
-"hi		  javaScriptBraces             ctermfg=black
-"hi		  javaScriptSpecial            ctermfg=31
-"hi		  javaScriptSpecialCharacter   ctermfg=31
-"hi		  javaScriptStringD            ctermfg=21
-"hi		  javaScriptStringS            ctermfg=21
-"hi		  javaScriptThis               ctermfg=brown
-"hi		  javaScriptType               ctermfg=brown
-"hi		  javaScriptNumber             ctermfg=Red
-"hi		  javaScriptNull               ctermfg=brown
+hi		  phpKeyword	 ctermfg=21
+hi		  phpRepeat		 ctermfg=21
+hi		  phpConditional ctermfg=21
+hi		  phpStatement	 ctermfg=21
+hi		  phpFunctions	 ctermfg=21
+hi		  phpType		 ctermfg=21
+hi		  phpTodo		 ctermfg=red
+hi		  phpMemberSelector	ctermfg=black
+
+" - HTML -
+hi		  htmlTag				ctermfg=29
+hi		  htmlEndTag			ctermfg=29
+hi		  htmlTagName			ctermfg=29
+hi	      htmlArg				ctermfg=90
+hi		  htmlString			ctermfg=21 
+hi		  htmlScript			ctermfg=21
+hi		  htmlScriptTag			ctermfg=21
+hi	      htmlScriptEndTag		ctermfg=21
+hi	      htmlSpecialTagName    ctermfg=21
+hi	      htmlError				ctermfg=black
+hi		  htmlLink				ctermfg=black
+
+" JavaScript Highlighting
+hi		  javaScriptBoolean            ctermfg=brown
+hi		  javaScriptConditional        ctermfg=90
+hi		  javaScriptRepeat             ctermfg=90
+hi		  javaScriptStatement          ctermfg=90
+hi		  javaScriptIdentifier         ctermfg=90
+hi		  javaScriptException          ctermfg=90
+hi		  javaScriptBranch             ctermfg=90
+hi		  javaScriptLabel              ctermfg=90
+hi		  javaScriptFunction           ctermfg=90
+hi		  javaScriptGlobal             ctermfg=31
+hi		  javaScriptMember             ctermfg=darkgrey
+hi		  javaScriptMessage            ctermfg=darkgrey
+hi		  javaScriptOperator           ctermfg=darkgrey
+hi		  javaScriptParens             ctermfg=black
+hi		  javaScriptBraces             ctermfg=black
+hi		  javaScriptSpecial            ctermfg=31
+hi		  javaScriptSpecialCharacter   ctermfg=31
+hi		  javaScriptStringD            ctermfg=21
+hi		  javaScriptStringS            ctermfg=21
+hi		  javaScriptThis               ctermfg=brown
+hi		  javaScriptType               ctermfg=brown
+hi		  javaScriptNumber             ctermfg=Red
+hi		  javaScriptNull               ctermfg=brown
