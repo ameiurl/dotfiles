@@ -6,12 +6,13 @@ Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
-Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
-Plug 'terryma/vim-multiple-cursors'                " ctrl-m 多光标操作
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
+Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
-Plug 'scrooloose/nerdcommenter'                    " 快速注释/解开注释
+" 快速注释/解开注释
+Plug 'scrooloose/nerdcommenter'
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
@@ -30,12 +31,11 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " 对齐
 Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
-Plug 'godlygeek/tabular'                           " <Leader>符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status
-
+" 终端
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 filetype plugin indent on
@@ -127,53 +127,6 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " }}}
 
-" tabular ===================================================================={{{
-nmap <Leader>=       :Tabularize /=<CR>
-vmap <Leader>=       :Tabularize /=<CR>
-nmap <Leader>==       :Tabularize /=><CR>
-vmap <Leader>==       :Tabularize /=><CR>
-nmap <Leader>"       :Tabularize /"<CR>
-nmap <Leader>"       :Tabularize /"<CR>
-vmap <Leader>'       :Tabularize /'<CR>
-vmap <Leader>'       :Tabularize /'<CR>
-nmap <Leader>(       :Tabularize /(<CR>
-vmap <Leader>(       :Tabularize /(<CR>
-nmap <Leader>)       :Tabularize /)<CR>
-vmap <Leader>)       :Tabularize /)<CR>
-nmap <Leader>;       :Tabularize /,<CR>
-vmap <Leader>;       :Tabularize /,<CR>
-nmap <Leader>[       :Tabularize /[<CR>
-vmap <Leader>[       :Tabularize /[<CR>
-nmap <Leader>]       :Tabularize /]<CR>
-vmap <Leader>]       :Tabularize /]<CR>
-nmap <Leader>{       :Tabularize /{<CR>
-vmap <Leader>{       :Tabularize /{<CR>
-nmap <Leader>}       :Tabularize /}<CR>
-vmap <Leader>}       :Tabularize /}<CR>
-nmap <Leader>-       :Tabularize /-<CR>
-vmap <Leader>-       :Tabularize /-<CR>
-nmap <Leader>/       :Tabularize //<CR>
-vmap <Leader>/       :Tabularize //<CR>
-nmap <Leader>:       :Tabularize /:<CR>
-vmap <Leader>:       :Tabularize /:<CR>
-nmap <Leader><space> :Tabularize / <CR>
-vmap <Leader><space> :Tabularize / <CR>
-nmap <Leader>\|      :Tabularize /\|<CR>
-vmap <Leader>\|      :Tabularize /\|<CR>
-" in insert mode，if code is already aligned by |, then vim can auto aligned code when input |
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-" }}}
-
 " vim-airline ===================================================================={{{
 let g:airline_theme="light" 
 set laststatus=2
@@ -189,11 +142,19 @@ vmap V <Plug>(expand_region_shrink)
 " }}}
 
 " vim-multiple-cursors ===================================================================={{{
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_maps                       = {}
+"let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+"let g:VM_maps['i']                  = 'm'
+"let g:VM_maps['I']                  = 'M'
+let g:VM_maps['Find Under']         = '<C-m>'
+let g:VM_maps['Find Subword Under'] = '<C-m>'
+let g:VM_maps['Find Next']          = ''
+let g:VM_maps['Find Prev']          = ''
+let g:VM_maps['Remove Region']      = 'q'
+let g:VM_maps['Skip Region']        = '<c-x>'
+let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps["Redo"]               = '<C-r>'
 " }}}
 
 "禁止自动折叠
