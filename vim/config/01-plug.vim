@@ -17,8 +17,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件查找
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
+Plug 'lvht/mru'									   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
@@ -90,18 +91,17 @@ endfunction
 "endfunction
 
  "let g:Lf_ReverseOrder = 1  "文件倒序
- let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
- let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
- let g:Lf_WorkingDirectoryMode = 'a'
+ "let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
+ "let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
+ "let g:Lf_WorkingDirectoryMode = 'a'
  "let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
- nnoremap <silent> <Leader>f :LeaderfFile<CR>
- nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
- nnoremap <silent> <Leader>h :LeaderfMru<CR>
- nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
+ "nnoremap <silent> <Leader>f :LeaderfFile<CR>
+ "nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
+ "nnoremap <silent> <Leader>h :LeaderfMru<CR>
+ "nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
 "nnoremap <silent> <LocalLeader>f :LeaderfFile
 "let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
-
 " }}}
 
 " coc ===================================================================={{{
@@ -371,4 +371,8 @@ hi Floaterm guibg=black
 " Set floating window border line color to cyan, and background to orange
 hi FloatermBorder guibg=orange guifg=cyan
 hi FloatermNC guibg=gray
+" }}}"
+
+" vim-floaterm ===================================================================={{{
+map <Leader>h :Mru<cr> 
 " }}}"
