@@ -303,7 +303,7 @@ let g:vista#renderer#icons = {
 			\  }
 "nnoremap <silent><nowait> <space>m :<C-u>Vista!!<cr>
 nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
-"autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
+autocmd FileType vista nnoremap <silent><Esc> :Vista!<CR>
 let g:vista_ignore_kinds = ['Variable']
 " }}}
 
@@ -364,7 +364,7 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
-map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
+map <Leader>f :FloatermNew fzf --preview 'cat {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
