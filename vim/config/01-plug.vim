@@ -141,8 +141,8 @@ vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 " }}}
 
-" vim-multiple-cursors ===================================================================={{{
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+" mg979/vim-visual-multi ===================================================================={{{
+"let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps                       = {}
 "let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
 "let g:VM_maps['i']                  = 'm'
