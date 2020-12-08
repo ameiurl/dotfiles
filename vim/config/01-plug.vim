@@ -20,7 +20,7 @@ Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
-Plug 'lvht/mru'									   " <Leader>h
+Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
@@ -336,4 +336,7 @@ hi FloatermNC guibg=gray
 
 " vim-floaterm ===================================================================={{{
 map <Leader>h :Mru<cr> 
+let g:mru_file_list_size = 20
+let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
+let g:ctrlp_max_height = 20
 " }}}"
