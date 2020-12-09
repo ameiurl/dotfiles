@@ -157,10 +157,15 @@ set shiftround
 " A buffer becomes hidden when it is abandoned
 set hidden
 set wildmode=list:longest
-set ttyfast
 
 " 00x增减数字时使用十进制
 set nrformats=
+
+" 卡顿问题
+let g:loaded_matchparen=1
+set nolist
+set lazyredraw
+set ttyfast
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 "set relativenumber number
