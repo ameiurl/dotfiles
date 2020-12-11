@@ -336,7 +336,6 @@ hi FloatermNC guibg=gray
 
 " vim-floaterm ===================================================================={{{
 map <Leader>h :Mru<cr> 
-let g:mru_file_list_size = 20
+let g:mru_file_list_size = 50
 let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
-let g:ctrlp_max_height = 20
 " }}}"
