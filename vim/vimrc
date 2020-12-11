@@ -162,10 +162,9 @@ set wildmode=list:longest
 set nrformats=
 
 " 卡顿问题
-let g:loaded_matchparen=1
-set nolist
-set lazyredraw
-set ttyfast
+"let g:loaded_matchparen=1
+set lazyredraw "should make scrolling faster"
+set ttyfast "same as above"
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 "set relativenumber number
