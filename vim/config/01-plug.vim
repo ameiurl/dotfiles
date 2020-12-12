@@ -11,8 +11,7 @@ Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
-" 快速注释/解开注释
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
