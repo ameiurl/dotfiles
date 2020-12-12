@@ -325,7 +325,7 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
-map <Leader>f :FloatermNew fzf --preview 'cat {}'<cr> 
+map <Leader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
@@ -336,6 +336,7 @@ hi FloatermNC guibg=gray
 
 " vim-floaterm ===================================================================={{{
 map <Leader>h :Mru<cr> 
-let g:mru_file_list_size = 50
+let g:mru_file_list_size = 20
 let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
+let g:ctrlp_max_height = 20
 " }}}"
