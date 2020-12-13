@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'						   " taglist
 Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
+Plug 'psliwka/vim-smoothie'
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -85,6 +86,11 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop', 'quit'])
 endfunction
+" }}}
+
+" fzf ===================================================================={{{
+map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
 " }}}
 
 " LeaderF ===================================================================={{{
@@ -266,7 +272,7 @@ let g:vista_ignore_kinds = ['Variable']
 " }}}
 
 " emmet.vim ===================================================================={{{
-let g:user_emmet_expandabbr_key = '<C-e>'
+let g:user_emmet_expandabbr_key = '<C-h>'
 " }}}
 
 " vim-easy-align ===================================================================={{{
@@ -322,7 +328,7 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
-map <Leader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
+map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
