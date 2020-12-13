@@ -12,11 +12,14 @@ Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
+Plug 'hardcoreplayers/dashboard-nvim'			   "head启动界面
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件查找
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
 Plug 'ameiurl/mru'								   " <Leader>h
@@ -336,4 +339,11 @@ let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
 
 " wildfire ===================================================================={{{
 let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+" }}}"
+
+" dashboarde ===================================================================={{{
+let g:dashboard_default_executive ='fzf'
+let g:dashboard_default_header = 'cres'
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
 " }}}"
