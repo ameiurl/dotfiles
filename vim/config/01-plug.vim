@@ -8,7 +8,7 @@ Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
-Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
+Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
@@ -133,11 +133,6 @@ let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled=1    " enable tabline
 let g:airline#extensions#tabline#buffer_nr_show=1    " 显示buffer行号
 let g:airline#extensions#tabline#fnamemod = ':t'
-" }}}
-
-" vim-expand-region ===================================================================={{{
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
 " }}}
 
 " mg979/vim-visual-multi ===================================================================={{{
@@ -337,4 +332,8 @@ hi FloatermNC guibg=gray
 map <Leader>h :Mru<cr> 
 let g:mru_file_list_size = 40
 let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
+" }}}"
+
+" wildfire ===================================================================={{{
+let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
 " }}}"
