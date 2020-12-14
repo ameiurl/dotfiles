@@ -12,15 +12,15 @@ Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
-Plug 'hardcoreplayers/dashboard-nvim'			   "head启动界面
+"Plug 'hardcoreplayers/dashboard-nvim'			   "head启动界面
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件查找
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+"Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 Plug 'liuchengxu/vista.vim'						   " taglist
 Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
@@ -89,8 +89,9 @@ endfunction
 " }}}
 
 " fzf ===================================================================={{{
-map <leader>f :Files<CR>
-map <leader>b :Buffers<CR>
+"map <leader>f :Files<CR>
+"map <leader>h :History<CR>
+"map <leader>b :Buffers<CR>
 " }}}
 
 " LeaderF ===================================================================={{{
@@ -328,7 +329,8 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
-map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
+"map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
+map <Leader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
@@ -339,17 +341,18 @@ hi FloatermNC guibg=gray
 
 " vim-floaterm ===================================================================={{{
 map <Leader>h :Mru<cr> 
-let g:mru_file_list_size = 40
+let g:mru_file_list_size = 50
 let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
 " }}}"
 
 " wildfire ===================================================================={{{
+map <SPACE> <Plug>(wildfire-fuel)
 let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
 " }}}"
 
 " dashboarde ===================================================================={{{
-let g:dashboard_default_executive ='fzf'
-let g:dashboard_default_header = 'cres'
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
+"let g:dashboard_default_executive ='fzf'
+"let g:dashboard_default_header = 'cres'
+"nmap <Leader>ss :<C-u>SessionSave<CR>
+"nmap <Leader>sl :<C-u>SessionLoad<CR>
 " }}}"
