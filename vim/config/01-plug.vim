@@ -244,9 +244,7 @@ noremap <leader>d :PreviewScroll +1<cr>
 function! NearestMethodOrFunction() abort
 	return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
-
 set statusline+=%{NearestMethodOrFunction()}
-
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
@@ -352,8 +350,7 @@ let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
 "let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
 " }}}"
 
-" vim-expand-region
-" ===================================================================={{{
+" vim-expand-region ===================================================================={{{
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 let g:expand_region_text_objects = {
