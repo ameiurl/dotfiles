@@ -8,7 +8,8 @@ Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
-Plug 'gcmt/wildfire.vim'						   " 回车选中区域
+Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
+"Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
@@ -346,8 +347,30 @@ let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
 " }}}"
 
 " wildfire ===================================================================={{{
-map <SPACE> <Plug>(wildfire-fuel)
-let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+"vmap v <Plug>(wildfire-fuel)
+"map <Leader>s <Plug>(wildfire-quick-select)
+"let g:wildfire_objects = ["iw", "iW", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
+" }}}"
+
+" vim-expand-region
+" ===================================================================={{{
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+let g:expand_region_text_objects = {
+      \ 'iw'  :0,
+      \ 'iW'  :0,
+      \ 'i"'  :0,
+      \ 'i''' :0,
+      \ 'i)'  :1,
+      \ 'i]'  :1,
+      \ 'i}'  :1,
+      \ 'ib'  :1,
+      \ 'iB'  :1,
+      \ 'il'  :0,
+      \ 'ip'  :0,
+      \ 'ie'  :0,
+      \ 'it'  :0,
+	  \}
 " }}}"
 
 " dashboarde ===================================================================={{{
