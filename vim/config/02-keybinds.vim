@@ -109,7 +109,7 @@ noremap L $
 nnoremap U <C-r>
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
-nnoremap ; :
+"nnoremap ; :
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
 nnoremap ' `
