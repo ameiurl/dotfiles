@@ -7,7 +7,7 @@ Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
+"Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 "Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
@@ -102,7 +102,7 @@ let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
 let g:Lf_WorkingDirectoryMode = 'a'
 let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
-nnoremap <silent> <Leader>f :LeaderfFile<CR>
+"nnoremap <silent> <Leader>f :LeaderfFile<CR>
 nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
 nnoremap <silent> <Leader>h :LeaderfMru<CR>
 nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
@@ -282,28 +282,28 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 " }}}
 
 " vim-easymotion ===================================================================={{{
-let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
+"map <Leader><leader>h <Plug>(easymotion-linebackward)
+"map <Leader><Leader>j <Plug>(easymotion-j)
+"map <Leader><Leader>k <Plug>(easymotion-k)
+"map <Leader><leader>l <Plug>(easymotion-lineforward)
 " 重复上一次操作, 类似repeat插件, 很强大
-map <Leader><leader>. <Plug>(easymotion-repeat)"
+"map <Leader><leader>. <Plug>(easymotion-repeat)"
 
-let g:easymotion#is_active = 0
-function! EasyMotionCoc() abort
-	if EasyMotion#is_active()
-		let g:easymotion#is_active = 1
-		CocDisable
-	else
-		if g:easymotion#is_active == 1
-			let g:easymotion#is_active = 0
-			CocEnable
-		endif
-	endif
-endfunction
-autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+"let g:easymotion#is_active = 0
+"function! EasyMotionCoc() abort
+	"if EasyMotion#is_active()
+		"let g:easymotion#is_active = 1
+		"CocDisable
+	"else
+		"if g:easymotion#is_active == 1
+			"let g:easymotion#is_active = 0
+			"CocEnable
+		"endif
+	"endif
+"endfunction
+"autocmd TextChanged,CursorMoved * call EasyMotionCoc()
 " }}}"
 
 " vim-floaterm ===================================================================={{{
@@ -325,8 +325,8 @@ let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
 map <Leader>g :FloatermNew lazygit<cr> 
-map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
-"map <Leader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
+"map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
+map <Leader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
 
 " Set floaterm window's background to black
 hi Floaterm guibg=black
