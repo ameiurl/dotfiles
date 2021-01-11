@@ -116,7 +116,7 @@ alias tmux='tmux -2'
 alias vi=nvim
 alias lg='lazygit'
 
-export EDITOR=/usr/local/bin/nvim
+export EDITOR=/usr/bin/nvim
 export PATH=$PATH:/usr/local/node/bin
 export PATH=$PATH:/usr/local/python3/lib/python3.8/site-packages
 export NODE_PATH=$PATH:/usr/local/node/lib/node_modules
