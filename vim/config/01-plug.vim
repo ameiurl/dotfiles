@@ -6,7 +6,7 @@ Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mg979/vim-visual-multi',{'branch': 'master'} " <c-m>批量量更新
 "Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
 "Plug 'gcmt/wildfire.vim'						   " 回车选中区域
