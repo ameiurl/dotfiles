@@ -4,6 +4,7 @@
 [core]
 	quotepath = false
 	autocrlf = false
+	filenode = false
 [difftool]
 	prompt = false
 	trustExitCode = true
