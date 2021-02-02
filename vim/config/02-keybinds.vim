@@ -85,11 +85,9 @@ map <leader>0 :blast<cr>
 map <leader>d :bd<cr>
 
 " Toggles between the active and last active tab "
-" The first tab is always 1 "
-let g:last_active_tab = 1
-nnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>
-vnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>
-autocmd TabLeave * let g:last_active_tab = tabpagenr()
+let g:lastTabNr = 1
+autocmd TabLeave * let g:lastTabNr = tabpagenr()
+nnoremap <silent> <c-o> exec "tabnext ".g:lastTabNr
 
 " 新建tab  Ctrl+t
 nnoremap <C-t>     :tabnew<CR>
