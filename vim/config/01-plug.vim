@@ -35,7 +35,7 @@ Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
-Plug 'airblade/vim-gitgutter'					   " show git status
+Plug 'airblade/vim-gitgutter'					   " show git status [c下一个 ]c上一个
 " 终端
 Plug 'voldikss/vim-floaterm'
 call plug#end()
