@@ -188,7 +188,7 @@ if executable('gtags-cscope') && executable('gtags')
 	let g:gutentags_modules += ['gtags_cscope']
 endif
 
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 " ctrl + ] 跳转下一个
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 " 检测 ~/.cache/tags 不存在就新建 "
