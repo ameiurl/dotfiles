@@ -17,10 +17,10 @@ Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件查找
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 Plug 'liuchengxu/vista.vim'						   " taglist
-Plug 'ameiurl/mru'								   " <Leader>h
+"Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
 Plug 'psliwka/vim-smoothie'
 " gtags 函数跳转
@@ -93,22 +93,22 @@ endfunction
 " }}}
 
 " LeaderF ===================================================================={{{
-"function! s:ProjectRootDirectory() abort
-	"return fnamemodify(finddir('.git', '.;'), ':h')
-"endfunction
+function! s:ProjectRootDirectory() abort
+   return fnamemodify(finddir('.git', '.;'), ':h')
+endfunction
 
-"let g:Lf_ReverseOrder = 1  "文件倒序
-"let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
-"let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
-"let g:Lf_WorkingDirectoryMode = 'a'
-"let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
+let g:Lf_ReverseOrder = 1  "文件倒序
+let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
+let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
+let g:Lf_WorkingDirectoryMode = 'a'
+let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
 "nnoremap <silent> <Leader>f :LeaderfFile<CR>
-"nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
-"nnoremap <silent> <Leader>h :LeaderfMru<CR>
-"nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
-"nnoremap <silent> <LocalLeader>f :LeaderfFile
-"let g:Lf_WindowPosition = 'popup'
-"let g:Lf_PreviewInPopup = 1
+nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
+nnoremap <silent> <Leader>h :LeaderfMru<CR>
+nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
+nnoremap <silent> <LocalLeader>f :LeaderfFile
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 " }}}
 
 " coc ===================================================================={{{
@@ -336,9 +336,9 @@ hi FloatermNC guibg=gray
 " }}}"
 
 " vim-floaterm ===================================================================={{{
-map <Leader>h :Mru<cr> 
-let g:mru_file_list_size = 50
-let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
+"map <Leader>h :Mru<cr> 
+"let g:mru_file_list_size = 50
+"let g:mru_ignore_patterns = 'fugitive\|\.git/\|\_^/tmp/'
 " }}}"
 
 " wildfire ===================================================================={{{
