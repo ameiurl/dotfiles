@@ -103,12 +103,12 @@ let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
 let g:Lf_WorkingDirectoryMode = 'a'
 let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
 "nnoremap <silent> <Leader>f :LeaderfFile<CR>
+nnoremap <silent> <LocalLeader>f :LeaderfFile<CR>
 nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
 nnoremap <silent> <Leader>h :LeaderfMru<CR>
 nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
-nnoremap <silent> <LocalLeader>f :LeaderfFile
 let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewInPopup = 0
 " }}}
 
 " coc ===================================================================={{{
