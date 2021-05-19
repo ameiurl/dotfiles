@@ -22,22 +22,22 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 Plug 'liuchengxu/vista.vim'						   " taglist
 "Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'rking/ag.vim'                                " 搜索
-Plug 'psliwka/vim-smoothie'
+Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 Plug 'skywind3000/vim-preview'
 "Snippets are separated from the engine. Add this if you want them:
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'							   " 代码补全
 Plug 'honza/vim-snippets'
 " 对齐
 Plug 'junegunn/vim-easy-align'					   " <Leader>a符号 快速对齐
 Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
-Plug 'airblade/vim-gitgutter'					   " show git status [c下一个 ]c上一个
+Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
-Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm'					   " 终端插件
 call plug#end()
 filetype plugin indent on
 
@@ -269,7 +269,7 @@ let g:vista_ignore_kinds = ['Variable']
 " }}}
 
 " emmet.vim ===================================================================={{{
-let g:user_emmet_expandabbr_key = '<C-h>'
+let g:user_emmet_expandabbr_key = '<C-y>'
 " }}}
 
 " vim-easy-align ===================================================================={{{
