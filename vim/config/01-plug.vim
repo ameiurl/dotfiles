@@ -16,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
+
 " 文件查找
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树

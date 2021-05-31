@@ -3,6 +3,11 @@ set -e
 
 CUR_DIR=$(realpath $(dirname "$BASH_SOURCE"))
 
+# 判断是否有nvim文件夹，没有则创建
+if [ ! -d ".config/nvim" ]; then
+  mkdir .config/nvim
+fi
+
 function err() {
     echo $* >&2
     exit
