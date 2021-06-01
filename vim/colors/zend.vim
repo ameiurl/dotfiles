@@ -77,7 +77,7 @@ hi        PreCondit      ctermfg=21					ctermbg=231             cterm=none      
 hi        Type           ctermfg=21					ctermbg=231             cterm=none        "int、long、char 等
 hi        StorageClass   ctermfg=21					ctermbg=231             cterm=none        "static、register、volatile 等
 hi        Structure      ctermfg=21					ctermbg=231             cterm=none        "struct、union、enum 等
-hi        Typedef        ctermfg=21					ctermbg=231             cterm=none        "一个 typedef
+hi        Typedef        ctermfg=21											cterm=none        "一个 typedef
 "-----------------------------------------------------------------------------------------------------------------------"
 hi        Special        ctermfg=black				ctermbg=231             cterm=none        "任何特殊符号
 hi        SpecialChar    ctermfg=black				ctermbg=231             cterm=none        "常数中的特殊字符
