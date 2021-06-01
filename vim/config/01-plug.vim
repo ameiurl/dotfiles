@@ -20,6 +20,7 @@ Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件查找
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
+Plug 'kristijanhusak/defx-icons'
 Plug 'liuchengxu/vista.vim'						   " taglist
 "Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
@@ -50,7 +51,7 @@ let g:maplocalleader=';'
 " 引入插件的设置
 
 " defx ===================================================================={{{
-map <Tab> :Defx<cr>
+nmap <Tab> :Defx -columns=indent:icons:filename:type<cr>
  " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
 nnoremap <silent> <LocalLeader>e
 			\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` <CR>
