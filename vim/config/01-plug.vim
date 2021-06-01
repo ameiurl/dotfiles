@@ -22,7 +22,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开�
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
 Plug 'liuchengxu/vista.vim'						   " taglist
 "Plug 'ameiurl/mru'								   " <Leader>h
-Plug 'rking/ag.vim'                                " 搜索
 Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
@@ -39,6 +38,8 @@ Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
+Plug 'rking/ag.vim'                                " 搜索
+Plug 'wsdjeg/FlyGrep.vim'
 call plug#end()
 filetype plugin indent on
 
@@ -373,4 +374,8 @@ let g:expand_region_text_objects = {
 "let g:dashboard_default_header = 'cres'
 "nmap <Leader>ss :<C-u>SessionSave<CR>
 "nmap <Leader>sl :<C-u>SessionLoad<CR>
+" }}}"
+
+" FlyGrep ===================================================================={{{
+nmap <Leader>s :FlyGrep<CR>
 " }}}"
