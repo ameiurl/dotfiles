@@ -69,19 +69,14 @@ call defx#custom#option('_', {
 autocmd FileType defx call s:defx_mappings()
 
 function! s:defx_mappings() abort
-	nnoremap <silent><buffer><expr> <Esc> defx#do_action('quit')
-	nnoremap <silent><buffer><expr> o     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
-	
+	nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
+	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
-	"nnoremap <silent><buffer><expr> t        defx#do_action('call', 'MyT')
 	nnoremap <silent><buffer><expr> yy       defx#do_action('yank_path')
 	nnoremap <silent><buffer><expr> dd       defx#do_action('remove_trash')
 	nnoremap <silent><buffer><expr> cc       defx#do_action('copy')
 	nnoremap <silent><buffer><expr> mm       defx#do_action('move')
 	nnoremap <silent><buffer><expr> pp       defx#do_action('paste')
-	"nnoremap <silent><buffer><expr> CC       Mycopy_cut('copy') . defx#do_action('clear_select_all')
-	"nnoremap <silent><buffer><expr> MM       Mycopy_cut('cut') . defx#do_action('clear_select_all')
-	"nnoremap <silent><buffer><expr> PP       Mypaste()
 	nnoremap <silent><buffer><expr> N        defx#do_action('new_file')				" 新建文件
 	nnoremap <silent><buffer><expr> M        defx#do_action('new_multiple_files')   " 批量新建文件
 	nnoremap <silent><buffer><expr> R        defx#do_action('rename')
@@ -92,18 +87,14 @@ function! s:defx_mappings() abort
 				\ defx#do_action('close_tree', defx#get_candidate().action__path) : 
 				\ defx#do_action('search',  fnamemodify(defx#get_candidate().action__path, ':h'))
 	nnoremap <silent><buffer><expr> l        defx#do_action('open_tree')
-	"nnoremap <silent><buffer><expr> o        defx#do_action('open_directory')
 	nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
 	nnoremap <silent><buffer><expr> E        defx#do_action('open', 'vsplit')
 	nnoremap <silent><buffer><expr> P        defx#do_action('preview')
-	"nnoremap <silent><buffer><expr> d        defx#do_action('new_directory')
 	nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
 	nnoremap <silent><buffer><expr> S        defx#do_action('toggle_sort', 'time')
 	nnoremap <silent><buffer><expr> !        defx#do_action('execute_command')
 	nnoremap <silent><buffer><expr> x        defx#do_action('execute_system')
-	"nnoremap <silent><buffer><expr> cd       defx#do_action('call', 'MyCD')
 	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
-	"nnoremap <silent><buffer><expr> ter      defx#do_action('call', 'MyTER')
 	nnoremap <silent><buffer><expr> .        defx#do_action('toggle_ignored_files')
 	nnoremap <silent><buffer><expr> q        defx#do_action('quit')
 	nnoremap <silent><buffer><expr> <Space>  defx#do_action('toggle_select') . 'j'
@@ -123,49 +114,6 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop', 'quit'])
 endfunction
-
-" 给复制或剪切选中的文件或目录写的
-    func! Mycopy_cut(mode) abort
-        let s:Path = defx#get_selected_candidates()
-        let s:Len = len(s:Path)
-        let s:Path_list = []
-        let s:counter = 0
-        while s:counter < s:Len
-            let s:P = s:Path[s:counter].action__path
-            call add(s:Path_list, s:P)
-            let s:counter = s:counter + 1
-        endwhile
-        let s:MyCMD = ['!~/dotfiles/cut_copy.py'] + s:Path_list + [a:mode]
-        execute join(s:MyCMD)
-        endfunc
-
-    " 给粘贴文件写的
-    func! Mypaste() abort
-        execute join(['!~/dotfiles/paste.py', defx#get_candidate().action__path])
-    endfunc
-
-	" 在新tab页打开文件
-    func! MyT(context) abort
-        if isdirectory(get(a:context.targets, 0)) == 0
-            call defx#call_action('drop', 'tabe')
-        endif
-    endfunc
-
-
-    " 给cd快捷键写的
-    func! MyCD(context) abort
-        if isdirectory(get(a:context.targets, 0))
-            execute 'cd' . get(a:context.targets, 0)
-        else
-            execute 'cd' . fnamemodify(defx#get_candidate().action__path, ':h')
-        endif
-    endfunc
-
-    " 给 ter 快捷键写的
-    func! MyTER(context) abort
-        call MyCD(a:context)
-        shell
-    endfunc
 " }}}
 
 " fzf ===================================================================={{{
