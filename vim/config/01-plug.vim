@@ -7,23 +7,22 @@ Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'mg979/vim-visual-multi',{'branch': 'master'} " <c-m>批量量更新
-"Plug 'Lokaltog/vim-easymotion'					   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
-"Plug 'gcmt/wildfire.vim'						   " 回车选中区域
 Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
-
 " 文件查找
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  } " 文件目录树
-Plug 'kristijanhusak/defx-icons'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 Plug 'liuchengxu/vista.vim'						   " taglist
-"Plug 'ameiurl/mru'								   " <Leader>h
 Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
+ " 文件目录树
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+Plug 'kristijanhusak/defx-icons'
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -117,28 +116,38 @@ endfunction
 " }}}
 
 " fzf ===================================================================={{{
-"map <leader>f :Files<CR>
-"map <leader>h :History<CR>
-"map <leader>b :Buffers<CR>
+map <LocalLeader>f :Files<CR>
+map <leader>h :History<CR>
+map <leader>b :Buffers<CR>
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+nnoremap <silent> <LocalLeader>a :Ag<CR>
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '20split enew' }
 " }}}
 
 " LeaderF ===================================================================={{{
-function! s:ProjectRootDirectory() abort
-   return fnamemodify(finddir('.git', '.;'), ':h')
-endfunction
+"function! s:ProjectRootDirectory() abort
+   "return fnamemodify(finddir('.git', '.;'), ':h')
+"endfunction
 
-let g:Lf_ReverseOrder = 1  "文件倒序
-let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
-let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
-let g:Lf_WorkingDirectoryMode = 'a'
-let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
+"let g:Lf_ReverseOrder = 1  "文件倒序
+"let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
+"let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
+"let g:Lf_WorkingDirectoryMode = 'a'
+"let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
 "nnoremap <silent> <Leader>f :LeaderfFile<CR>
-nnoremap <silent> <LocalLeader>f :LeaderfFile<CR>
-nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
-nnoremap <silent> <Leader>h :LeaderfMru<CR>
-nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 0
+"nnoremap <silent> <LocalLeader>f :LeaderfFile<CR>
+"nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
+"nnoremap <silent> <Leader>h :LeaderfMru<CR>
+"nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
+"let g:Lf_WindowPosition = 'popup'
+"let g:Lf_PreviewInPopup = 0
 " }}}
 
 " coc ===================================================================={{{
