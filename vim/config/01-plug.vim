@@ -322,8 +322,10 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 
 
 " vim-floaterm ===================================================================={{{
-let g:floaterm_wintype='normal'
+let g:floaterm_wintype='split'
 "let g:floaterm_height=8
+
+let g:floaterm_opener = 'drop'
 
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_next   = '<F2>'
