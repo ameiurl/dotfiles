@@ -44,16 +44,16 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:
-function! HideNumber()
-  if(&relativenumber == &number)
-    set relativenumber! number!
-  elseif(&number)
-    set number!
-  else
-    set relativenumber!
-  endif
-  set number?
-endfunc
+"function! HideNumber()
+  "if(&relativenumber == &number)
+    "set relativenumber! number!
+  "elseif(&number)
+    "set number!
+  "else
+    "set relativenumber!
+  "endif
+  "set number?
+"endfunc
 
 " 代码折叠自定义快捷键 <leader>zz
 let g:FoldMethod = 0
@@ -161,35 +161,3 @@ nnoremap <silent> g* g*zz
 
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
-
-"function! VisualSelection()
-"	if mode()=="v"
-"		let [line_start, column_start] = getpos("v")[1:2]
-"		let [line_end, column_end] = getpos(".")[1:2]
-"	else
-"		let [line_start, column_start] = getpos("'<")[1:2]
-"		let [line_end, column_end] = getpos("'>")[1:2]
-"	end
-"	if (line2byte(line_start)+column_start) > (line2byte(line_end)+column_end)
-"		let [line_start, column_start, line_end, column_end] =
-"					\   [line_end, column_end, line_start, column_start]
-"	end
-"	let lines = getline(line_start, line_end)
-"	if len(lines) == 0
-"		return ''
-"	endif
-"	let lines[-1] = lines[-1][: column_end - 1]
-"	let lines[0] = lines[0][column_start - 1:]
-"	return join(lines, "\n")
-"endfunction
-"
-"function Save_visually_selected_text_to_file()
-"	let selected_text = VisualSelection()
-"	call writefile(split(selected_text, "\n"), "/tmp/vitmp")
-"endfunction
-
-
-"the c-u does a union of all lines in visual selection.
-"this goes in the vimrc
-"vnoremap <leader>y :<c-u>call Save_visually_selected_text_to_file()<cr>
-"nmap <leader>p :r! cat /tmp/vitmp<CR>
