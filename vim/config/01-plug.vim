@@ -71,9 +71,9 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
-	nnoremap <silent><buffer><expr> yy       defx#do_action('yank_path')
+	"nnoremap <silent><buffer><expr> yy       defx#do_action('yank_path')
 	nnoremap <silent><buffer><expr> dd       defx#do_action('remove_trash')
-	nnoremap <silent><buffer><expr> cc       defx#do_action('copy')
+	nnoremap <silent><buffer><expr> yy       defx#do_action('copy')
 	nnoremap <silent><buffer><expr> mm       defx#do_action('move')
 	nnoremap <silent><buffer><expr> pp       defx#do_action('paste')
 	nnoremap <silent><buffer><expr> N        defx#do_action('new_file')				" 新建文件

@@ -42,3 +42,5 @@ export EDITOR=/usr/bin/nvim
 #export LS_COLORS
 #启用starship
 #eval "$(starship init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
