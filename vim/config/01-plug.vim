@@ -116,7 +116,7 @@ endfunction
 " }}}
 
 " fzf ===================================================================={{{
-map <LocalLeader>f :Files<CR>
+"map <LocalLeader>f :Files<CR>
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 command! -bang -nargs=* Ag
