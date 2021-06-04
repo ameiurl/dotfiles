@@ -14,8 +14,8 @@ nmap <C-l> <C-W>l
 
 nnoremap xx dd
 
-nnoremap x "_x
-nnoremap X "_X
+"nnoremap x "_x
+"nnoremap X "_X
 nnoremap d "_d
 nnoremap dd "_dd
 nnoremap D "_D
