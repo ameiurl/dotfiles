@@ -39,7 +39,6 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 " 搜索
-Plug 'rking/ag.vim'                                " Ag
 Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
 Plug 'dkprice/vim-easygrep'
 call plug#end()
