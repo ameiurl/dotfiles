@@ -12,8 +12,7 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nnoremap xx dd
-
+nnoremap cc dd
 "nnoremap x "_x
 "nnoremap X "_X
 nnoremap d "_d

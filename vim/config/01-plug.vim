@@ -120,6 +120,7 @@ endfunction
 "map <LocalLeader>f :Files<CR>
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
+map <leader>l :Lines<CR>
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
@@ -366,7 +367,10 @@ let g:expand_region_text_objects = {
       \ 'it'  :0,
 	  \}
 " }}}"
-
+" vim-easygrep ===================================================================={{{
+"let g:EasyGrepOpenWindowOnMatch=1
+let g:EasyGrepMode = 2
+" }}}"
 " FlyGrep ===================================================================={{{
 nmap <Leader>s :FlyGrep<CR>
 " }}}"
