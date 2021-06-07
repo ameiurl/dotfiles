@@ -101,8 +101,8 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> m        defx#do_action('clear_select_all')
 	nnoremap <silent><buffer><expr> r        defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> pr       defx#do_action('print')
-	nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth - 10)
-	nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth + 10)
+	nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth - 10)
+	nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth + 10)
 	nnoremap <silent><buffer><expr> <2-LeftMouse>
 endfunction
 
@@ -335,7 +335,7 @@ let g:floaterm_title=''
 let g:floaterm_gitcommit='floaterm'
 let g:floaterm_autoinsert=1
 let g:floaterm_width=0.8
-let g:floaterm_height=0.8
+let g:floaterm_height=0.4
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1"
 
