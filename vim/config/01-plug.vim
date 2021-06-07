@@ -40,7 +40,6 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 " 搜索
 Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
-Plug 'dkprice/vim-easygrep'
 call plug#end()
 filetype plugin indent on
 
@@ -365,10 +364,6 @@ let g:expand_region_text_objects = {
       \ 'ie'  :0,
       \ 'it'  :0,
 	  \}
-" }}}"
-" vim-easygrep ===================================================================={{{
-"let g:EasyGrepOpenWindowOnMatch=1
-let g:EasyGrepMode = 2
 " }}}"
 " FlyGrep ===================================================================={{{
 nmap <Leader>s :FlyGrep<CR>
