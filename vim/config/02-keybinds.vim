@@ -12,14 +12,14 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-nnoremap cc dd
+"nnoremap cc dd
 "nnoremap x "_x
 "nnoremap X "_X
-nnoremap d "_d
-nnoremap dd "_dd
-nnoremap D "_D
-vnoremap d "_d
-vnoremap dd "_dd
+"nnoremap d "_d
+"nnoremap dd "_dd
+"nnoremap D "_D
+"vnoremap d "_d
+"vnoremap dd "_dd
 
 " F1 - F6 设置
 
