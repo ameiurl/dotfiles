@@ -39,7 +39,8 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 " 搜索
-Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
+"Plug 'rking/ag.vim'                                " Ag
+"Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
 call plug#end()
 filetype plugin indent on
 
@@ -119,6 +120,12 @@ endfunction
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 map <leader>l :Lines<CR>
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+nnoremap <silent> <Leader>s :Ag<CR>
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
@@ -366,5 +373,5 @@ let g:expand_region_text_objects = {
 	  \}
 " }}}"
 " FlyGrep ===================================================================={{{
-nmap <Leader>s :FlyGrep<CR>
+"nmap <Leader>s :FlyGrep<CR>
 " }}}"
