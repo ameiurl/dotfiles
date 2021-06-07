@@ -39,8 +39,8 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 " 搜索
-Plug 'rking/ag.vim'                                " Ag
 Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
+Plug 'dkprice/vim-easygrep'
 call plug#end()
 filetype plugin indent on
 
@@ -116,15 +116,10 @@ endfunction
 " }}}
 
 " fzf ===================================================================={{{
-map <LocalLeader>f :Files<CR>
+"map <LocalLeader>f :Files<CR>
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-nnoremap <silent> <Leader>ag :Ag<CR>
+map <leader>l :Lines<CR>
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
@@ -322,8 +317,10 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 
 
 " vim-floaterm ===================================================================={{{
-let g:floaterm_wintype='normal'
+let g:floaterm_wintype='split'
 "let g:floaterm_height=8
+
+let g:floaterm_opener = 'drop'
 
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_next   = '<F2>'
@@ -369,7 +366,10 @@ let g:expand_region_text_objects = {
       \ 'it'  :0,
 	  \}
 " }}}"
-
+" vim-easygrep ===================================================================={{{
+"let g:EasyGrepOpenWindowOnMatch=1
+let g:EasyGrepMode = 2
+" }}}"
 " FlyGrep ===================================================================={{{
 nmap <Leader>s :FlyGrep<CR>
 " }}}"

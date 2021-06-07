@@ -21,6 +21,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 # 自动补全功能
 antigen bundle zsh-users/zsh-completions
 
+# 解压
+antigen bundle thetic/extract
+
 # 加载主题
 antigen theme robbyrussell
 
