@@ -202,8 +202,13 @@ let g:VM_maps["Redo"]               = '<C-r>'
 let g:vim_markdown_folding_disabled=1
 " }}}
 
-" ag ===================================================================={{{
+" ag.vim ===================================================================={{{
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
+
+noremap <Leader>vv :Ag!<C-r>=Escape(expand('<cword>'))<CR><CR>
+function! Escape(stuff)
+    return substitute(escape(a:stuff,'\/.*$^~[]'),"\n",'\\n',"g")
+endfunction
 " }}}
 
 
