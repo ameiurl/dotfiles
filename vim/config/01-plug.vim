@@ -16,13 +16,15 @@ Plug 'liuchengxu/vista.vim'						   " taglist
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
+" 文件目录树
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
+Plug 'kristijanhusak/defx-icons'
 " 文件查找
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
-" 文件目录树
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
-Plug 'kristijanhusak/defx-icons'
+" 搜索
+Plug 'rking/ag.vim'                                " Ag
 " gtags 函数跳转
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -38,9 +40,6 @@ Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
-" 搜索
-"Plug 'rking/ag.vim'                                " Ag
-"Plug 'wsdjeg/FlyGrep.vim'						   " <Leader>s
 call plug#end()
 filetype plugin indent on
 
@@ -120,15 +119,21 @@ endfunction
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 map <leader>l :Lines<CR>
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;39" --color-line "1;30" --color-match "1;31"', 
+command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, '--color-path "1;39" --color-line "1;30" --color-match "1;31"', 
   \					<bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
-nnoremap <silent> <Leader>s :Ag<CR>
+nnoremap <silent> <Leader>s :Rg<CR>
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_layout = { 'window': '20split enew' }
 "let g:fzf_buffers_jump = 1
+" }}}
+
+" ag.vim ===================================================================={{{
+let g:ag_prg="/usr/local/bin/ag --vimgrep"
+nnoremap <silent> <Leader>v :Ag
+nnoremap <silent> <Leader>vv :Ag<CR>
 " }}}
 
 " LeaderF ===================================================================={{{
@@ -201,15 +206,6 @@ let g:VM_maps["Redo"]               = '<C-r>'
 "禁止自动折叠
 " vim-markdown ===================================================================={{{
 let g:vim_markdown_folding_disabled=1
-" }}}
-
-" ag.vim ===================================================================={{{
-let g:ag_prg="/usr/local/bin/ag --vimgrep"
-
-noremap <Leader>vv :Ag!<C-r>=Escape(expand('<cword>'))<CR><CR>
-function! Escape(stuff)
-    return substitute(escape(a:stuff,'\/.*$^~[]'),"\n",'\\n',"g")
-endfunction
 " }}}
 
 

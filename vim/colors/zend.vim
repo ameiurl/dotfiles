@@ -24,8 +24,8 @@ hi        MoreMsg        ctermfg=lightcyan        ctermbg=black             cter
 hi        NonText        ctermfg=lightcyan        ctermbg=231				cterm=none        "窗口尾部的'~'和 '@'
 hi        Normal         ctermfg=black			  ctermbg=231				cterm=none        "正常内容
 
-hi        Pmenu          ctermfg=black        ctermbg=254         cterm=none        "弹出菜单普通项目
-hi        PmenuSel       ctermfg=yellow           ctermbg=lightmagenta      cterm=none        "弹出菜单选中项目
+hi        Pmenu          ctermfg=black			  ctermbg=254				cterm=none        "弹出菜单普通项目
+hi        PmenuSel       ctermfg=White            ctermbg=black				cterm=none        "弹出菜单选中项目
 hi        PmenuSbar      ctermfg=lightcyan        ctermbg=231				cterm=none        "弹出菜单滚动条。
 hi        PmenuThumb     ctermfg=black            ctermbg=lightgreen        cterm=none        "弹出菜单滚动条的拇指
 

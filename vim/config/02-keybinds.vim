@@ -134,7 +134,7 @@ nnoremap <leader>q :q<CR>
 "vnoremap <leader>y "+y
 
 " select block
-nnoremap <leader>v V`}
+"nnoremap <leader>v V`}
 
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>
