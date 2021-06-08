@@ -132,7 +132,7 @@ let g:fzf_layout = { 'window': '20split enew' }
 
 " ag.vim ===================================================================={{{
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
-nnoremap <silent> <Leader>v :Ag
+nnoremap <silent> <Leader>v :Ag 
 nnoremap <silent> <Leader>vv :Ag<CR>
 " }}}
 
