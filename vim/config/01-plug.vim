@@ -121,13 +121,8 @@ map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 map <leader>l :Lines<CR>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;39" --color-line "1;31" --color-match "1;31"', 
-			\                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \					<bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
-"command! -bang -nargs=* Ag
-  "\ call fzf#vim#ag(<q-args>,
-  "\                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  "\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  "\                 <bang>0)
 nnoremap <silent> <Leader>s :Ag<CR>
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
