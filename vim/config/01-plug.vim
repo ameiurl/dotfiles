@@ -120,7 +120,7 @@ endfunction
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 map <leader>l :Lines<CR>
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;39" --color-line "1;31" --color-match "1;31"', 
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--color-path "1;39" --color-line "1;30" --color-match "1;31"', 
   \					<bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 nnoremap <silent> <Leader>s :Ag<CR>
@@ -128,6 +128,7 @@ nnoremap <silent> <Leader>s :Ag<CR>
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_layout = { 'window': '20split enew' }
+"let g:fzf_buffers_jump = 1
 " }}}
 
 " LeaderF ===================================================================={{{
