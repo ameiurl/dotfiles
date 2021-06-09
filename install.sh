@@ -4,9 +4,22 @@ set -e
 CUR_DIR=$(realpath $(dirname "$BASH_SOURCE"))
 
 # 判断是否有nvim文件夹，没有则创建
+echo '[*] Preparing Neovim config directory ...'
 if [ ! -d ".config/nvim" ]; then
-  mkdir .config/nvim
+  mkdir -p ~/.config/nvim
 fi
+
+# Install nvim (and its dependencies: pip3, git), Python 3 and ctags (for tagbar)
+sudo pacman -S neovim nodejs
+
+# Install pip modules for Neovim
+echo '[*] pip installing Neovim'
+pip3 install neovim send2trash
+
+# Install vim-plug plugin manager
+echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 function err() {
     echo $* >&2
@@ -70,3 +83,5 @@ for pair in "${LINK_PAIRS[@]}"; do
     eval dest=$dest
     linkfile $src $dest
 done
+
+echo -e "[+] Done, welcome to \033[1m\033[92mNeoVim\033[0m! Try it by running: nvim/vim. Want to customize it? Modify ~/.config/nvim/init.vim"
