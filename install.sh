@@ -18,8 +18,8 @@ pip3 install neovim send2trash
 echo '[*] Downloading vim-plug ...'
 #curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     #https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-git clone https://github.com/junegunn/vim-plug/master/plug.vim
-mv plug.vim  ~/.config/nvim/autoload/plug.vim
+git clone https://github.com/junegunn/vim-plug
+cp vim-plug/plug.vim  ~/.config/nvim/autoload/plug.vim
 
 function err() {
     echo $* >&2
