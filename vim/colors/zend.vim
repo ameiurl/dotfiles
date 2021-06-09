@@ -27,7 +27,7 @@ hi        Normal         ctermfg=black			  ctermbg=231				cterm=none        "正
 hi        Pmenu          ctermfg=black			  ctermbg=254				cterm=none        "弹出菜单普通项目
 hi        PmenuSel       ctermfg=White            ctermbg=black				cterm=none        "弹出菜单选中项目
 hi        PmenuSbar      ctermfg=lightcyan        ctermbg=231				cterm=none        "弹出菜单滚动条。
-hi        PmenuThumb     ctermfg=black            ctermbg=lightgreen        cterm=none        "弹出菜单滚动条的拇指
+hi        PmenuThumb     ctermfg=black            ctermbg=green        cterm=none        "弹出菜单滚动条的拇指
 
 hi        Question       ctermfg=34				  ctermbg=231				cterm=none        "提示和 yes/no 问题
 hi        Search         ctermfg=231			  ctermbg=33				cterm=none        "最近搜索模式的高亮
@@ -42,7 +42,8 @@ hi        TabLine        ctermfg=black            ctermbg=231               cter
 hi        TabLineFill    ctermfg=black            ctermbg=lightgrey         cterm=none        "没有标签的地方
 hi        TabLineSel     ctermfg=yellow           ctermbg=lightblue         cterm=none        "活动标签页标签
 hi        Title          ctermfg=black			  ctermbg=231				cterm=none        ":set all 等输出的标题
-hi        Visual         ctermfg=yellow           ctermbg=lightblue         cterm=none        "可视模式的选择区
+"hi        Visual         ctermfg=White				  ctermbg=darkgreen       cterm=none			"可视模式的选择区
+hi        Visual         ctermfg=black				  ctermbg=yellow       cterm=none			"可视模式的选择区
 hi        WarningMsg     ctermfg=red			  ctermbg=231				cterm=none        "警告消息
 hi        WildMenu       ctermfg=lightgreen       ctermbg=lightblue         cterm=none        "wildmenu补全的当前匹配
 "======================================================================================================================="
