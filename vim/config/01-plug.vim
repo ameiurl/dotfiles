@@ -25,10 +25,10 @@ Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
-" 提供 ctags/gtags 后台数据库自动更新功能
-Plug 'ludovicchabant/vim-gutentags'				   
-Plug 'skywind3000/gutentags_plus'					" 提供 GscopeFind 命令并自动处理好 gtags 数据库切换
-Plug 'skywind3000/vim-preview'
+" tags
+Plug 'ludovicchabant/vim-gutentags'				   " 提供 ctags/gtags 后台数据库自动更新功能
+Plug 'skywind3000/gutentags_plus'				   " 提供 GscopeFind 命令并自动处理好 gtags 数据库切换
+Plug 'skywind3000/vim-preview'					   " 提供基于 TAGS 的定义预览，函数参数预览，quickfix 预览
 " 代码补全
 Plug 'SirVer/ultisnips'							   
 Plug 'honza/vim-snippets'
