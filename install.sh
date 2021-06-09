@@ -5,7 +5,7 @@ CUR_DIR=$(realpath $(dirname "$BASH_SOURCE"))
 
 # 判断是否有nvim文件夹，没有则创建
 echo '[*] Preparing Neovim config directory ...'
-if [ ! -d ".config/nvim/autoload" ]; then
+if [ ! -d "~/.config/nvim/autoload" ]; then
   mkdir -p ~/.config/nvim/autoload
 fi
 
@@ -15,11 +15,13 @@ sudo pacman -S neovim nodejs the_silver_searcher global yarn
 echo '[*] pip installing Neovim'
 pip3 install neovim send2trash
 
+if [ ! -d "./vim-plug" ]; then
 echo '[*] Downloading vim-plug ...'
 #curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     #https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 git clone https://github.com/junegunn/vim-plug
 cp vim-plug/plug.vim  ~/.config/nvim/autoload/plug.vim
+fi
 
 function err() {
     echo $* >&2
