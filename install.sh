@@ -9,15 +9,13 @@ if [ ! -d ".config/nvim" ]; then
   mkdir -p ~/.config/nvim
 fi
 
-# Install nvim (and its dependencies: pip3, git), Python 3 and ctags (for tagbar)
-sudo pacman -S neovim nodejs
+echo '[*] pacman installing Neovim nodejs the_silver_searcher global yarn'
+sudo pacman -S neovim nodejs the_silver_searcher global yarn
 
-# Install pip modules for Neovim
 echo '[*] pip installing Neovim'
 pip3 install neovim send2trash
 
-# Install vim-plug plugin manager
-echo '[*] Downloading vim-plug, the best minimalistic vim plugin manager ...'
+echo '[*] Downloading vim-plug ...'
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
