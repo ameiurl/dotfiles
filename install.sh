@@ -22,7 +22,7 @@ if [ ! -d "./vim-plug" ]; then
 fi
 
 # install config
-./gen-links.sh
+#ln -sf `pwd`/vim/vimrc ~/.config/nvim/init.vim
 
 echo -e '[*] Running :PlugInstall within nvim ...'
 nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
