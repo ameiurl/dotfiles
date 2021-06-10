@@ -78,6 +78,7 @@ endfun
 
 map <leader>zz :call ToggleFold()<cr>
 
+" buffer
 map <C-n> :bnext<cr>
 map <C-p> :bprev<cr>
 
@@ -92,11 +93,21 @@ map <leader>8 :b8<cr>
 map <leader>9 :b9<cr>
 map <leader>0 :blast<cr>
 map <leader>d :bd<cr>
+map <C-o>     :b#<CR>
 
 " Toggles between the active and last active tab "
-let g:lastTabNr = 1
-autocmd TabLeave * let g:lastTabNr = tabpagenr()
-nnoremap <silent> <c-o> exec "tabnext ".g:lastTabNr
+"let g:lastTabNr = 1
+"autocmd TabLeave * let g:lastTabNr = tabpagenr()
+"nnoremap <silent> <c-o> exec "tabnext ".g:lastTabNr
+" Switch to last-active tab
+if !exists('g:Lasttab')
+    let g:Lasttab = 1
+    let g:Lasttab_backup = 1
+endif
+autocmd! TabLeave * let g:Lasttab_backup = g:Lasttab | let g:Lasttab = tabpagenr()
+autocmd! TabClosed * let g:Lasttab = g:Lasttab_backup
+nmap <silent> <Leader>` :exe "tabn " . g:Lasttab<cr>
+
 
 " 新建tab  Ctrl+t
 nnoremap <C-t>     :tabnew<CR>
