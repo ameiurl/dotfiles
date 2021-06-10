@@ -221,9 +221,9 @@ let g:gutentags_ctags_tagfile = '.tags'
 
 " 同时开启 ctags 和 gtags 支持：
 let g:gutentags_modules = []
-"if executable('ctags')
-	"let g:gutentags_modules += ['ctags']
-"endif
+if executable('ctags')
+	let g:gutentags_modules += ['ctags']
+endif
 if executable('gtags-cscope') && executable('gtags')
 	let g:gutentags_modules += ['gtags_cscope']
 endif
@@ -237,12 +237,12 @@ if !isdirectory(s:vim_tags)
 endif
 
 " 配置 ctags 的参数 "
-"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-"let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
-"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " 如果使用 universal ctags 需要增加下面一行，老的 Exuberant-ctags 不能加下一行
-"let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 " 禁用 gutentags 自动加载 gtags 数据库的行为
 " 避免多个项目数据库相互干扰
