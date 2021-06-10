@@ -1,27 +1,4 @@
 "--------------------------自定义快捷键---------------------
-
-"Treat long lines as break lines (useful when moving around in them)
-""se swap之后，同物理行上线直接跳
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j"
-
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
-
-"nnoremap cc dd
-"nnoremap x "_x
-"nnoremap X "_X
-"nnoremap d "_d
-"nnoremap dd "_dd
-"nnoremap D "_D
-"vnoremap d "_d
-"vnoremap dd "_dd
-xnoremap p "_dP
-
 " F1 - F6 设置
 
 " F1 废弃这个键,防止调出系统帮助
@@ -109,10 +86,31 @@ autocmd! TabLeave * let g:Lasttab_backup = g:Lasttab | let g:Lasttab = tabpagenr
 autocmd! TabClosed * let g:Lasttab = g:Lasttab_backup
 nmap <silent> <Leader>` :exe "tabn " . g:Lasttab<cr>
 
-
 " 新建tab  Ctrl+t
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
+
+"Treat long lines as break lines (useful when moving around in them)
+""se swap之后，同物理行上线直接跳
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j"
+
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+"nnoremap cc dd
+"nnoremap x "_x
+"nnoremap X "_X
+"nnoremap d "_d
+"nnoremap dd "_dd
+"nnoremap D "_D
+"vnoremap d "_d
+"vnoremap dd "_dd
+xnoremap p "_dP
 
 " 调整缩进后自动选中，方便再次操作
 vnoremap < <gv
@@ -135,7 +133,7 @@ nnoremap ' `
 nnoremap ` '
 
 " 选中并高亮最后一次插入的内容
-nnoremap gv `[v`]
+"nnoremap gv `[v`]
 
 " Quickly save the current file
 nnoremap <leader>w :w<CR>
