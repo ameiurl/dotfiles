@@ -25,8 +25,7 @@ fi
 ln -sf `pwd`/vim/vimrc ~/.config/nvim/init.vim
 
 echo -e '[*] Running :PlugInstall within nvim ...'
-nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
-
-CocInstall coc-phpls
+nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' \
+	-c ':CocInstall coc-phpls' -c ':qall'
 
 echo -e "[+] Done"
