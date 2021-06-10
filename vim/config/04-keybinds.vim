@@ -95,6 +95,7 @@ map <leader>0 :blast<cr>
 map <leader>d :bd<cr>
 map <C-o>     :b#<CR>
 
+nnoremap <C-tab>   :tabnext<CR>
 " Toggles between the active and last active tab "
 "let g:lastTabNr = 1
 "autocmd TabLeave * let g:lastTabNr = tabpagenr()
