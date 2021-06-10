@@ -371,6 +371,3 @@ let g:expand_region_text_objects = {
       \ 'it'  :0,
 	  \}
 " }}}"
-" FlyGrep ===================================================================={{{
-"nmap <Leader>s :FlyGrep<CR>
-" }}}"
