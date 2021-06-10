@@ -72,19 +72,15 @@ map <leader>0 :blast<cr>
 map <leader>d :bd<cr>
 map <C-o>     :b#<CR>
 
-nnoremap <C-tab>   :tabnext<CR>
 " Toggles between the active and last active tab "
-"let g:lastTabNr = 1
-"autocmd TabLeave * let g:lastTabNr = tabpagenr()
-"nnoremap <silent> <c-o> exec "tabnext ".g:lastTabNr
 " Switch to last-active tab
-if !exists('g:Lasttab')
-    let g:Lasttab = 1
-    let g:Lasttab_backup = 1
-endif
-autocmd! TabLeave * let g:Lasttab_backup = g:Lasttab | let g:Lasttab = tabpagenr()
-autocmd! TabClosed * let g:Lasttab = g:Lasttab_backup
-nmap <silent> <Leader>` :exe "tabn " . g:Lasttab<cr>
+"if !exists('g:Lasttab')
+    "let g:Lasttab = 1
+    "let g:Lasttab_backup = 1
+"endif
+"autocmd! TabLeave * let g:Lasttab_backup = g:Lasttab | let g:Lasttab = tabpagenr()
+"autocmd! TabClosed * let g:Lasttab = g:Lasttab_backup
+"nnoremap <silent> <c-o> :exe "tabn " . g:Lasttab<cr>
 
 " 新建tab  Ctrl+t
 nnoremap <C-t>     :tabnew<CR>
