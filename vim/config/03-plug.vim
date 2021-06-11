@@ -23,8 +23,6 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
-" 搜索
-Plug 'rking/ag.vim'                                " Ag
 " tags
 Plug 'ludovicchabant/vim-gutentags'				   " 提供 ctags/gtags 后台数据库自动更新功能
 Plug 'skywind3000/gutentags_plus'				   " 提供 GscopeFind 命令并自动处理好 gtags 数据库切换
@@ -38,8 +36,10 @@ Plug 'plasticboy/vim-markdown'                     " markdown插件
 "Git
 Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
+" 搜索
+Plug 'rking/ag.vim'                                " Ag
 " 终端
-Plug 'voldikss/vim-floaterm'					   " 终端插件
+"Plug 'voldikss/vim-floaterm'					   " 终端插件
 call plug#end()
 filetype plugin indent on
 
@@ -115,7 +115,7 @@ endfunction
 " }}}
 
 " fzf ===================================================================={{{
-"map <LocalLeader>f :Files<CR>
+map <Leader>f :Files<CR>
 map <leader>h :History<CR>
 map <leader>b :Buffers<CR>
 map <leader>l :Lines<CR>
@@ -330,28 +330,26 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 
 
 " vim-floaterm ===================================================================={{{
-let g:floaterm_wintype='split'
-"let g:floaterm_height=8
-
-let g:floaterm_opener = 'drop'
-
-let g:floaterm_keymap_toggle = '<F1>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F4>'
-let g:floaterm_title=''
-
-" Floaterm
-let g:floaterm_gitcommit='floaterm'
-let g:floaterm_autoinsert=1
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_wintitle=0
-let g:floaterm_autoclose=1"
-
-map <Leader>lg :FloatermNew lazygit<cr> 
-"map <LocalLeader>f :FloatermNew fzf --preview 'ccat --color=always {}'<cr> 
-map <Leader>f :FloatermNew fzf --preview 'cat {}'<cr> 
+"let g:floaterm_wintype='split'
+"
+"let g:floaterm_opener = 'drop'
+"
+"let g:floaterm_keymap_toggle = '<F1>'
+"let g:floaterm_keymap_next   = '<F2>'
+"let g:floaterm_keymap_prev   = '<F3>'
+"let g:floaterm_keymap_new    = '<F4>'
+"let g:floaterm_title=''
+"
+"" Floaterm
+"let g:floaterm_gitcommit='floaterm'
+"let g:floaterm_autoinsert=1
+"let g:floaterm_width=0.8
+"let g:floaterm_height=0.8
+"let g:floaterm_wintitle=0
+"let g:floaterm_autoclose=1"
+"
+"map <LocalLeader>g :FloatermNew lazygit<cr> 
+"map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
 " }}}"
 
 " vim-expand-region ===================================================================={{{
