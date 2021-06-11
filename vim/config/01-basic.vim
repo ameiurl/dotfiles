@@ -80,8 +80,6 @@ set laststatus=2
 " 显示行号
 set number
 
-" 换行
-set wrap
 
 " 括号配对情况, 跳转并高亮一下匹配的括号
 set showmatch
@@ -127,6 +125,14 @@ set nrformats=
 set lazyredraw "should make scrolling faster"
 set ttyfast "same as above"
 
+" 换行
+set wrap
+
+" 显示整个单词
+set linebreak
+
+" 解决自动换行格式下, 如折行之后高在超过窗口高度看不到最后一行的问题
+set display+=lastline
 
 "----------------------------------------------------------------------
 " FileEncode Settings 文件编码,格式
