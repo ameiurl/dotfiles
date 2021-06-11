@@ -51,10 +51,10 @@ let g:maplocalleader=';'
 " 引入插件的设置
 
 " defx ===================================================================={{{
-nmap <Tab> :Defx -columns=indent:icons:git:filename:type<cr>
+nmap <Tab> :Defx -columns=indent:git:icons:filename:type<cr>
  " 使用 ,e 查找到当前文件位置
 nnoremap <silent> <Leader>e
-			\ :<C-u>Defx -columns=indent:icons:git:filename:type 
+			\ :<C-u>Defx -columns=indent:git:icons:filename:type 
 			\ -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
