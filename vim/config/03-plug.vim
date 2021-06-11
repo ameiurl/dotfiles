@@ -57,7 +57,7 @@ nnoremap <silent> <Leader>e
 			\ :<C-u>Defx -columns=indent:git:icons:filename:type 
 			\ -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
+      \ 'winwidth': 35,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'show_ignored_files': 0,
