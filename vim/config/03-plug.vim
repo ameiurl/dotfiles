@@ -19,6 +19,7 @@ Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件目录树
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
 Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 " 文件查找
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -39,7 +40,7 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
 " 终端
-"Plug 'voldikss/vim-floaterm'					   " 终端插件
+Plug 'voldikss/vim-floaterm'					   " 终端插件
 call plug#end()
 filetype plugin indent on
 
@@ -50,10 +51,10 @@ let g:maplocalleader=';'
 " 引入插件的设置
 
 " defx ===================================================================={{{
-nmap <Tab> :Defx -columns=indent:icons:filename:type<cr>
+nmap <Tab> :Defx -columns=indent:icons:git:filename:type<cr>
  " 使用 ,e 查找到当前文件位置
 nnoremap <silent> <Leader>e
-			\ :<C-u>Defx -columns=indent:icons:filename:type 
+			\ :<C-u>Defx -columns=indent:icons:git:filename:type 
 			\ -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 30,
@@ -69,13 +70,15 @@ autocmd FileType defx call s:defx_mappings()
 function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
+	nnoremap <silent><buffer><expr> l        <SID>defx_toggle_tree() 
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
-	nnoremap <silent><buffer><expr> cc       defx#do_action('yank_path')
 	nnoremap <silent><buffer><expr> dd       defx#do_action('remove_trash')
 	nnoremap <silent><buffer><expr> yy       defx#do_action('copy')
+	nnoremap <silent><buffer><expr> YY       defx#do_action('yank_path')
 	nnoremap <silent><buffer><expr> mm       defx#do_action('move')
 	nnoremap <silent><buffer><expr> pp       defx#do_action('paste')
 	nnoremap <silent><buffer><expr> N        defx#do_action('new_file')				" 新建文件
+	nnoremap <silent><buffer><expr> K		 defx#do_action('new_directory')		" 新建文件夹
 	nnoremap <silent><buffer><expr> M        defx#do_action('new_multiple_files')   " 批量新建文件
 	nnoremap <silent><buffer><expr> R        defx#do_action('rename')
 	nnoremap <silent><buffer><expr> j        line('.') == line('$') ? 'gg' : 'j'	" 最上面跳到底下
@@ -84,8 +87,8 @@ function! s:defx_mappings() abort
 				\ defx#is_opened_tree() ? 
 				\ defx#do_action('close_tree', defx#get_candidate().action__path) : 
 				\ defx#do_action('search',  fnamemodify(defx#get_candidate().action__path, ':h'))
-	nnoremap <silent><buffer><expr> l        defx#do_action('open_tree')
 	nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> i        defx#do_action('open', 'choose')
 	nnoremap <silent><buffer><expr> E        defx#do_action('open', 'vsplit')
 	nnoremap <silent><buffer><expr> P        defx#do_action('preview')
 	nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
@@ -330,26 +333,27 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 
 
 " vim-floaterm ===================================================================={{{
-"let g:floaterm_wintype='split'
-"
-"let g:floaterm_opener = 'drop'
-"
-"let g:floaterm_keymap_toggle = '<F1>'
-"let g:floaterm_keymap_next   = '<F2>'
-"let g:floaterm_keymap_prev   = '<F3>'
-"let g:floaterm_keymap_new    = '<F4>'
-"let g:floaterm_title=''
-"
-"" Floaterm
-"let g:floaterm_gitcommit='floaterm'
-"let g:floaterm_autoinsert=1
-"let g:floaterm_width=0.8
-"let g:floaterm_height=0.8
-"let g:floaterm_wintitle=0
-"let g:floaterm_autoclose=1"
-"
-"map <LocalLeader>g :FloatermNew lazygit<cr> 
-"map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
+let g:floaterm_wintype='split'
+
+let g:floaterm_opener = 'drop'
+
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+let g:floaterm_title=''
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1"
+
+map <LocalLeader>g :FloatermNew lazygit<cr> 
+map <LocalLeader>r :FloatermNew ranger<cr> 
+map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
 " }}}"
 
 " vim-expand-region ===================================================================={{{
@@ -370,4 +374,7 @@ let g:expand_region_text_objects = {
       \ 'ie'  :0,
       \ 'it'  :0,
 	  \}
+" }}}"
+" vim-fugitive ===================================================================={{{
+map <Leader>df :Gdiff<cr> 
 " }}}"
