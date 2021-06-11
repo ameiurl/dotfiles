@@ -1,17 +1,17 @@
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-"set relativenumber number
-" au FocusLost * :set norelativenumber number
-" au FocusGained * :set relativenumber
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
-" autocmd InsertEnter * :set norelativenumber number
-" autocmd InsertLeave * :set relativenumber
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     set norelativenumber number
-"   else
-"     set relativenumber
-"   endif
-" endfunc
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -22,10 +22,23 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+" F5 set paste问题已解决, 粘贴代码前不需要按F5了
+" F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
+" Automatically set paste mode in Vim when pasting in insert mode
+function! XTermPasteBegin()
+	set pastetoggle=<Esc>[201~
+	set paste
+	return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 "==========================================
 " others 其它设置
 "==========================================
+
 " vimrc文件修改之后自动加载, windows
 autocmd! bufwritepost _vimrc source %
 " vimrc文件修改之后自动加载, linux
@@ -38,20 +51,7 @@ set completeopt=longest,menu
 " 增强模式中的命令行自动完成操作
 set wildmenu
 
-" 离开插入模式后自动关闭预览窗口
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " 回车即选中当前项
-
-" In the quickfix window, <CR> is used to jump to the error under the
-" cursor, so undefine the mapping there.
-"autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-" quickfix window  s/v to open in split window,  ,gd/,jd => quickfix window => open it
-" autocmd BufReadPost quickfix nnoremap <buffer> v <C-w><Enter><C-w>L
-" autocmd BufReadPost quickfix nnoremap <buffer> s <C-w><Enter><C-w>K
-
-" command-line window
-" autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 autocmd FileType qf nnoremap <buffer> <ESC> :cclose<CR>
 
@@ -76,17 +76,8 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-"set tags=tags; 
+" tags; 
 set tags=./.tags;,.tags
-"set autochdir 
-" 每次保存自动生成tags
-" 如启动报错，请先安装ctags
-" 跳转快捷键：<ctrl-]>跳转 <ctrl-t>返回
-"au BufWritePost *.c,*.cpp,*.h,*.php,*.json,*.erl,*.sh,*.html,*.css,*.conf silent! !cmd !(ps -ef|grep ctags|grep -v grep|awk '{print $2}'|xargs -I{} kill -9 {}; rm -f .ctags1; ctags -Rf .tags1 --exclude='*.js' && mv -f .tags1 .tags) &> /dev/null &
-
-" 保存时自动将tab转换为相应长度的空格
-" 此行禁止开启，否则会导致撤销到最新时保存后，无法重做！！！
-" autocmd BufWritePre * :%retab!
 
 " 设置退出vim后，不显示文件内容
 if &term =~ "xterm"
