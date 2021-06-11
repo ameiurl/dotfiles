@@ -38,6 +38,8 @@ colorscheme zend
 
 " 最右边显示文件编码和行号等信息，并且固定在一个 group 中，优先占位
 "set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %v:%l/%L%)
+" 命令行（在状态行下）的高度，默认为1，这里是2
+"set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 
 " 设置可以高亮的关键字
 "if has("autocmd")
