@@ -101,6 +101,9 @@ nnoremap <leader>q :q<CR>
 " select block
 "nnoremap <leader>v V`}
 
+" Delete find pair
+nnoremap dy d%
+
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>
 
