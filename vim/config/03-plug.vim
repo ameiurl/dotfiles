@@ -39,8 +39,10 @@ Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
+Plug 'brooth/far.vim'
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
+Plug 'lambdalisue/suda.vim'
 call plug#end()
 filetype plugin indent on
 
@@ -377,4 +379,12 @@ let g:expand_region_text_objects = {
 " }}}"
 " vim-fugitive ===================================================================={{{
 map <Leader>df :Gdiff<cr> 
+" }}}"
+
+" far ===================================================================={{{
+let g:far#enable_undo=1
+" }}}"
+
+" far ===================================================================={{{
+let g:suda_smart_edit = 1
 " }}}"
