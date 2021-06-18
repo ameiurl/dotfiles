@@ -102,13 +102,13 @@ nnoremap <leader>q :q<CR>
 "nnoremap <leader>v V`}
 
 " Delete find pair
-nnoremap dy d%
+"nnoremap dy d%
 
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>
 
 " select all
-map <Leader>sa ggVG
+"map <Leader>sa ggVG
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>

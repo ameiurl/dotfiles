@@ -372,6 +372,24 @@ let g:floaterm_autoclose=1"
 map <LocalLeader>g :FloatermNew lazygit<cr> 
 map <LocalLeader>r :FloatermNew ranger<cr> 
 map <LocalLeader>f :FloatermNew fzf --preview 'cat {}'<cr> 
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+noremap <LocalLeader>d :BD<CR>
 " }}}"
 
 " vim-expand-region ===================================================================={{{
