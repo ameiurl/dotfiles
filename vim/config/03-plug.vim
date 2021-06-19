@@ -43,6 +43,7 @@ Plug 'brooth/far.vim'
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 Plug 'lambdalisue/suda.vim'
+Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 call plug#end()
 filetype plugin indent on
 
@@ -425,3 +426,33 @@ noremap <LocalLeader>f :Far  **/*<left><left><left><left><left>
 " suda ===================================================================={{{
 let g:suda_smart_edit = 1
 " }}}"
+
+" vim-easymotion ===================================================================={{{
+let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+" 重复上一次操作, 类似repeat插件, 很强大
+map <Leader><leader>. <Plug>(easymotion-repeat)"
+
+let g:easymotion#is_active = 0
+function! EasyMotionCoc() abort
+	if EasyMotion#is_active()
+		let g:easymotion#is_active = 1
+		CocDisable
+	else
+		if g:easymotion#is_active == 1
+			let g:easymotion#is_active = 0
+			CocEnable
+		endif
+	endif
+endfunction
+autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+" easymotion highlight colors
+hi link EasyMotionTarget Search
+hi link EasyMotionTarget2First Search
+hi link EasyMotionTarget2Second Search
+hi link EasyMotionShade Comment
+" }}}
