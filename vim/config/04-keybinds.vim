@@ -41,8 +41,8 @@ map <C-o>     :b#<CR>
 "nnoremap <silent> <c-o> :exe "tabn " . g:Lasttab<cr>
 
 " 新建tab  Ctrl+t
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
+"nnoremap <C-t>     :tabnew<CR>
+"inoremap <C-t>     <Esc>:tabnew<CR>
 
 "Treat long lines as break lines (useful when moving around in them)
 ""se swap之后，同物理行上线直接跳
@@ -51,10 +51,24 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j"
 
+" Ctrl+j k h l窗口直接跳转
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
+
+" 绑定插入模式下的方向键
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
+
+" Keep search pattern at the center of the screen.
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
 
 "nnoremap cc dd
 "nnoremap x "_x
@@ -118,22 +132,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "cnoremap <C-a> <Home>
 "cnoremap <C-e> <End>
 
-" 绑定插入模式下的方向键
-imap <C-h> <Left>
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-l> <Right>
-
 " 滚动Speed up scrolling of the viewport slightly
 "nnoremap <C-e> 2<C-e>
 "nnoremap <C-y> 2<C-y>
 
-" Keep search pattern at the center of the screen.
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-
 " w!! to sudo & write a file
-cmap w!! w !sudo tee >/dev/null %
+"cmap w!! w !sudo tee >/dev/null %
