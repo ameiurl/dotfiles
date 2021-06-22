@@ -71,7 +71,7 @@ call defx#custom#option('_', {
 autocmd FileType defx call s:defx_mappings()
 
 function! s:defx_mappings() abort
-	nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
+	"nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
 	nnoremap <silent><buffer><expr> l        <SID>defx_toggle_tree() 
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
@@ -90,25 +90,28 @@ function! s:defx_mappings() abort
 				\ defx#is_opened_tree() ? 
 				\ defx#do_action('close_tree', defx#get_candidate().action__path) : 
 				\ defx#do_action('search',  fnamemodify(defx#get_candidate().action__path, ':h'))
-	nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
 	nnoremap <silent><buffer><expr> i        defx#do_action('open', 'choose')
 	nnoremap <silent><buffer><expr> E        defx#do_action('open', 'vsplit')
 	nnoremap <silent><buffer><expr> P        defx#do_action('preview')
-	nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
+	"nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
 	nnoremap <silent><buffer><expr> S        defx#do_action('toggle_sort', 'time')
 	nnoremap <silent><buffer><expr> !        defx#do_action('execute_command')
 	nnoremap <silent><buffer><expr> x        defx#do_action('execute_system')
-	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
 	nnoremap <silent><buffer><expr> .        defx#do_action('toggle_ignored_files')
 	nnoremap <silent><buffer><expr> q        defx#do_action('quit')
 	nnoremap <silent><buffer><expr> <Space>  defx#do_action('toggle_select') . 'j'
 	nnoremap <silent><buffer><expr> *        defx#do_action('toggle_select_all')
 	nnoremap <silent><buffer><expr> m        defx#do_action('clear_select_all')
+	nnoremap <silent><buffer><expr> ;        defx#do_action('repeat')
 	nnoremap <silent><buffer><expr> r        defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> pr       defx#do_action('print')
 	nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth - 10)
 	nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth + 10)
 	nnoremap <silent><buffer><expr> <2-LeftMouse>
+	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
+	nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> cd		 defx#do_action('cd', [defx#get_candidate().action__path])
+	nnoremap <silent><buffer><expr> zz		 defx#do_action('cd', [defx#get_candidate().action__path])
 endfunction
 
 function! s:defx_toggle_tree() abort
@@ -118,6 +121,14 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop', 'quit'])
 endfunction
+
+" Exit Vim if defxTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:defx') |
+			\ quit | endif
+
+" 在打开多个tab的情况下，当前tab里只有一个buffer和nerd树，当关闭buffer时，自动关闭当前标签页的nerd树
+autocmd BufEnter * if tabpagenr('$') > 1 && winnr('$') == 1 && exists('b:defx') |
+			\ tabclose | endif
 " }}}
 
 " fzf ===================================================================={{{

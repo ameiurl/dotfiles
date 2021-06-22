@@ -96,34 +96,34 @@ runtime macros/matchit.vim
 set clipboard+=unnamedplus
 
 "最后一个窗口，quickfix一起关闭
-aug QFClose
-	au!
-	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug END
-
-"##### auto fcitx  ###########
-let g:input_toggle = 1
-function! Fcitx2en()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
-      let l:a = system("fcitx-remote -c")
-   endif
-endfunction
-
-function! Fcitx2zh()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx-remote -o")
-      let g:input_toggle = 0
-   endif
-endfunction
-
-set ttimeoutlen=50
-"Exit insert mode
-autocmd InsertLeave * call Fcitx2en()
-"Enter insert mode
-autocmd InsertEnter * call Fcitx2zh()
+"aug QFClose
+"	au!
+"	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+"aug END
+"
+""##### auto fcitx  ###########
+"let g:input_toggle = 1
+"function! Fcitx2en()
+"   let s:input_status = system("fcitx-remote")
+"   if s:input_status == 2
+"      let g:input_toggle = 1
+"      let l:a = system("fcitx-remote -c")
+"   endif
+"endfunction
+"
+"function! Fcitx2zh()
+"   let s:input_status = system("fcitx-remote")
+"   if s:input_status != 2 && g:input_toggle == 1
+"      let l:a = system("fcitx-remote -o")
+"      let g:input_toggle = 0
+"   endif
+"endfunction
+"
+"set ttimeoutlen=50
+""Exit insert mode
+"autocmd InsertLeave * call Fcitx2en()
+""Enter insert mode
+"autocmd InsertEnter * call Fcitx2zh()
 "##### auto fcitx end ######
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))

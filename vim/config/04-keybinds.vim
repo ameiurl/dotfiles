@@ -97,8 +97,8 @@ nnoremap U <C-r>
 "nnoremap ; :
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
-nnoremap ' `
-nnoremap ` '
+"nnoremap ' `
+"nnoremap ` '
 
 " 选中并高亮最后一次插入的内容
 "nnoremap gv `[v`]
