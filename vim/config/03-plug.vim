@@ -1,4 +1,9 @@
 """""""" 插件管理vim-plug""""""""
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 set nocompatible
 filetype off
 call plug#begin('~/.config/nvim/plugged')
@@ -54,12 +59,16 @@ let g:maplocalleader=';'
 " 引入插件的设置
 
 " defx ===================================================================={{{
-nmap <Tab> :Defx -columns=indent:git:icons:filename:type<cr>
+nmap <Tab> :Defx<cr>
  " 使用 ,e 查找到当前文件位置
 nnoremap <silent> <Leader>e
-			\ :<C-u>Defx -columns=indent:git:icons:filename:type 
+			\ :<C-u>Defx 
 			\ -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+function! s:setcolum() abort
+  return 'indent:git:icons:filename:type'
+endfunction
 call defx#custom#option('_', {
+	  \ 'columns': s:setcolum(),
       \ 'winwidth': 35,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
@@ -68,11 +77,22 @@ call defx#custom#option('_', {
       \ 'toggle': 1,
       \ 'resume': 1
       \ })
+call defx#custom#column('git', {
+	\   'indicators': {
+	\     'Modified'  : '•',
+	\     'Staged'    : '✚',
+	\     'Untracked' : 'ᵁ',
+	\     'Renamed'   : '≫',
+	\     'Unmerged'  : '≠',
+	\     'Ignored'   : 'ⁱ',
+	\     'Deleted'   : '✖',
+	\     'Unknown'   : '⁇'
+	\   }
+	\ })
 autocmd FileType defx call s:defx_mappings()
-
 function! s:defx_mappings() abort
-	"nnoremap <silent><buffer><expr> <Esc>	 defx#do_action('quit')
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
+	nnoremap <silent><buffer><expr> O		 defx#do_action('open_tree_recursive')
 	nnoremap <silent><buffer><expr> l        <SID>defx_toggle_tree() 
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
 	nnoremap <silent><buffer><expr> dd       defx#do_action('remove_trash')
@@ -111,7 +131,6 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
 	nnoremap <silent><buffer><expr> u        defx#do_action('cd', ['..'])
 	nnoremap <silent><buffer><expr> cd		 defx#do_action('cd', [defx#get_candidate().action__path])
-	nnoremap <silent><buffer><expr> zz		 defx#do_action('cd', [defx#get_candidate().action__path])
 endfunction
 
 function! s:defx_toggle_tree() abort
