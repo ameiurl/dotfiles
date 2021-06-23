@@ -141,6 +141,9 @@ map <Leader>sa ggVG
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+"复制一段
+"yas
+
 " 快速选中一个单词
 "noremap vw viw
 
