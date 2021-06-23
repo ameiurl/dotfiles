@@ -111,7 +111,7 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> i        defx#do_action('open', 'choose')
 	nnoremap <silent><buffer><expr> E        defx#do_action('open', 'vsplit')
 	nnoremap <silent><buffer><expr> P        defx#do_action('preview')
-	"nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
+	nnoremap <silent><buffer><expr> C        defx#do_action('toggle_columns',  'mark:indent:icon:filename:type:size:time')
 	nnoremap <silent><buffer><expr> S        defx#do_action('toggle_sort', 'time')
 	nnoremap <silent><buffer><expr> !        defx#do_action('execute_command')
 	nnoremap <silent><buffer><expr> x        defx#do_action('execute_system')

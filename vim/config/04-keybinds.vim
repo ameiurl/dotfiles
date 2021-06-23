@@ -14,6 +14,10 @@ endfun
 
 map <leader>zz :call ToggleFold()<cr>
 
+" ===============================================
+" === 标签管理===================================
+" ===============================================
+
 " buffer
 map <C-n> :bnext<cr>
 map <C-p> :bprev<cr>
@@ -44,6 +48,11 @@ map <C-o>     :b#<CR>
 "nnoremap <C-t>     :tabnew<CR>
 "inoremap <C-t>     <Esc>:tabnew<CR>
 
+
+" ===============================================
+" === 窗口管理===================================
+" ===============================================
+
 "Treat long lines as break lines (useful when moving around in them)
 ""se swap之后，同物理行上线直接跳
 nnoremap k gk
@@ -69,6 +78,10 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+
+" ===============================================
+" === 快捷键 ===================================
+" ===============================================
 
 "nnoremap cc dd
 "nnoremap x "_x
@@ -127,6 +140,15 @@ map <Leader>sa ggVG
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" 快速选中一个单词
+"noremap vw viw
+
+" 快速选中括号中的内
+"noremap vb vib
+
+" 快速选html标签中的
+" noremap vt vit
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 "cnoremap <C-a> <Home>
