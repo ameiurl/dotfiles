@@ -122,7 +122,7 @@ nnoremap <leader>q :q<CR>
 noremap <silent><leader>/ :nohls<CR>
 
 " select all
-"map <Leader>sa ggVG
+map <Leader>sa ggVG
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
