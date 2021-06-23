@@ -4,12 +4,12 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-set nocompatible
-filetype off
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'                     " 状态栏增强
 Plug 'vim-airline/vim-airline-themes'              " 状态栏增强
 Plug 'christoomey/vim-tmux-navigator'              " 让vim能兼容tmux
+Plug 'lambdalisue/suda.vim'
 Plug 'jiangmiao/auto-pairs'                        " 自动补全括号
 Plug 'mg979/vim-visual-multi',{'branch': 'master'} " <c-m>批量量更新
 Plug 'terryma/vim-expand-region'                   " v/V 快速选择区域/取消选择区域
@@ -20,7 +20,6 @@ Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
 Plug 'liuchengxu/vista.vim'						   " taglist
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
-Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " 文件目录树
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'  }
 Plug 'kristijanhusak/defx-icons'
@@ -28,7 +27,6 @@ Plug 'kristijanhusak/defx-git'
 " 文件查找
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'  } " <Leader>f/b/h 快速打开文件
 " tags
 Plug 'ludovicchabant/vim-gutentags'				   " 提供 ctags/gtags 后台数据库自动更新功能
 Plug 'skywind3000/gutentags_plus'				   " 提供 GscopeFind 命令并自动处理好 gtags 数据库切换
@@ -47,10 +45,10 @@ Plug 'rking/ag.vim'                                " Ag
 Plug 'brooth/far.vim'
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
-Plug 'lambdalisue/suda.vim'
 Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
+Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
+Plug 'kshenoy/vim-signature'					   " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
 call plug#end()
-filetype plugin indent on
 
 let mapleader=','
 let g:mapleader=','
@@ -173,25 +171,6 @@ nnoremap <silent> <Leader>v :Ag
 nnoremap <silent> <Leader>vv :Ag<CR>
 " }}}
 
-" LeaderF ===================================================================={{{
-"function! s:ProjectRootDirectory() abort
-   "return fnamemodify(finddir('.git', '.;'), ':h')
-"endfunction
-
-"let g:Lf_ReverseOrder = 1  "文件倒序
-"let g:Lf_UseCache = 0   "启动LeaderF的时候刷新
-"let g:Lf_RootMarkers = ['.git', '.hg', '.svn']
-"let g:Lf_WorkingDirectoryMode = 'a'
-"let g:Lf_WorkingDirectory = s:ProjectRootDirectory()
-"nnoremap <silent> <Leader>f :LeaderfFile<CR>
-"nnoremap <silent> <LocalLeader>f :LeaderfFile<CR>
-"nnoremap <silent> <Leader>fu :LeaderfFunction<CR>
-"nnoremap <silent> <Leader>h :LeaderfMru<CR>
-"nnoremap <silent> <Leader>b :LeaderfBuffer<CR>
-"let g:Lf_WindowPosition = 'popup'
-"let g:Lf_PreviewInPopup = 0
-" }}}
-
 " coc ===================================================================={{{
 let g:coc_global_extensions = [
 	\ 'coc-phpls',
@@ -236,14 +215,6 @@ let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled=1    " enable tabline
 let g:airline#extensions#tabline#buffer_nr_show=1    " 显示buffer行号
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-"let g:airline#extensions#tabline#show_tab_nr = 1
-"let g:airline#extensions#tabline#formatter = 'default'
-"let g:airline#extensions#tabline#buffer_nr_show = 0
-"let g:airline#extensions#tabline#fnametruncate = 16
-"let g:airline#extensions#tabline#fnamecollapse = 2
-"let g:airline#extensions#tabline#buffer_idx_mode = 1
 " }}}
 
 " mg979/vim-visual-multi ===================================================================={{{

@@ -2,11 +2,14 @@
 " General Settings 基础设置
 "==========================================
 
+" 禁用 vi 兼容模式
+set nocompatible
+
 " history存储容量
 set history=1000
 
 " 检测文件类型
-filetype on
+"filetype on
 " 针对不同的文件类型采用不同的缩进格式
 filetype indent on
 " 允许插件
