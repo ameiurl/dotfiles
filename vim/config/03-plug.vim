@@ -161,7 +161,6 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> pr       defx#do_action('print')
 	nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth - 10)
 	nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth + 10)
-	nnoremap <silent><buffer><expr> <2-LeftMouse>
 
 	" Change directory
 	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
