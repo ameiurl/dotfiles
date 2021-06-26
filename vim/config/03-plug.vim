@@ -17,7 +17,11 @@ Plug 'tpope/vim-surround'						   " yss\' ysiw\" cs\"\' ds\"
 Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
-Plug 'liuchengxu/vista.vim'						   " taglist
+Plug 'kshenoy/vim-signature'					   " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
+Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
+Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
+" taglist
+Plug 'liuchengxu/vista.vim'
 " 补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " 自动补全
 " 文件目录树
@@ -42,12 +46,9 @@ Plug 'tpope/vim-fugitive'						   " Gdiff Gstatus
 Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
-Plug 'brooth/far.vim'
+Plug 'brooth/far.vim'							   " far t s u
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
-Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
-Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
-Plug 'kshenoy/vim-signature'					   " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
 call plug#end()
 
 let mapleader=','
