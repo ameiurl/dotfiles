@@ -86,24 +86,21 @@ call defx#custom#column('git', {
 	\   }
 	\ })
 
-" defx-icons plugin
-let g:defx_icons_column_length = 0.5
-let g:defx_icons_mark_icon = ''
-let g:defx_icons_parent_icon = ""
-call defx#custom#column('mark', { 'readonly_icon': '', 'selected_icon': '' })
-augroup user_plugin_defx
-	autocmd!
+function! s:defx_toggle_tree() abort
+	"Open current file, or toggle directory expand/collapse
+	if defx#is_directory()
+		return defx#do_action('open_or_close_tree')
+	endif
+	return defx#do_action('multi', ['drop', 'quit'])
+endfunction
 
-	" Define defx window mappings
-	autocmd FileType defx call <SID>defx_mappings()
+" Exit Vim if defxTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:defx') |
+			\ quit | endif
 
-	" Delete defx if it's the only buffer left in the window
-	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
-
-	" Move focus to the next window if current buffer is defx
-	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
-
-augroup END
+" 在打开多个tab的情况下，当前tab里只有一个buffer和nerd树，当关闭buffer时，自动关闭当前标签页的nerd树
+autocmd BufEnter * if tabpagenr('$') > 1 && winnr('$') == 1 && exists('b:defx') |
+			\ tabclose | endif
 
 " Internal functions
 " ---
@@ -118,15 +115,8 @@ function! s:jump_dirty(dir) abort
 	endif
 endfunction
 
-function! s:defx_toggle_tree() abort
-	"Open current file, or toggle directory expand/collapse
-	if defx#is_directory()
-		return defx#do_action('open_or_close_tree')
-	endif
-	return defx#do_action('multi', ['drop', 'quit'])
-endfunction
-
 "autocmd FileType defx call s:defx_mappings()
+autocmd FileType defx call s:defx_mappings()
 function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
 	nnoremap <silent><buffer><expr> O		 defx#do_action('open_tree_recursive')
@@ -162,7 +152,6 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> pr       defx#do_action('print')
 	nnoremap <silent><buffer><expr> <        defx#do_action('resize',  defx#get_context().winwidth - 10)
 	nnoremap <silent><buffer><expr> >        defx#do_action('resize',  defx#get_context().winwidth + 10)
-	nnoremap <silent><buffer><expr> <2-LeftMouse>
 
 	" Change directory
 	nnoremap <silent><buffer><expr> ~        defx#do_action('cd')
@@ -183,7 +172,6 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> C
 		\ defx#do_action('toggle_columns', 'indent:mark:filename:type:size:time')
 endfunction
-
 " }}}
 
 " fzf ===================================================================={{{
@@ -220,7 +208,7 @@ let g:coc_global_extensions = [
 	\ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? coc#_select_confirm() :
+	"\ pumvisible() ? coc#_select_confirm() :
 	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
