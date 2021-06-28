@@ -491,5 +491,5 @@ let g:AutoPairsMapCh = 0
 
 " FlyGrep ===================================================================={{{
 nmap <Leader>s :FlyGrep<CR>
-hi def link FileName Operator 
+hi def link FileName Pmenu 
 " }}}"
