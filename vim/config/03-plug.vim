@@ -47,6 +47,7 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
 Plug 'brooth/far.vim'							   " far t s u
+Plug 'wsdjeg/FlyGrep.vim'
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 call plug#end()
@@ -487,3 +488,8 @@ hi link EasyMotionShade Comment
 " vim-auto-pairs ===================================================================={{{
 let g:AutoPairsMapCh = 0
 " }}}
+
+" FlyGrep ===================================================================={{{
+nmap <Leader>s :FlyGrep<CR>
+hi def link FileName Operator 
+" }}}"
