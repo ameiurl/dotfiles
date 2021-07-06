@@ -60,20 +60,20 @@ let g:maplocalleader=';'
 
 " defx ===================================================================={{{
 nmap <Tab> :Defx<cr>
- " 使用 ,e 查找到当前文件位置
+" 使用 ,e 查找到当前文件位置
 nnoremap <silent> <Leader>e
 			\ :<C-u>Defx 
 			\ -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 call defx#custom#option('_', {
-	  \ 'columns': 'indent:git:icons:filename:type',
-      \ 'winwidth': 35,
-      \ 'split': 'vertical',
-      \ 'direction': 'topleft',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': '',
-      \ 'toggle': 1,
-      \ 'resume': 1
-      \ })
+	\ 'columns': 'indent:git:icons:filename:type',
+    \ 'winwidth': 35,
+    \ 'split': 'vertical',
+    \ 'direction': 'topleft',
+    \ 'show_ignored_files': 0,
+    \ 'buffer_name': '',
+    \ 'toggle': 1,
+    \ 'resume': 1
+    \ })
 call defx#custom#column('git', {
 	\   'indicators': {
 	\     'Modified'  : '•',
@@ -86,7 +86,6 @@ call defx#custom#column('git', {
 	\     'Unknown'   : '⁇'
 	\   }
 	\ })
-
 function! s:defx_toggle_tree() abort
 	"Open current file, or toggle directory expand/collapse
 	if defx#is_directory()
@@ -94,15 +93,12 @@ function! s:defx_toggle_tree() abort
 	endif
 	return defx#do_action('multi', ['drop', 'quit'])
 endfunction
-
 " Exit Vim if defxTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:defx') |
 			\ quit | endif
-
 " 在打开多个tab的情况下，当前tab里只有一个buffer和nerd树，当关闭buffer时，自动关闭当前标签页的nerd树
 autocmd BufEnter * if tabpagenr('$') > 1 && winnr('$') == 1 && exists('b:defx') |
 			\ tabclose | endif
-
 " Internal functions
 " ---
 function! s:jump_dirty(dir) abort
@@ -115,8 +111,6 @@ function! s:jump_dirty(dir) abort
 		return search(printf('\(%s\)', l:icons_pattern), l:direction)
 	endif
 endfunction
-
-"autocmd FileType defx call s:defx_mappings()
 autocmd FileType defx call s:defx_mappings()
 function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> o		 <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
