@@ -18,7 +18,7 @@ Plug 'tpope/vim-repeat'							   " 重复上一次操作
 Plug 'scrooloose/nerdcommenter'					   " 快速注释/解开注释
 Plug 'psliwka/vim-smoothie'						   " 滚动翻页效果插件
 Plug 'kshenoy/vim-signature'					   " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
-Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
+"Plug 'easymotion/vim-easymotion'                   " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plug 'mattn/emmet-vim'							   " <c-e> html代码补全
 " taglist
 Plug 'liuchengxu/vista.vim'
@@ -456,33 +456,33 @@ let g:suda_smart_edit = 1
 " }}}"
 
 " vim-easymotion ===================================================================={{{
-let g:EasyMotion_smartcase = 1
-"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
-" 重复上一次操作, 类似repeat插件, 很强大
-map <Leader><leader>. <Plug>(easymotion-repeat)"
-
-let g:easymotion#is_active = 0
-function! EasyMotionCoc() abort
-	if EasyMotion#is_active()
-		let g:easymotion#is_active = 1
-		CocDisable
-	else
-		if g:easymotion#is_active == 1
-			let g:easymotion#is_active = 0
-			CocEnable
-		endif
-	endif
-endfunction
-autocmd TextChanged,CursorMoved * call EasyMotionCoc()
-" easymotion highlight colors
-hi link EasyMotionTarget Search
-hi link EasyMotionTarget2First Search
-hi link EasyMotionTarget2Second Search
-hi link EasyMotionShade Comment
+"let g:EasyMotion_smartcase = 1
+""let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+"map <Leader><leader>h <Plug>(easymotion-linebackward)
+"map <Leader><Leader>j <Plug>(easymotion-j)
+"map <Leader><Leader>k <Plug>(easymotion-k)
+"map <Leader><leader>l <Plug>(easymotion-lineforward)
+"" 重复上一次操作, 类似repeat插件, 很强大
+"map <Leader><leader>. <Plug>(easymotion-repeat)"
+"
+"let g:easymotion#is_active = 0
+"function! EasyMotionCoc() abort
+"	if EasyMotion#is_active()
+"		let g:easymotion#is_active = 1
+"		CocDisable
+"	else
+"		if g:easymotion#is_active == 1
+"			let g:easymotion#is_active = 0
+"			CocEnable
+"		endif
+"	endif
+"endfunction
+"autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+"" easymotion highlight colors
+"hi link EasyMotionTarget Search
+"hi link EasyMotionTarget2First Search
+"hi link EasyMotionTarget2Second Search
+"hi link EasyMotionShade Comment
 " }}}
 
 " vim-auto-pairs ===================================================================={{{
