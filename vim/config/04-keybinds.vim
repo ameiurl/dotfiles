@@ -110,8 +110,8 @@ nnoremap U <C-r>
 "nnoremap ; :
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
-"nnoremap ' `
-"nnoremap ` '
+nnoremap ' `
+nnoremap ` '
 
 " 选中并高亮最后一次插入的内容
 "nnoremap gv `[v`]
@@ -154,8 +154,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " noremap vt vit
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
-"cnoremap <C-a> <Home>
-"cnoremap <C-e> <End>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 " 滚动Speed up scrolling of the viewport slightly
 "nnoremap <C-e> 2<C-e>
