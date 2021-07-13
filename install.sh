@@ -2,7 +2,7 @@
 set -e
 
 echo '[*] pacman installing Neovim nodejs the_silver_searcher global ctags yarn'
-sudo pacman -S neovim nodejs the_silver_searcher global ctags yarn ripgrep
+sudo pacman -S neovim nodejs the_silver_searcher global ctags yarn
 
 echo '[*] pip installing Neovim'
 pip3 install neovim send2trash
