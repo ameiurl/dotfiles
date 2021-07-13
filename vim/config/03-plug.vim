@@ -46,7 +46,7 @@ Plug 'airblade/vim-gitgutter'					   " show git status [c上一个 ]c下一个
 " 搜索
 Plug 'rking/ag.vim'                                " Ag
 Plug 'brooth/far.vim'							   " far t s u
-Plug 'wsdjeg/FlyGrep.vim'
+"Plug 'wsdjeg/FlyGrep.vim'
 " 终端
 Plug 'voldikss/vim-floaterm'					   " 终端插件
 call plug#end()
@@ -458,6 +458,6 @@ let g:AutoPairsMapCh = 0
 " }}}
 
 " FlyGrep ===================================================================={{{
-nmap <Leader>s :FlyGrep<CR>
-hi def link FileName Pmenu 
+"nmap <Leader>s :FlyGrep<CR>
+"hi def link FileName Pmenu 
 " }}}"
