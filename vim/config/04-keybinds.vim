@@ -94,6 +94,8 @@ nnoremap <silent> g* g*zz
 xnoremap p "_dP
 
 " 调整缩进后自动选中，方便再次操作
+vmap <tab> >gv
+vmap <s-tab> <gv
 vnoremap < <gv
 vnoremap > >gv
 
@@ -114,7 +116,7 @@ nnoremap ' `
 nnoremap ` '
 
 " 选中并高亮最后一次插入的内容
-"nnoremap gv `[v`]
+nnoremap gv `[v`]
 
 " Quickly save the current file
 nnoremap <leader>w :w<CR>
@@ -128,9 +130,6 @@ nnoremap <leader>q :q<CR>
 " select block
 "nnoremap <leader>v V`}
 
-" Delete find pair
-"nnoremap dy d%
-
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>
 
@@ -141,24 +140,15 @@ map <Leader>sa ggVG
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-"复制一段
-"yas
-
-" 快速选中一个单词
-"noremap vw viw
-
-" 快速选中括号中的内
-"noremap vb vib
-
-" 快速选html标签中的
-" noremap vt vit
-
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
+" 命令行模式增强
 cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-b> <S-Left>
+cnoremap <C-e> <S-Right>
 
 " 滚动Speed up scrolling of the viewport slightly
-"nnoremap <C-e> 2<C-e>
+nnoremap <C-e> 2<C-e>
 "nnoremap <C-y> 2<C-y>
 
 " w!! to sudo & write a file
