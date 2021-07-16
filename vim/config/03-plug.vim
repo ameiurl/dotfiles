@@ -117,6 +117,7 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> l        <SID>defx_toggle_tree() 
 	nnoremap <silent><buffer><expr> <CR>     defx#do_action('drop')
 	nnoremap <silent><buffer><expr> q        defx#do_action('quit')
+	nnoremap <silent><buffer><expr><Esc>     defx#do_action('quit')
 	nnoremap <silent><buffer><expr> h    
 				\ defx#is_opened_tree() ? 
 				\ defx#do_action('close_tree', defx#get_candidate().action__path) : 
