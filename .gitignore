@@ -6,6 +6,7 @@ coc/
 dconf/
 fcitx/
 google-chrome/
+microsoft-edge/
 menus/
 lazygit/*
 !lazygit/config.yaml
