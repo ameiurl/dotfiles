@@ -13,7 +13,6 @@ return require("packer").startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
-	use("lewis6991/impatient.nvim")
 	use("tjdevries/lazy-require.nvim")
 
 	-- Icons
@@ -21,16 +20,6 @@ return require("packer").startup(function(use)
 
 	-- Colorschema
 	use("ameiurl/seoul256.vim")
-
-	-- Statusline
-	use({
-		"glepnir/galaxyline.nvim",
-		event = "BufEnter",
-		config = function()
-			require("amei.configs.galaxyline")
-		end,
-		requires = { "nvim-web-devicons" },
-	})
 
 	-- Treesitter
 	use({
@@ -49,8 +38,6 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
-	-- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
-
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -60,14 +47,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-telescope/telescope-ui-select.nvim")
-
-	use({
-		"folke/trouble.nvim",
-		config = function()
-			require("amei.configs.trouble")
-		end,
-	})
-
 
 	-- LSP
 	use({
@@ -79,8 +58,6 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("Issafalcon/lsp-overloads.nvim")
-
-	-- Mason: Portable package manager
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 
@@ -91,18 +68,15 @@ return require("packer").startup(function(use)
 			require("amei.configs.cmp")
 		end,
 	})
-
-	use("onsails/lspkind-nvim")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-cmdline")
 	use({
 		"L3MON4D3/LuaSnip",
 		config = function()
 			require("amei.configs.luasnip")
 		end,
 	})
-
-	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
 	use("saadparwaiz1/cmp_luasnip")
 	use("ameiurl/friendly-snippets")
 
@@ -118,6 +92,16 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Statusline
+	use({
+		"glepnir/galaxyline.nvim",
+		event = "BufEnter",
+		config = function()
+			require("amei.configs.galaxyline")
+		end,
+		requires = { "nvim-web-devicons" },
+	})
+
 	-- Show colors
 	use({
 		"norcalli/nvim-colorizer.lua",
@@ -125,6 +109,16 @@ return require("packer").startup(function(use)
 			require("colorizer").setup({ "*" })
 		end,
 	})
+
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("amei.configs.trouble")
+		end,
+	})
+
+    -- LazyGit
+	use('kdheepak/lazygit.nvim')
 
     -- Cursor-word highlighter + text objects
 	use({

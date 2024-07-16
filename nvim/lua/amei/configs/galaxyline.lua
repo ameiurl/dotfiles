@@ -6,7 +6,7 @@ end
 
 gl.short_line_list = { 'NvimTree', 'Outline', 'Trouble', 'qf' }
 
-local M = {}
+local theme = {}
 
 --- Defines primary, secondary, foreground and background colors for a Vim mode
 ---@class ModeTheme
@@ -26,7 +26,7 @@ local M = {}
 ---@field command ModeTheme
 ---@field none ModeTheme
 
-M.signs = {
+theme.signs = {
 	icons = {
 		vim   = '  ',
 		git   = '  ',
@@ -52,7 +52,7 @@ M.signs = {
 	},
 }
 
-M.modecolors = {  ---@type VimModeColors
+theme.modecolors = {  ---@type VimModeColors
 	command = {
 		primary   = "#f8e087",
 		secondary = "#5f5044",
@@ -107,12 +107,9 @@ M.modecolors = {  ---@type VimModeColors
 -- return M
 
 -- local theme = require 'user.galaxyline.theme'
--- local colors      = theme.modecolors
--- local icons       = theme.signs.icons
--- local separators  = theme.signs.separators
-local colors      = M.modecolors
-local icons       = M.signs.icons
-local separators  = M.signs.separators
+local colors      = theme.modecolors
+local icons       = theme.signs.icons
+local separators  = theme.signs.separators
 
 local M = {}
 
@@ -275,7 +272,7 @@ M.section('mid', {
 			local warns = vim.tbl_filter(function(d)
 				return d.severity == vim.diagnostic.severity.WARN
 			end, all)
-			-- return theme.signs.diagnostics.error .. #errs .. ' ' .. theme.signs.diagnostics.warn .. #warns
+			return theme.signs.diagnostics.error .. #errs .. ' ' .. theme.signs.diagnostics.warn .. #warns
 		end,
 		highlight = {
 			function() return mode.secondary end,

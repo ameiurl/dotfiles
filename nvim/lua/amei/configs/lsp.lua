@@ -94,9 +94,6 @@ local function nice_diagnostics(opts)
 	end
 end
 
--- local on_attach = function(client, bufnr)
--- end
-
 local handlers = {}
 handlers.on_attach = function(client, bufnr)
 	if pcall(function() return vim.api.nvim_buf_get_var(bufnr, 'UserLspAttached') == 1 end) then
@@ -168,18 +165,13 @@ end
 
 handlers.capabilities.offsetEncoding = { 'utf-16' }
 
--- return M
-
 -- local handlers = require('amei.configs.lsp.handlers')
 require('lspconfig').gdscript.setup {
 	on_attach    = handlers.on_attach,
 	capabilities = handlers.capabilities,
 }
 
--- require 'amei.configs.lsp2.mason'
--- require 'user.lsp.null-ls'
-
--- require('user.lsp.navic').setup()
+-- mason config
 local mason_ok, mason = pcall(require, 'mason')
 if not mason_ok then
 	print("Couldn't load 'mason'")

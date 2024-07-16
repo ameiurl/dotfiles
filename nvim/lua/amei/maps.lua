@@ -275,11 +275,6 @@ M.bufferline = {
 	['<Leader>0']      = function() bl.go_to(-1, true) end,
 }
 
---M.nvim_tree  = require('user.settings.keymaps.nvim_tree')
---M.gitsigns   = require('user.settings.keymaps.gitsigns')
---M.lsp_setup  = require('user.settings.keymaps.lsp')
---M.telescope  = require('user.settings.keymaps.telescope')
-
 M.indent_blankline = function()
 	local zmaps = {
 		'zA', 'zC', 'zD', 'zE', 'zM', 'zN', 'zO', 'zR',
