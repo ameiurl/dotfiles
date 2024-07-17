@@ -12,4 +12,4 @@ lazygit/*
 !lazygit/config.yaml
 mimeapps.list
 navicat/
-nvim/plugin/
+nvim/plugin/*
