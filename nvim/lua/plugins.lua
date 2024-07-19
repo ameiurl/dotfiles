@@ -14,7 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "wbthomason/packer.nvim",
+    --"wbthomason/packer.nvim",
     -- Common utilities
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
@@ -73,9 +73,6 @@ require("lazy").setup({
 		event = "BufEnter",
 		requires = { "nvim-web-devicons" },
     },
-
-	-- Show colors
-	-- "norcalli/nvim-colorizer.lua",
 
     -- A pretty list for showing diagnostics
 	"folke/trouble.nvim",

@@ -66,6 +66,8 @@ vim.g.netrw_usetab = 1        -- use netrw-<C-Tab> mapping
 vim.g.netrw_wiw = 32          -- window width (cols)
 vim.g.shada = "'0f0"          -- what to save in the ShaDa file
 
+vim.g.mapleader = ','
+vim.g.maplocalleader = ';'
 
 vim.cmd [[
 	set nofixendofline  "Disable automatic line wrapping at the end of the file

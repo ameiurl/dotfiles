@@ -11,7 +11,11 @@ ts.setup {
 		'html',
 		'markdown',
 		'php',
-        'lua'
+        'lua',
+        "c",
+        "vim",
+        "vimdoc",
+        "query"
 	},
 	sync_installed = false, -- install languages synchronously (applies to above)
 	ignore_installed = { "" }, -- list of parsers to ignore installing

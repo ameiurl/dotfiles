@@ -4,7 +4,25 @@ if not status_ok then
 	return
 end
 
-local keymaps = require('maps').bufferline
+local bl = require('bufferline')
+keymaps = {
+	['<localleader>bq'] = bl.close_with_pick,
+	['<localleader>bb'] = bl.pick_buffer,
+	['<[b>']         = function() bl.cycle(-1) end,
+	['<]b>']         = function() bl.cycle( 1) end,
+	['<Leader>1']      = function() bl.go_to(1, true) end,
+	['<Leader>2']      = function() bl.go_to(2, true) end,
+	['<Leader>3']      = function() bl.go_to(3, true) end,
+	['<Leader>4']      = function() bl.go_to(4, true) end,
+	['<Leader>5']      = function() bl.go_to(5, true) end,
+	['<Leader>6']      = function() bl.go_to(6, true) end,
+	['<Leader>7']      = function() bl.go_to(7, true) end,
+	['<Leader>8']      = function() bl.go_to(8, true) end,
+	['<Leader>9']      = function() bl.go_to(9, true) end,
+	['<Leader>0']      = function() bl.go_to(-1, true) end,
+}
+
+-- local keymaps = require('maps').bufferline
 for lhs, rhs in pairs(keymaps) do
 	vim.keymap.set('n', lhs, rhs, { silent = true, remap = false })
 end

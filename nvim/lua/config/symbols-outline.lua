@@ -4,6 +4,20 @@ if not status_ok then
 	return
 end
 
+local keymaps = {
+	close          = { '<Esc>', 'q' },
+	goto_location  = '<CR>',
+	focus_location = '<Tab>',
+	hover_symbol   = '<Space>',
+	toggle_preview = 'K',
+	rename_symbol  = 'r',
+	code_actions   = 'a',
+	fold           = 'h',
+	unfold         = 'l',
+	fold_all       = 'W',
+	unfold_all     = 'E',
+	fold_reset     = 'R',
+}
 outliner.setup {
 	highlight_hovered_item = true,
 	show_guides = true,
@@ -19,7 +33,7 @@ outliner.setup {
 	autofold_depth = nil,
 	auto_unfold_hover = true,
 	fold_markers = { '', '' },
-	keymaps = require('maps').symbols_outline,
+	keymaps = keymaps,
 	lsp_blacklist = {},
 	symbol_blacklist = {},
 	symbols = {
