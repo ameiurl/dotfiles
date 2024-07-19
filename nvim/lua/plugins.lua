@@ -87,10 +87,10 @@ require("lazy").setup({
 
 	-- Markdown Preview
     {
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     },
 
 	-- autopairs
@@ -115,42 +115,27 @@ require("lazy").setup({
 	"simrat39/symbols-outline.nvim",
 
     -- match-up is a plugin that lets you highlight
-    {
-		"andymass/vim-matchup",
-        commit = nil,
-        event = 'VimEnter',
-        config = function()
-            vim.g.matchup_matchparen_deferred = 1
-            vim.g.matchup_matchparen_offscreen = {}
-        end,
-    },
+	"andymass/vim-matchup",
 
     'terryma/vim-expand-region',  				  -- Select increasingly larger regions of text using the same key combination
     'junegunn/vim-easy-align', 					  -- A simple, easy-to-use Vim alignment plugin	
     {
-        'mg979/vim-visual-multi', 					  -- It's called vim-visual-multi in analogy with visual-block
-        commit = nil,
-        config = function()
-            vim.g.VM_maps = {
-                ["Find Under"]         = '<C-m>',
-                ["Find Subword Under"] = '<C-m>',
-                ["Find Next"]          = '',
-                ['Find Prev']          = '',
-                ['Remove Region']      = 'q',
-                ['Skip Region']        = '<C-n>',
-                ["Undo"]               = 'l',
-                ["Redo"]               = '<C-r>',
-                ["Add Cursor Down"]    = '<A-Down>',
-                ["Add Cursor Up"]      = '<A-Up>',
-            }
-        end,
+        "smoka7/multicursors.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            'nvimtools/hydra.nvim',
+        },
+        opts = {},
+        cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+        keys = {
+            {
+                mode = { 'v', 'n' },
+                '<C-m>',
+                '<cmd>MCstart<cr>',
+                desc = 'Create a selection for selected text or word under the cursor',
+            },
+        },
     },
     'hrsh7th/vim-eft',
     'kshenoy/vim-signature',   					      -- a plugin to place, toggle and display marks
-    {
-        'lambdalisue/suda.vim',
-        config = function()
-            vim.g.suda_smart_edit=1
-        end,
-    },
 })
