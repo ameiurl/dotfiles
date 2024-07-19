@@ -12,6 +12,6 @@ lazygit/*
 !lazygit/config.yaml
 mimeapps.list
 navicat/
-nvim/
+nvim/plugin/*
 composer/
 vlc/

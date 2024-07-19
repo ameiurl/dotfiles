@@ -28,3 +28,5 @@
 	helper = store
 [pull]
 	rebase = false
+[safe]
+	directory = /server
