@@ -4,7 +4,7 @@ if not cmp_status_ok then
 	return
 end
 
-local luasnip = require('amei.configs.luasnip')
+local luasnip = require('config.luasnip')
 
 local kind_icons = {
 	Class         = ' ',

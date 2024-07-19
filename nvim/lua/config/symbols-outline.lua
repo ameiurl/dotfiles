@@ -19,7 +19,7 @@ outliner.setup {
 	autofold_depth = nil,
 	auto_unfold_hover = true,
 	fold_markers = { '', '' },
-	keymaps = require('amei.maps').symbols_outline,
+	keymaps = require('maps').symbols_outline,
 	lsp_blacklist = {},
 	symbol_blacklist = {},
 	symbols = {

@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-local keymaps = require('amei.maps').bufferline
+local keymaps = require('maps').bufferline
 for lhs, rhs in pairs(keymaps) do
 	vim.keymap.set('n', lhs, rhs, { silent = true, remap = false })
 end

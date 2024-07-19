@@ -1,4 +1,5 @@
-require("amei.settings")
-require("amei.maps")
-require("amei.plugins")
-require('amei.colorscheme').setup {}
+require("settings")
+require("plugins")
+require("config")
+require("maps")
+require('colorscheme').setup {}
