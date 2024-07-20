@@ -53,8 +53,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 require('lspconfig.ui.windows').default_options.border = "rounded"
 
-local M = {}
-
 ---@param f fun()
 local function try(f)
 	return function()
@@ -153,16 +151,12 @@ local on_attach = function(client, bufnr)
 	map({ 'n', 'v' }, '<leader>F', [[<Cmd>Format<CR>]])
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_ok then
-	capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+	capabilities = cmp_nvim_lsp.default_capabilities()
 else
 	print("Couldn't load 'cmp_nvim_lsp' nor update capabilities")
 end
-
-capabilities.offsetEncoding = { 'utf-16' }
 
 require('lspconfig').gdscript.setup {
 	on_attach    = on_attach,

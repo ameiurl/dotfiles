@@ -80,8 +80,12 @@ ts.setup {
 		},
 		swap = {
 			enable = true,
-			swap_next = { ['<Leader>>'] = '@parameter.inner' },
-			swap_previous = { ['<Leader><'] = '@parameter.inner' },
+			swap_next = {
+                ['<Leader>>'] = '@parameter.inner' 
+            },
+			swap_previous = {
+                ['<Leader><'] = '@parameter.inner' 
+            },
 		},
 		move = {
 			enable = true,
