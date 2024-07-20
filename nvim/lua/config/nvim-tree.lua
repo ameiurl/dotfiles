@@ -166,7 +166,6 @@ tree.setup {
 	},
  
     on_attach = my_on_attach,
-	--on_attach = require('user.settings.keymaps').nvim_tree
 }
 
 -- Because reload_on_bufenter doesn't work (when defining on_attach?)
@@ -193,3 +192,21 @@ vim.api.nvim_create_autocmd('VimEnter', {
 	end,
 })
 
+-- nvim-tree
+vim.keymap.set('n', '<Tab>', [[<Cmd>NvimTreeToggle<CR>]])
+
+vim.g.nvim_tree_width = 45
+local g = vim.g
+
+function _G.inc_width_ind()
+    g.nvim_tree_width = g.nvim_tree_width + 5
+    return g.nvim_tree_width
+end
+
+function _G.dec_width_ind()
+    g.nvim_tree_width = g.nvim_tree_width - 5
+    return g.nvim_tree_width
+end
+
+vim.keymap.set('n', '<C-Left>', [[<Cmd>exec ':NvimTreeResize ' . v:lua.dec_width_ind()<CR>]])
+vim.keymap.set('n', '<C-Right>', [[<Cmd>exec ':NvimTreeResize ' . v:lua.inc_width_ind()<CR>]])

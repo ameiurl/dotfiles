@@ -4,9 +4,7 @@ if not status_ok then
 	return
 end
 
---local lazytrouble = require('lazy-require').require_on_exported_call('trouble.providers.telescope')
 
--- local keys = require('amei.maps').telescope
 local actions = require('telescope.actions')
 
 telescope.setup {
@@ -34,8 +32,6 @@ telescope.setup {
 		},
 
 		mappings = {
-			-- n = M.normal(actions),
-			-- i = M.insert(actions),
             n = {
                 ['<esc>'] = actions.close,
                 ['<C-e>'] = actions.close,  -- redundant, don't use.  Only here because I'm retarded

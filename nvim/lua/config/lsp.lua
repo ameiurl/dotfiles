@@ -94,8 +94,7 @@ local function nice_diagnostics(opts)
 	end
 end
 
-local handlers = {}
-handlers.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
 	if pcall(function() return vim.api.nvim_buf_get_var(bufnr, 'UserLspAttached') == 1 end) then
 		return
 	end
@@ -154,21 +153,20 @@ handlers.on_attach = function(client, bufnr)
 	map({ 'n', 'v' }, '<leader>F', [[<Cmd>Format<CR>]])
 end
 
-handlers.capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_ok then
-	handlers.capabilities = cmp_nvim_lsp.default_capabilities(handlers.capabilities)
+	capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 else
 	print("Couldn't load 'cmp_nvim_lsp' nor update capabilities")
 end
 
-handlers.capabilities.offsetEncoding = { 'utf-16' }
+capabilities.offsetEncoding = { 'utf-16' }
 
--- local handlers = require('amei.configs.lsp.handlers')
 require('lspconfig').gdscript.setup {
-	on_attach    = handlers.on_attach,
-	capabilities = handlers.capabilities,
+	on_attach    = on_attach,
+	capabilities = capabilities,
 }
 
 -- mason config
@@ -191,20 +189,12 @@ mason.setup {
 }
 
 mason_lsp.setup {
-	ensure_installed = {
-		-- "lua_ls",
-		-- "vimls",
-	},
+	ensure_installed = {},
 }
 
 mason_lsp.setup_handlers {
 	-- Automatically invoke lspconfig setup for every installed LSP server
 	function (server_name)
-		local opts = vim.tbl_deep_extend("force", {}, handlers)
-		--local has_settings, settings = pcall(require, 'amei.configs.lsp2.settings.'..server_name)
-		--if has_settings then
-		--	opts = vim.tbl_deep_extend("force", opts, settings)
-		--end
-		require('lspconfig')[server_name].setup(opts)
+		require('lspconfig')[server_name].setup{}
 	end,
 }

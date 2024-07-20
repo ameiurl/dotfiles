@@ -14,7 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    --"wbthomason/packer.nvim",
     -- Common utilities
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
@@ -67,6 +66,10 @@ require("lazy").setup({
 		},
     },
 
+    -- bufferline
+	"akinsho/bufferline.nvim",
+	"moll/vim-bbye",
+
 	-- Statusline
     {
 		"glepnir/galaxyline.nvim",
@@ -77,13 +80,13 @@ require("lazy").setup({
     -- A pretty list for showing diagnostics
 	"folke/trouble.nvim",
 
-    -- Cursor-word highlighter + text objects
-	"RRethy/vim-illuminate",
+    -- A tree like view for symbols
+	"simrat39/symbols-outline.nvim",
 
 	-- Git
 	"lewis6991/gitsigns.nvim",
 	'kdheepak/lazygit.nvim',
-    'tpope/vim-fugitive', 						  -- it's the premier Git plugin for Vim
+    'tpope/vim-fugitive',
 
 	-- Markdown Preview
     {
@@ -107,18 +110,18 @@ require("lazy").setup({
         end, 
     },
 
-    -- bufferline
-	"akinsho/bufferline.nvim",
-	"moll/vim-bbye",
-
-    -- A tree like view for symbols
-	"simrat39/symbols-outline.nvim",
+    -- Cursor-word highlighter + text objects
+	"RRethy/vim-illuminate",
 
     -- match-up is a plugin that lets you highlight
 	"andymass/vim-matchup",
+  	
+    -- Select increasingly larger regions of text using the same key combination
+    "terryma/vim-expand-region",
+ 	-- A simple, easy-to-use Vim alignment plugin	
+    "junegunn/vim-easy-align",
 
-    'terryma/vim-expand-region',  				  -- Select increasingly larger regions of text using the same key combination
-    'junegunn/vim-easy-align', 					  -- A simple, easy-to-use Vim alignment plugin	
+    -- The Multicursor Plugin for Neovim extends the native Neovim text editing capabilities
     {
         "smoka7/multicursors.nvim",
         event = "VeryLazy",
@@ -136,6 +139,8 @@ require("lazy").setup({
             },
         },
     },
-    'hrsh7th/vim-eft',
-    'kshenoy/vim-signature',   					      -- a plugin to place, toggle and display marks
+    -- This plugin provides f/t/F/T mappings that can be customized by your setting
+    "hrsh7th/vim-eft",
+   	-- a plugin to place, toggle and display marks
+    "kshenoy/vim-signature",
 })

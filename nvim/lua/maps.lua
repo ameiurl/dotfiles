@@ -126,27 +126,5 @@ map('n', 'T', [[<Plug>(eft-T)]])
 map('x', 'T', [[<Plug>(eft-T)]])
 map('o', 'T', [[<Plug>(eft-T)]])
 
--- nvim-tree
-map('n', '<Tab>', [[<Cmd>NvimTreeToggle<CR>]])
-
-vim.g.nvim_tree_width = 45
-local g = vim.g
-
-function _G.inc_width_ind()
-    g.nvim_tree_width = g.nvim_tree_width + 5
-    return g.nvim_tree_width
-end
-
-function _G.dec_width_ind()
-    g.nvim_tree_width = g.nvim_tree_width - 5
-    return g.nvim_tree_width
-end
-
-map('n', '<C-Left>', [[<Cmd>exec ':NvimTreeResize ' . v:lua.dec_width_ind()<CR>]])
-map('n', '<C-Right>', [[<Cmd>exec ':NvimTreeResize ' . v:lua.inc_width_ind()<CR>]])
-
--- symbol
-map('n', '<leader>e', [[<Cmd>SymbolsOutline<CR>]])
-
 -- lazyGit
 map('n', '<leader>gg', [[<Cmd>LazyGit<CR>]])
