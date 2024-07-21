@@ -47,24 +47,9 @@ local function colorscheme_seoul256()
   ]]
 end
 
-local function colorscheme_tmp()
-  vim.cmd [[
-    "let g:gruvbox_material_background = 'soft'
-    "colorscheme gruvbox-material
-  ]]
-end
-
----@class colorschemeOptions
----@field public scheme string?
-
----@param opts colorschemeOptions
-M.setup = function(opts)
-  opts = opts or {}
-  opts.scheme = opts.scheme or 'default'
+M.setup = function()
   make_theme_augroup()
-  -- vim.api.nvim_command('colorscheme ' .. opts.scheme)
   colorscheme_seoul256()
-  colorscheme_tmp()
 end
 
 vim.api.nvim_create_user_command("Gruvbox", function ()
