@@ -92,7 +92,8 @@ local function nice_diagnostics(opts)
 	end
 end
 
-local on_attach = function(client, bufnr)
+local handlers = {}
+handlers.on_attach = function(client, bufnr)
 	if pcall(function() return vim.api.nvim_buf_get_var(bufnr, 'UserLspAttached') == 1 end) then
 		return
 	end
@@ -151,16 +152,18 @@ local on_attach = function(client, bufnr)
 	map({ 'n', 'v' }, '<leader>F', [[<Cmd>Format<CR>]])
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_ok then
-	capabilities = cmp_nvim_lsp.default_capabilities()
+	handlers.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 else
 	print("Couldn't load 'cmp_nvim_lsp' nor update capabilities")
 end
 
 require('lspconfig').gdscript.setup {
-	on_attach    = on_attach,
-	capabilities = capabilities,
+	on_attach    = handlers.on_attach,
+	capabilities = handlers.capabilities,
 }
 
 -- mason config
@@ -189,6 +192,7 @@ mason_lsp.setup {
 mason_lsp.setup_handlers {
 	-- Automatically invoke lspconfig setup for every installed LSP server
 	function (server_name)
-		require('lspconfig')[server_name].setup{}
+        local opts = vim.tbl_deep_extend("force", {}, handlers)
+		require('lspconfig')[server_name].setup(opts)
 	end,
 }
