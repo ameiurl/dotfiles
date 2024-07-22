@@ -91,20 +91,10 @@ require("lazy").setup({
 	'kdheepak/lazygit.nvim',
     'tpope/vim-fugitive',
 
-	-- Markdown Preview
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
-
-	-- autopairs
-	"windwp/nvim-autopairs",
-
     -- comment
 	"numToStr/Comment.nvim",
-
+	-- autopairs
+	"windwp/nvim-autopairs",
     -- a smooth scrolling neovim plugin written in lua
     {
 		"karb94/neoscroll.nvim",
@@ -112,18 +102,12 @@ require("lazy").setup({
             require('neoscroll').setup {}
         end, 
     },
-
-    -- Cursor-word highlighter + text objects
-	"RRethy/vim-illuminate",
-
     -- match-up is a plugin that lets you highlight
 	"andymass/vim-matchup",
-  	
     -- Select increasingly larger regions of text using the same key combination
     "terryma/vim-expand-region",
  	-- A simple, easy-to-use Vim alignment plugin	
     "junegunn/vim-easy-align",
-
     -- The Multicursor Plugin for Neovim extends the native Neovim text editing capabilities
     {
         "smoka7/multicursors.nvim",
