@@ -103,12 +103,12 @@ map('x', '<C-r>', replace_all, { desc = "Replace all selected text in buffer" })
 -- Plugin keybinds --------------------------------------------------------------------
 
 -- vim-expand-region
-map('v', 'v', [[<Plug>(expand_region_expand)]])
-map('v', 'v', [[<Plug>(expand_region_expand)]])
+-- map('v', 'v', [[<Plug>(expand_region_expand)]])
+-- map('v', 'v', [[<Plug>(expand_region_expand)]])
 
 -- vim-easy-align
-map('n', '<Leader>a', [[<Plug>(EasyAlign)]])
-map('v', '<Leader>a', [[<Plug>(EasyAlign)]])
+-- map('n', '<Leader>a', [[<Plug>(EasyAlign)]])
+-- map('v', '<Leader>a', [[<Plug>(EasyAlign)]])
 
 -- vim-eft
 map('n', ';', [[<Plug>(eft-repeat)]])

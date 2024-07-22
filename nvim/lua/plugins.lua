@@ -74,11 +74,11 @@ require("lazy").setup({
 	"moll/vim-bbye",
 
 	-- Statusline
-    {
-		"glepnir/galaxyline.nvim",
-		event = "BufEnter",
-		requires = { "nvim-web-devicons" },
-    },
+  --   {
+		-- "glepnir/galaxyline.nvim",
+		-- event = "BufEnter",
+		-- requires = { "nvim-web-devicons" },
+  --   },
 
     -- A pretty list for showing diagnostics
 	"folke/trouble.nvim",
@@ -91,23 +91,52 @@ require("lazy").setup({
 	'kdheepak/lazygit.nvim',
     'tpope/vim-fugitive',
 
-    -- comment
-	"numToStr/Comment.nvim",
-	-- autopairs
-	"windwp/nvim-autopairs",
-    -- a smooth scrolling neovim plugin written in lua
-    {
-		"karb94/neoscroll.nvim",
+    { -- Collection of various small independent plugins/modules
+		"echasnovski/mini.nvim",
 		config = function()
-            require('neoscroll').setup {}
-        end, 
-    },
-    -- match-up is a plugin that lets you highlight
-	"andymass/vim-matchup",
-    -- Select increasingly larger regions of text using the same key combination
-    "terryma/vim-expand-region",
- 	-- A simple, easy-to-use Vim alignment plugin	
-    "junegunn/vim-easy-align",
+			-- Simple and easy statusline.
+			--  You could remove this setup call if you don't like it,
+			--  and try some other statusline plugin
+			require("mini.statusline").setup({ set_vim_settings = false })
+			require("mini.comment").setup({
+				options = {
+					custom_commentstring = function()
+						return require("ts_context_commentstring.internal").calculate_commentstring()
+							or vim.bo.commentstring
+					end,
+				},
+                -- Module mappings. Use `''` (empty string) to disable one.
+                mappings = {
+                    -- Toggle comment (like `gcip` - comment inner paragraph) for both
+                    -- Normal and Visual modes
+                    comment = 'gc',
+
+                    -- Toggle comment on current line
+                    comment_line = '<Leader>cc',
+
+                    -- Toggle comment on visual selection
+                    comment_visual = 'gc',
+
+                    -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+                    -- Works also in Visual mode if mapping differs from `comment_visual`
+                    textobject = 'gc',
+                },
+			})
+			require("mini.pairs").setup()
+			require("mini.bracketed").setup()
+			require("mini.align").setup({
+                -- Module mappings. Use `''` (empty string) to disable one.
+                mappings = {
+                    start = '<Leader>a',
+                    start_with_preview = 'gA',
+                },
+            })
+
+			-- ... and there is more!
+			--  Check out: https://github.com/echasnovski/mini.nvim
+		end,
+	},
+
     -- The Multicursor Plugin for Neovim extends the native Neovim text editing capabilities
     {
         "smoka7/multicursors.nvim",
@@ -130,4 +159,21 @@ require("lazy").setup({
     "hrsh7th/vim-eft",
    	-- a plugin to place, toggle and display marks
     "kshenoy/vim-signature",
+    -- match-up is a plugin that lets you highlight
+	"andymass/vim-matchup",
+    -- a smooth scrolling neovim plugin written in lua
+    {
+		"karb94/neoscroll.nvim",
+		config = function()
+            require('neoscroll').setup {}
+        end, 
+    },
+    -- comment
+	-- "numToStr/Comment.nvim",
+	-- autopairs
+	-- "windwp/nvim-autopairs",
+    -- Select increasingly larger regions of text using the same key combination
+    -- "terryma/vim-expand-region",
+ 	-- A simple, easy-to-use Vim alignment plugin	
+    -- "junegunn/vim-easy-align",
 })
