@@ -119,8 +119,9 @@ handlers.on_attach = function(client, bufnr)
 	end
 
 	map('n', 'gH', vim.lsp.buf.hover,         { desc = "LSP show information about symbol under cursor" })
-	map('n', '<localleader>r',  vim.lsp.buf.code_action,   { desc = "LSP code actions" })
-	map('n', '<localleader>e',  vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+	map('n', '<leader>ca',  vim.lsp.buf.code_action,   { desc = "LSP code actions" })
+	map('n', '<localleader>e',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+	map('n', '<localleader>q',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 	map('n', 'gl', maybe_omnisharp('lsp_references',  { telescope = true }), { desc = "LSP list references" })
 	map('n', 'go', maybe_omnisharp('lsp_definitions', { telescope = true }), { desc = "LSP go to definition" })
     map('n', '<localleader>di', maybe_omnisharp('lsp_implementations', { telescope = true}),

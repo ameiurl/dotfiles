@@ -36,9 +36,12 @@ require("lazy").setup({
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } },
+        dependencies = { 
+            "nvim-lua/plenary.nvim",
+            {"nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            "nvim-telescope/telescope-ui-select.nvim",
+        }
     },
-    "nvim-telescope/telescope-ui-select.nvim",
 
     -- LSP
     "neovim/nvim-lspconfig",
