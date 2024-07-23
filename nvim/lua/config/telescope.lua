@@ -166,3 +166,10 @@ function _G.__telescope_buffers()
     )
 end
 vim.keymap.set('n', '<leader>b', '<CMD>lua __telescope_buffers()<CR>',                    	{ desc = "Telescope list buffer" })
+vim.keymap.set("n", "<leader>/", function()
+				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+					winblend = 10,
+					previewer = false,
+				}))
+			end)

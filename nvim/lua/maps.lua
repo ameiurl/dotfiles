@@ -40,7 +40,7 @@ map('n', '<C-o>', [[<Cmd>b#<CR>]])
 map('n', 'U', [[<C-r>]])
 map('n', 'gj', [[J]])
 map('n', 'gh', [[/<c-r>=expand("<cword>")<CR><CR>N]])
-map('n', '<leader>/', [[:nohls<CR>]])
+map('n', '<ESC>', [[:nohls<CR>]])
 map('n', '<leader>w', [[:w<CR>]])
 map('n', '<leader>sa', [[ggVG]])
 
@@ -103,8 +103,8 @@ map('x', '<C-r>', replace_all, { desc = "Replace all selected text in buffer" })
 -- Plugin keybinds --------------------------------------------------------------------
 
 -- vim-expand-region
--- map('v', 'v', [[<Plug>(expand_region_expand)]])
--- map('v', 'v', [[<Plug>(expand_region_expand)]])
+map('v', 'v', [[<Plug>(expand_region_expand)]])
+map('v', 'v', [[<Plug>(expand_region_expand)]])
 
 -- vim-easy-align
 -- map('n', '<Leader>a', [[<Plug>(EasyAlign)]])
