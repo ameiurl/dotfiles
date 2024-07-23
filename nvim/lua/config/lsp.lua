@@ -53,45 +53,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 require('lspconfig.ui.windows').default_options.border = "rounded"
 
----@param f fun()
-local function try(f)
-	return function()
-		return pcall(f)
-	end
-end
-
----@param action string
-local function try_fancy(action)
-	local try_telescope = try(function()
-		require('telescope.builtin')[action]({ show_line = false })
-	end)
-
-	local try_trouble = try(function()
-		vim.api.nvim_command('Trouble ' .. action)
-	end)
-
-	return function()
-		if not (try_telescope() or try_trouble()) then
-			({	lsp_declarations     = vim.lsp.buf.declaration,
-				lsp_definitions      = vim.lsp.buf.definition,
-				lsp_type_definitions = vim.lsp.buf.type_definition,
-				lsp_references       = vim.lsp.buf.references,
-				lsp_implementations  = vim.lsp.buf.implementation,
-			})[action]()
-		end
-	end
-end
-
-local function nice_diagnostics(opts)
-	opts = opts or {}
-	opts.scope = opts.scope or 'document'
-	return function()
-		if not pcall(function() vim.api.nvim_command('Trouble ' .. opts.scope .. '_diagnostics') end) then
-			vim.diagnostic.setqflist { open = true }
-		end
-	end
-end
-
 local handlers = {}
 handlers.on_attach = function(client, bufnr)
 	if pcall(function() return vim.api.nvim_buf_get_var(bufnr, 'UserLspAttached') == 1 end) then
@@ -99,44 +60,19 @@ handlers.on_attach = function(client, bufnr)
 	end
 	vim.api.nvim_buf_set_var(bufnr, 'UserLspAttached', 1)
 
-	-- require('user.lsp.navic').try_attach(client, bufnr)
-
-	-- require('user.settings.keymaps').lsp_setup(client, bufnr)
-
 	local function map(mode, lhs, rhs, opts)
 		opts = vim.tbl_extend("force", opts or {}, { remap = false, silent = true, buffer = bufnr })
 		vim.keymap.set(mode, lhs, rhs, opts)
 	end
 
-	--- Custom actions from Hoffs/omnisharp-extended-lsp.nvim should be used when the client is Omnisharp
-	---@param method_name string
-	---@param opts? table
-	---@return function
-	local function maybe_omnisharp(method_name, opts)
-		return client.name == 'omnisharp'
-			and require('omnisharp_extended')[((opts or {}).telescope and 'telescope_' or '') .. method_name]
-			or try_fancy(method_name)
-	end
-
-	map('n', 'gH', vim.lsp.buf.hover,         { desc = "LSP show information about symbol under cursor" })
-	map('n', '<leader>ca',  vim.lsp.buf.code_action,   { desc = "LSP code actions" })
-	map('n', '<localleader>e',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-	map('n', '<localleader>q',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-	map('n', 'gl', maybe_omnisharp('lsp_references',  { telescope = true }), { desc = "LSP list references" })
-	map('n', 'go', maybe_omnisharp('lsp_definitions', { telescope = true }), { desc = "LSP go to definition" })
-    map('n', '<localleader>di', maybe_omnisharp('lsp_implementations', { telescope = true}),
-		{ desc = "LSP list implementations" })
-
-	map({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, { desc = "LSP signature help" })
+	map('n', '<leader>e',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+	map('n', '<leader>l',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 	map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 	map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
-	map('n', '<localleader>dh', nice_diagnostics { scope = 'workspace' }, { desc = "Show workspace diagnostics" })
-	map('n', '<localleader>dd', nice_diagnostics { scope = 'document' }, { desc = "Show document diagnostics" })
-
-	map('n', '<localleader>gd', try_fancy("lsp_declarations"), { desc = "LSP go to declaration of symbol" })
-	map('n', '<localleader>gn', vim.lsp.buf.rename, { desc = "LSP rename symbol" })
+    map('n', "go", require("telescope.builtin").lsp_definitions, { desc = "Jump to the definition of the word under your cursor" })
+    map('n', "gl", require("telescope.builtin").lsp_references, { desc = "Find references for the word under your cursor" })
 
 	-- Formatting commands
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(opts)

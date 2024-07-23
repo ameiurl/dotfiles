@@ -81,10 +81,10 @@ require("lazy").setup({
   --   },
 
     -- A pretty list for showing diagnostics
-	"folke/trouble.nvim",
+	-- "folke/trouble.nvim",
 
     -- A tree like view for symbols
-	"simrat39/symbols-outline.nvim",
+	-- "simrat39/symbols-outline.nvim",
 
 	-- Git
 	"lewis6991/gitsigns.nvim",

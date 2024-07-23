@@ -129,24 +129,16 @@ telescope.load_extension('fzf')
 
 -- telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ta', builtin.live_grep,                 { desc = "Telescope live-grep all files" })
-vim.keymap.set('n', '<leader>tw', builtin.grep_string,               { desc = "Telescope grep symbol under cursor" })
-vim.keymap.set('n', '<leader>f',  builtin.find_files,                { desc = "Telescope fuzzy-search for files" })
-vim.keymap.set('n', '<leader>ts', builtin.treesitter,                { desc = "Telescope list treesitter symbols in buffer" })
--- vim.keymap.set('n', '<leader>qh', builtin.quickfixhistory,           { desc = "Telescope list quickfix history" })
+vim.keymap.set('n', '<leader>f',  builtin.find_files,               { desc = "Telescope fuzzy-search for files" })
+vim.keymap.set('n', '<leader>tw', builtin.grep_string,              { desc = "Telescope grep symbol under cursor" })
+vim.keymap.set('n', '<leader>ta', builtin.live_grep,                { desc = "Telescope live-grep all files" })
 vim.keymap.set('n', '<leader>th', builtin.oldfiles,           		{ desc = "Telescope list history" })
--- vim.keymap.set('n', '<leader>rg', builtin.current_buffer_fuzzy_find, { desc = "Telescope grep inside current buffer" })
-vim.keymap.set('n', '<leader>tt', builtin.resume,                    { desc = "Telescope resume last session" })
-vim.keymap.set('n', '<leader>tm', builtin.marks,                    	{ desc = "Telescope list marks" })
+vim.keymap.set('n', '<leader>tt', builtin.resume,                   { desc = "Telescope resume last session" })
+vim.keymap.set('n', '<leader>ts', builtin.treesitter,               { desc = "Telescope list treesitter symbols in buffer" })
+vim.keymap.set('n', '<leader>tm', builtin.marks,                    { desc = "Telescope list marks" })
+vim.keymap.set('n', '<leader>td', builtin.diagnostics,              { desc = "Telescope list diagnostics" })
 vim.keymap.set('n', '<leader>tg', "<CMD>lua require('telescope.builtin').grep_string { search = 'n '.. vim.fn.expand('<cword>')}<CR>", { desc = "Telescope grep n+ under cursor word" })
 vim.keymap.set('n', '<leader>tf', "<CMD>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>",   { desc = "Telescope list buffer" })
-vim.keymap.set('n', '<Leader>tb', function()
-	if not pcall(function() builtin.buffers() end) then
-		-- This is the kind of stupid shit I have to go through just to emulate keypresses
-		local cmdstr = vim.api.nvim_replace_termcodes(':ls<CR>:b', true, false, true)
-		vim.api.nvim_feedkeys(cmdstr, 'n', false)
-	end
-end, { desc = "List open buffers in telescope, or with :ls if telescope can't be loaded" })
 function _G.__telescope_buffers()
     require('telescope.builtin').buffers(
         require('telescope.themes').get_dropdown {
@@ -167,9 +159,9 @@ function _G.__telescope_buffers()
 end
 vim.keymap.set('n', '<leader>b', '<CMD>lua __telescope_buffers()<CR>',                    	{ desc = "Telescope list buffer" })
 vim.keymap.set("n", "<leader>/", function()
-				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 10,
-					previewer = false,
-				}))
-			end)
+    -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        winblend = 10,
+        previewer = false,
+    }))
+end)
