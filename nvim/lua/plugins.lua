@@ -27,7 +27,6 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		dependencies = { "nvim-treesitter/playground" },
 	},
-
 	"nvim-treesitter/nvim-treesitter-context",
 	"nvim-treesitter/nvim-treesitter-refactor",
 	"nvim-treesitter/nvim-treesitter-textobjects",
@@ -88,8 +87,8 @@ require("lazy").setup({
 
 	-- Git
 	"lewis6991/gitsigns.nvim",
-	'kdheepak/lazygit.nvim',
-    'tpope/vim-fugitive',
+    "tpope/vim-fugitive",
+	"kdheepak/lazygit.nvim",
 
      -- Collection of various small independent plugins/modules
 	"echasnovski/mini.nvim",

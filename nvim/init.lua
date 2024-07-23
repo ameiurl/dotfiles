@@ -1,5 +1,5 @@
 require("settings")
 require("plugins")
 require("config")
-require("maps")
+require("keymaps")
 require('colorscheme').setup {}
