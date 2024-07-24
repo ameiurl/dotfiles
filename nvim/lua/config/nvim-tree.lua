@@ -193,7 +193,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 })
 
 -- nvim-tree
-vim.keymap.set('n', '<Tab>', [[<Cmd>NvimTreeToggle<CR>]])
+-- vim.keymap.set('n', '<Tab>', [[<Cmd>NvimTreeToggle<CR>]])
 
 vim.g.nvim_tree_width = 45
 local g = vim.g

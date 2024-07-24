@@ -32,10 +32,10 @@ ts.setup {
 	incremental_selection = {
 		enable = true,
         keymaps = {
-            init_selection = "gnn", -- set to `false` to disable one of the mappings
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+            init_selection = "<Cr>",
+            node_incremental = "<Cr>",
+            scope_incremental = false,
+            node_decremental = "<bs>",
         },
 	},
 	indent = {
