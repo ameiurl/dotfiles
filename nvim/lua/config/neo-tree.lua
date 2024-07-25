@@ -1,17 +1,3 @@
---require("window-picker").setup({
---	filter_rules = {
---		include_current_win = false,
---		autoselect_one = true,
---		-- filter using buffer options
---		bo = {
---			-- if the file type is one of following, the window will be ignored
---			filetype = { "neo-tree", "neo-tree-popup", "notify" },
---			-- if the buffer type is one of following, the window will be ignored
---			buftype = { "terminal", "quickfix" },
---		},
---	},
---})
-
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
@@ -132,6 +118,13 @@ require("neo-tree").setup({
           state.commands.toggle_node(state)
         end
       end,
+        find_in_dir = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            require("telescope.builtin").find_files({
+                cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
+            })
+        end,
     },
 	window = {
 		position = "left",
@@ -144,6 +137,7 @@ require("neo-tree").setup({
             ["<space>"] = "none",
             ["h"] = "parent_or_close",
             ["l"] = "child_or_open",
+            ["F"] = "find_in_dir",
 			-- ["h"] = {
 				-- "toggle_node",
 				-- nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
@@ -312,38 +306,6 @@ require("neo-tree").setup({
 		},
 	},
 })
-
--- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
--- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
-
---require("image").setup({
---  backend = "kitty",
---  integrations = {
---    markdown = {
---      enabled = true,
---      clear_in_insert_mode = false,
---      download_remote_images = true,
---      only_render_image_at_cursor = false,
---      filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
---    },
---    neorg = {
---      enabled = true,
---      clear_in_insert_mode = false,
---      download_remote_images = true,
---      only_render_image_at_cursor = false,
---      filetypes = { "norg" },
---    },
---  },
---  max_width = nil,
---  max_height = nil,
---  max_width_window_percentage = nil,
---  max_height_window_percentage = 50,
---  window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
---  window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
---  editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
---  tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
---  hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
---})
 
 vim.keymap.set('n', '<Tab>', [[<Cmd>Neotree toggle<CR>]])
 vim.keymap.set("n", "<Leader>e", ":Neotree toggle<Return>")

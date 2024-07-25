@@ -60,13 +60,13 @@ require("lazy").setup({
 	"ameiurl/friendly-snippets",
 
 	-- File manager
-    {	
-        "kyazdani42/nvim-tree.lua",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-		},
-    },
+		--   {	
+		--       "kyazdani42/nvim-tree.lua",
+		-- requires = {
+		-- 	"nvim-lua/plenary.nvim",
+		-- 	"nvim-tree/nvim-web-devicons",
+		-- },
+		--   },
     {
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v3.x',
