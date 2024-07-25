@@ -125,6 +125,15 @@ require("neo-tree").setup({
                 cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
             })
         end,
+        copy_path = function(state)
+            local node = state.tree:get_node()
+            local filepath = node:get_id()
+            local filename = node.name
+            local modify = vim.fn.fnamemodify
+            local result = modify(filepath, ":.")
+            vim.notify(("Copied: `%s`"):format(result))
+            vim.fn.setreg("+", result)
+        end,
         copy_selector = function(state)
             local node = state.tree:get_node()
             local filepath = node:get_id()
@@ -229,7 +238,8 @@ require("neo-tree").setup({
 			["<"] = "prev_source",
 			[">"] = "next_source",
 			["i"] = "show_file_details",
-            ["Y"] = "copy_selector",
+            -- ["Y"] = "copy_selector",
+            ["Y"] = "copy_path",
 		},
 	},
 	nesting_rules = {},
