@@ -6,6 +6,7 @@ local options = {
 	cmdheight      = 1,                               -- space in cmdline for messages
 	-- colorcolumn    = "+1",                            -- marks desired rightmost document edge
 	completeopt    = { "menuone", "noselect" },       -- cmp stuff
+	backspace      = { "indent","eol","start" },      -- 
 	conceallevel   = 0,                               -- makes `` visible in markdown
 	cursorline     = true,                            -- underline the whole line at cursor
 	expandtab      = true,                            -- auto turn tabs to spaces

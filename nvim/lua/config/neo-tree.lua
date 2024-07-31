@@ -206,7 +206,7 @@ require("neo-tree").setup({
 			-- ["t"] = "open_tab_drop",
 			["w"] = "open_with_window_picker",
 			--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-			["C"] = "close_node",
+			-- ["C"] = "close_node",
 			-- ['C'] = 'close_all_subnodes',
 			["z"] = "close_all_nodes",
 			--["Z"] = "expand_all_nodes",
@@ -238,7 +238,7 @@ require("neo-tree").setup({
 			["<"] = "prev_source",
 			[">"] = "next_source",
 			["i"] = "show_file_details",
-            -- ["Y"] = "copy_selector",
+            ["C"] = "copy_selector",
             ["Y"] = "copy_path",
 		},
 	},
@@ -361,8 +361,8 @@ require("neo-tree").setup({
 vim.keymap.set('n', '<Tab>', [[<Cmd>Neotree toggle<CR>]])
 vim.keymap.set("n", "<Leader>e", ":Neotree toggle<Return>")
 vim.keymap.set("v", "<Leader>e", ":Neotree toggle<Return>")
-vim.keymap.set("n", "<C-f>", ":Neotree focus<Return>")
-vim.keymap.set("v", "<C-f>", ":Neotree focus<Return>")
-vim.keymap.set("n", "gs", ":Neotree git_status<Return>")
-vim.keymap.set("v", "gs", ":Neotree git_status<Return>")
-vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+-- vim.keymap.set("n", "<C-f>", ":Neotree focus<Return>")
+-- vim.keymap.set("v", "<C-f>", ":Neotree focus<Return>")
+-- vim.keymap.set("n", "gs", ":Neotree git_status<Return>")
+-- vim.keymap.set("v", "gs", ":Neotree git_status<Return>")
+-- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])

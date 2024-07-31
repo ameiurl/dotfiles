@@ -40,7 +40,7 @@ map('n', '<C-o>', [[<Cmd>b#<CR>]])
 map('n', 'U', [[<C-r>]])
 map('n', 'gj', [[J]])
 map('n', 'gh', [[/<c-r>=expand("<cword>")<CR><CR>N]])
-map('n', '<ESC>', [[:nohls<CR>]])
+map('n', '<Leader>/', [[:nohls<CR>]])
 map('n', '<leader>w', [[:w<CR>]])
 map('n', '<leader>sa', [[ggVG]])
 
