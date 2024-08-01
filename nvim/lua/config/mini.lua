@@ -35,5 +35,11 @@ require("mini.align").setup({
         start_with_preview = 'gA',
     },
 })
+vim.keymap.set("n", "<leader>d", function()
+    require("mini.bufremove").delete(0, false)
+end, { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>D", function()
+    require("mini.bufremove").delete(0, true)
+end, { desc = "Force close buffer" })
 -- ... and there is more!
 --  Check out: https://github.com/echasnovski/mini.nvim

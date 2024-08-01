@@ -79,7 +79,7 @@ require("lazy").setup({
 
     -- bufferline
 	"akinsho/bufferline.nvim",
-	"moll/vim-bbye",
+	-- "moll/vim-bbye",
 
 	-- Statusline
   --   {

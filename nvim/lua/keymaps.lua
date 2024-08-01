@@ -35,7 +35,6 @@ map('n', 'g*', [[g*zz]])
 
 -- Bbye commands
 map('n', '<Leader>q', [[<Cmd>:q<CR>]])
-map('n', '<Leader>d', [[<Cmd>Bdelete<CR>]])
 map('n', '<C-o>', [[<Cmd>b#<CR>]])
 map('n', 'U', [[<C-r>]])
 map('n', 'gj', [[J]])
