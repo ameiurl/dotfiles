@@ -196,7 +196,7 @@ require("neo-tree").setup({
 			["<esc>"] = "cancel", -- close preview or floating neo-tree window
 			["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
 			-- Read `# Preview Mode` for more information
-			["<cr>"] = "focus_preview",
+			["<cr>"] = "open",
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
@@ -359,10 +359,10 @@ require("neo-tree").setup({
 })
 
 vim.keymap.set('n', '<Tab>', [[<Cmd>Neotree toggle<CR>]])
-vim.keymap.set("n", "<Leader>e", ":Neotree toggle<Return>")
-vim.keymap.set("v", "<Leader>e", ":Neotree toggle<Return>")
+-- vim.keymap.set("n", "<Leader>e", ":Neotree toggle<Return>")
+-- vim.keymap.set("v", "<Leader>e", ":Neotree toggle<Return>")
 -- vim.keymap.set("n", "<C-f>", ":Neotree focus<Return>")
 -- vim.keymap.set("v", "<C-f>", ":Neotree focus<Return>")
--- vim.keymap.set("n", "gs", ":Neotree git_status<Return>")
--- vim.keymap.set("v", "gs", ":Neotree git_status<Return>")
+vim.keymap.set("n", "gs", ":Neotree git_status<Return>")
+vim.keymap.set("v", "gs", ":Neotree git_status<Return>")
 -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])

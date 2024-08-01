@@ -93,6 +93,7 @@ require("lazy").setup({
 
     -- A tree like view for symbols
 	-- "simrat39/symbols-outline.nvim",
+    "hedyhli/outline.nvim",
 
 	-- Git
 	"lewis6991/gitsigns.nvim",

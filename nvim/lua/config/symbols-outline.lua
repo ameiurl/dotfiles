@@ -73,4 +73,4 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
-vim.keymap.set('n', '<leader>e', [[<Cmd>SymbolsOutline<CR>]])
+vim.keymap.set('n', '<leader>s', [[<Cmd>SymbolsOutline<CR>]])

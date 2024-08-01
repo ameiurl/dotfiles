@@ -65,8 +65,8 @@ handlers.on_attach = function(client, bufnr)
 		vim.keymap.set(mode, lhs, rhs, opts)
 	end
 
-	map('n', '<leader>e',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-	map('n', '<leader>l',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+	map('n', 'gH',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+	map('n', 'gL',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 	map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 	map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
