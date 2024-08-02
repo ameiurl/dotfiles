@@ -56,9 +56,11 @@ bufferline.setup {
 			return buf.name
 		end,
 		diagnostics_indicator = nil,
+        diagnostics = "nvim_lsp",
 
 		offsets = {
-			{ filetype = 'NvimTree',
+			{ 
+                filetype = 'neo-tree',
 				highlight = 'Visual',
 				separator = false,
 				padding = 1,
@@ -86,3 +88,13 @@ bufferline.setup {
 		end,
 	},
 }
+
+function close_current_buffer()
+	local current_buffer_id = vim.fn.bufnr("%")
+	vim.schedule(function()
+		vim.cmd("bd " .. current_buffer_id)
+	end)
+end
+
+-- vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<leader>d", close_current_buffer)

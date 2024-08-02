@@ -78,7 +78,10 @@ require("lazy").setup({
     },
 
     -- bufferline
-	"akinsho/bufferline.nvim",
+    {
+        'akinsho/bufferline.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 	-- "moll/vim-bbye",
 
 	-- Statusline
@@ -87,6 +90,10 @@ require("lazy").setup({
 		-- event = "BufEnter",
 		-- requires = { "nvim-web-devicons" },
   --   },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 
     -- A pretty list for showing diagnostics
 	-- "folke/trouble.nvim",

@@ -1,7 +1,7 @@
 -- Simple and easy statusline.
 --  You could remove this setup call if you don't like it,
 --  and try some other statusline plugin
-require("mini.statusline").setup({ set_vim_settings = false })
+-- require("mini.statusline").setup({ set_vim_settings = false })
 require("mini.comment").setup({
     options = {
         custom_commentstring = function()
@@ -35,11 +35,11 @@ require("mini.align").setup({
         start_with_preview = 'gA',
     },
 })
-vim.keymap.set("n", "<leader>d", function()
-    require("mini.bufremove").delete(0, false)
-end, { desc = "Close buffer" })
-vim.keymap.set("n", "<leader>D", function()
-    require("mini.bufremove").delete(0, true)
-end, { desc = "Force close buffer" })
--- ... and there is more!
+-- vim.keymap.set("n", "<leader>d", function()
+--     require("mini.bufremove").delete(0, false)
+-- end, { desc = "Close buffer" })
+-- vim.keymap.set("n", "<leader>D", function()
+--     require("mini.bufremove").delete(0, true)
+-- end, { desc = "Force close buffer" })
+-- -- ... and there is more!
 --  Check out: https://github.com/echasnovski/mini.nvim
