@@ -13,5 +13,6 @@ lazygit/*
 mimeapps.list
 navicat/
 nvim/plugin/*
+nvim/lazy-lock.json
 composer/
 vlc/
