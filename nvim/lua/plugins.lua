@@ -137,12 +137,7 @@ require("lazy").setup({
     -- Select increasingly larger regions of text using the same key combination
     "terryma/vim-expand-region",
     -- a smooth scrolling neovim plugin written in lua
-    {
-		"karb94/neoscroll.nvim",
-		config = function()
-            require('neoscroll').setup {}
-        end, 
-    },
+	"karb94/neoscroll.nvim",
     -- comment
 	-- "numToStr/Comment.nvim",
 	-- autopairs
