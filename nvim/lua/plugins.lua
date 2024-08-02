@@ -114,19 +114,7 @@ require("lazy").setup({
     {
         "smoka7/multicursors.nvim",
         event = "VeryLazy",
-        dependencies = {
-            'nvimtools/hydra.nvim',
-        },
-        opts = {},
-        cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-        keys = {
-            {
-                mode = { 'v', 'n' },
-                '<C-m>',
-                '<cmd>MCstart<cr>',
-                desc = 'Create a selection for selected text or word under the cursor',
-            },
-        },
+        dependencies = { 'nvimtools/hydra.nvim' }
     },
     -- This plugin provides f/t/F/T mappings that can be customized by your setting
     "hrsh7th/vim-eft",
