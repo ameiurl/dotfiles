@@ -68,8 +68,29 @@ handlers.on_attach = function(client, bufnr)
 	map('n', 'gH',  vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 	map('n', 'gL',  vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-	map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-	map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+    -- Diagnostic movement
+    local diagnostic_jump = function(count, severity)
+        local severity_int = severity and vim.diagnostic.severity[severity] or nil
+        if vim.fn.has('nvim-0.11') == 1 then
+            return function()
+                vim.diagnostic.jump({ severity = severity_int, count = count })
+            end
+        end
+        -- Pre 0.11
+        ---@diagnostic disable-next-line: deprecated
+        local jump = count > 0 and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+        return function()
+            jump({ severity = severity_int })
+        end
+    end
+	-- map('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+	-- map('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+    map('n', ']d', diagnostic_jump(1), { desc = 'Next Diagnostic' })
+    map('n', '[d', diagnostic_jump(-1), { desc = 'Prev Diagnostic' })
+    map('n', ']e', diagnostic_jump(1, 'ERROR'), { desc = 'Next Error' })
+    map('n', '[e', diagnostic_jump(-1, 'ERROR'), { desc = 'Prev Error' })
+    map('n', ']w', diagnostic_jump(1, 'WARN'), { desc = 'Next Warning' })
+    map('n', '[w', diagnostic_jump(-1, 'WARN'), { desc = 'Prev Warning' })
 
     map('n', "go", require("telescope.builtin").lsp_definitions, { desc = "Jump to the definition of the word under your cursor" })
     map('n', "gl", require("telescope.builtin").lsp_references, { desc = "Find references for the word under your cursor" })

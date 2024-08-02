@@ -9,6 +9,33 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
+local winwidth = 45
+
+local function toggle_width()
+	local max = winwidth * 2
+	local cur_width = vim.fn.winwidth(0)
+	local half = math.floor((winwidth + (max - winwidth) / 2) + 0.4)
+	local new_width = winwidth
+	if cur_width == winwidth then
+		new_width = half
+	elseif cur_width == half then
+		new_width = max
+	else
+		new_width = winwidth
+	end
+	vim.cmd(new_width .. ' wincmd |')
+end
+
+function inc_width_ind()
+    winwidth = winwidth + 5
+	vim.cmd(winwidth .. ' wincmd |')
+end
+
+function dec_width_ind()
+    winwidth = winwidth - 5
+	vim.cmd(winwidth .. ' wincmd |')
+end
+
 require("neo-tree").setup({
 	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
@@ -209,7 +236,8 @@ require("neo-tree").setup({
 			["t"] = "open_tabnew",
 			-- ["<cr>"] = "open_drop",
 			-- ["t"] = "open_tab_drop",
-			["w"] = "open_with_window_picker",
+			-- ["w"] = "open_with_window_picker",
+            ['w'] = toggle_width,
 			--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
 			-- ["C"] = "close_node",
 			-- ['C'] = 'close_all_subnodes',
@@ -245,6 +273,8 @@ require("neo-tree").setup({
 			["i"] = "show_file_details",
             ["C"] = "copy_selector",
             ["Y"] = "copy_path",
+            ["<C-Left>"] = dec_width_ind,
+            ["<C-Right>"] = inc_width_ind,
 		},
 	},
 	nesting_rules = {},

@@ -99,6 +99,20 @@ local function replace_all()
 end
 map('x', '<C-r>', replace_all, { desc = "Replace all selected text in buffer" })
 
+-- Yank buffer's relative path to clipboard
+map('n', '<Leader>y', function()
+	local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':~:.') or ''
+	vim.fn.setreg('+', path)
+	vim.notify(path, vim.log.levels.INFO, { title = 'Yanked relative path' })
+end, { silent = true, desc = 'Yank relative path' })
+
+-- Yank absolute path
+map('n', '<Leader>Y', function()
+	local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p') or ''
+	vim.fn.setreg('+', path)
+	vim.notify(path, vim.log.levels.INFO, { title = 'Yanked absolute path' })
+end, { silent = true, desc = 'Yank absolute path' })
+
 -- Plugin keybinds --------------------------------------------------------------------
 
 -- vim-expand-region
