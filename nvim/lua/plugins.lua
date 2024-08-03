@@ -60,13 +60,6 @@ require("lazy").setup({
 	"ameiurl/friendly-snippets",
 
 	-- File manager
-		--   {	
-		--       "kyazdani42/nvim-tree.lua",
-		-- requires = {
-		-- 	"nvim-lua/plenary.nvim",
-		-- 	"nvim-tree/nvim-web-devicons",
-		-- },
-		--   },
     {
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v3.x',
@@ -82,24 +75,14 @@ require("lazy").setup({
         'akinsho/bufferline.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
-	-- "moll/vim-bbye",
 
 	-- Statusline
-  --   {
-		-- "glepnir/galaxyline.nvim",
-		-- event = "BufEnter",
-		-- requires = { "nvim-web-devicons" },
-  --   },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
-    -- A pretty list for showing diagnostics
-	-- "folke/trouble.nvim",
-
     -- A tree like view for symbols
-	-- "simrat39/symbols-outline.nvim",
     "hedyhli/outline.nvim",
 
 	-- Git
@@ -126,10 +109,4 @@ require("lazy").setup({
     "terryma/vim-expand-region",
     -- a smooth scrolling neovim plugin written in lua
 	"karb94/neoscroll.nvim",
-    -- comment
-	-- "numToStr/Comment.nvim",
-	-- autopairs
-	-- "windwp/nvim-autopairs",
- 	-- A simple, easy-to-use Vim alignment plugin	
-    -- "junegunn/vim-easy-align",
 })
