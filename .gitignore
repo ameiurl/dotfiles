@@ -12,7 +12,8 @@ lazygit/*
 !lazygit/config.yaml
 mimeapps.list
 navicat/
-nvim/plugin/*
+nvim/
 nvim/lazy-lock.json
 composer/
 vlc/
+github-copilot/
