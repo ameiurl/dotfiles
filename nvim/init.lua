@@ -1,5 +1,3 @@
-require("settings")
-require("plugins")
-require("config")
-require("keymaps")
-require('colorscheme').setup {}
+require('config.options')
+require('config.mappings')
+require('config.lazy')
