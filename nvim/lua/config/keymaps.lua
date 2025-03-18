@@ -18,20 +18,15 @@ map('n', '<C-y>', [[5<C-y>]])
 map('n', 'K', [[<Esc>5<up>]])
 map('n', 'J', [[<Esc>5<down>]])
 
-map('n', 'k', [[gk]])
-map('n', 'gk', [[k]])
-map('n', 'j', [[gj]])
-map('n', 'gj', [[j]])
+-- better up/down
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 map('n', 'n', [[nzz]])
 map('n', 'N', [[Nzz]])
 map('n', '*', [[*zz]])
 map('n', '#', [[#zz]])
 map('n', 'g*', [[g*zz]])
-
--- Move lines
--- map('n', '<S-j>', [[<Cmd>move .+1<CR>==]])
--- map('n', '<S-k>', [[<Cmd>move .-2<CR>==]])
 
 -- Bbye commands
 map('n', '<Leader>q', [[<Cmd>:q<CR>]])
@@ -53,6 +48,21 @@ map('n', '<C-S-Right>', [[2<C-w>>]])
 map('n', '<C-n>', [[<Cmd>bnext<CR>]])
 map('n', '<C-p>', [[<Cmd>bprev<CR>]])
 
+-- Ctrl+V for pasting from system clipboard
+vim.cmd [[
+    " system clipboard
+    nmap <c-c> "+y
+    vmap <c-c> "+y
+    imap <c-v> "+p
+    vmap <c-x> "+d
+    inoremap <c-v> <c-r>+
+    cnoremap <c-v> <c-r>+
+    " use <c-r> to insert original character without triggering things like auto-pairs
+    inoremap <c-r> <c-v>
+]]
+
+-- Search for visually selected text
+map("v", "//", 'y/<C-R>"<cr>', { silent = true })
 
 -- Visual -----------------------------------------------------------------------------
 
@@ -78,27 +88,6 @@ map('x', 'p', [["_dP]])
 -- Select Last Copy
 map('n', 'gV', [[`[v`] ]])
 
--- Replace text command
-local function replace_all()
-	local query = vim.fn.strcharpart(
-		vim.fn.getline(vim.fn.line('.')),
-		vim.fn.min({
-			vim.fn.charcol('.'),
-			vim.fn.charcol('v'),
-		}) - 1,
-		vim.fn.abs(vim.fn.charcol('.') - vim.fn.charcol('v')) + 1
-	)
-
-	vim.fn.inputsave()
-	local answer = vim.fn.input("Replace text: ", query)
-	vim.api.nvim_command(
-		'%s/\\V' .. query:gsub('/','\\/') .. '/' .. answer:gsub('/','\\/') .. '/ge'
-	)
-	vim.fn.inputrestore()
-	vim.api.nvim_feedkeys('v', 'n', false)
-end
-map('x', '<C-r>', replace_all, { desc = "Replace all selected text in buffer" })
-
 -- Yank buffer's relative path to clipboard
 map('n', '<Leader>y', function()
 	local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':~:.') or ''
@@ -112,32 +101,3 @@ map('n', '<Leader>Y', function()
 	vim.fn.setreg('+', path)
 	vim.notify(path, vim.log.levels.INFO, { title = 'Yanked absolute path' })
 end, { silent = true, desc = 'Yank absolute path' })
-
--- Plugin keybinds --------------------------------------------------------------------
-
--- vim-expand-region
-map('v', 'v', [[<Plug>(expand_region_expand)]])
-map('v', 'v', [[<Plug>(expand_region_expand)]])
-
--- vim-easy-align
--- map('n', '<Leader>a', [[<Plug>(EasyAlign)]])
--- map('v', '<Leader>a', [[<Plug>(EasyAlign)]])
-
--- vim-eft
-map('n', ';', [[<Plug>(eft-repeat)]])
-map('x', ';', [[<Plug>(eft-repeat)]])
-map('n', 'f', [[<Plug>(eft-f)]])
-map('x', 'f', [[<Plug>(eft-f)]])
-map('o', 'f', [[<Plug>(eft-f)]])
-map('n', 'F', [[<Plug>(eft-F)]])
-map('x', 'F', [[<Plug>(eft-F)]])
-map('o', 'F', [[<Plug>(eft-F)]])
-map('n', 't', [[<Plug>(eft-t)]])
-map('x', 't', [[<Plug>(eft-t)]])
-map('o', 't', [[<Plug>(eft-t)]])
-map('n', 'T', [[<Plug>(eft-T)]])
-map('x', 'T', [[<Plug>(eft-T)]])
-map('o', 'T', [[<Plug>(eft-T)]])
-
--- lazyGit
-map('n', '<leader>gg', [[<Cmd>LazyGit<CR>]])
