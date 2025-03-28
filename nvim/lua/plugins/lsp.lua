@@ -8,8 +8,8 @@ return {
             "Issafalcon/lsp-overloads.nvim",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
-            "jay-babu/mason-null-ls.nvim",
+            -- "jose-elias-alvarez/null-ls.nvim",
+            -- "jay-babu/mason-null-ls.nvim",
             "j-hui/fidget.nvim",
         }
     },
@@ -152,7 +152,7 @@ return {
             print("Couldn't load 'cmp_nvim_lsp' nor update capabilities")
         end
 
-        require('lspconfig').gdscript.setup {
+        require('lspconfig').gleam.setup {
             on_attach    = handlers.on_attach,
             capabilities = handlers.capabilities,
         }
@@ -191,55 +191,55 @@ return {
         require('fidget').setup()
 
         -- Null-Ls for formatting and linting using external tools.
-        local null_ls = require 'null-ls'
-        null_ls.setup {
-            sources = {
-                -- Eslint
-                null_ls.builtins.code_actions.eslint_d,
-                null_ls.builtins.formatting.eslint_d.with {
-                    condition = function(utils)
-                        return utils.root_has_file { '.eslintrc.js', '.eslintrc.json' }
-                    end,
-                },
-                null_ls.builtins.diagnostics.eslint_d.with {
-                    condition = function(utils)
-                        return utils.root_has_file { '.eslintrc.js', '.eslintrc.json' }
-                    end,
-                },
+        --local null_ls = require 'null-ls'
+        --null_ls.setup {
+        --    sources = {
+        --        -- Eslint
+        --        null_ls.builtins.code_actions.eslint_d,
+        --        null_ls.builtins.formatting.eslint_d.with {
+        --            condition = function(utils)
+        --                return utils.root_has_file { '.eslintrc.js', '.eslintrc.json' }
+        --            end,
+        --        },
+        --        null_ls.builtins.diagnostics.eslint_d.with {
+        --            condition = function(utils)
+        --                return utils.root_has_file { '.eslintrc.js', '.eslintrc.json' }
+        --            end,
+        --        },
 
-                -- Markdown.
-                null_ls.builtins.formatting.markdownlint,
-                null_ls.builtins.diagnostics.markdownlint.with {
-                    extra_args = { '--disable', 'line-length' },
-                },
+        --        -- Markdown.
+        --        null_ls.builtins.formatting.markdownlint,
+        --        null_ls.builtins.diagnostics.markdownlint.with {
+        --            extra_args = { '--disable', 'line-length' },
+        --        },
 
-                -- Php (PHPCS, PHPCBF, PHPStan)
-                null_ls.builtins.diagnostics.phpcs.with { -- Use the local installation first
-                    diagnostics_format = '#{m} (#{c}) [#{s}]', -- Makes PHPCS errors more readeable
-                    only_local = 'vendor/bin',
-                },
-                null_ls.builtins.formatting.phpcbf.with {
-                    prefer_local = 'vendor/bin',
-                },
-                null_ls.builtins.diagnostics.phpstan,
+        --        -- Php (PHPCS, PHPCBF, PHPStan)
+        --        null_ls.builtins.diagnostics.phpcs.with { -- Use the local installation first
+        --            diagnostics_format = '#{m} (#{c}) [#{s}]', -- Makes PHPCS errors more readeable
+        --            only_local = 'vendor/bin',
+        --        },
+        --        null_ls.builtins.formatting.phpcbf.with {
+        --            prefer_local = 'vendor/bin',
+        --        },
+        --        null_ls.builtins.diagnostics.phpstan,
 
-                -- Prettier and spelling
-                null_ls.builtins.formatting.prettierd,
+        --        -- Prettier and spelling
+        --        null_ls.builtins.formatting.prettierd,
 
-                -- Spelling
-                null_ls.builtins.completion.spell, -- You still need to execute `:set spell`
-                -- null_ls.builtins.diagnostics.cspell,
-                null_ls.builtins.code_actions.cspell,
-            },
-        }
+        --        -- Spelling
+        --        null_ls.builtins.completion.spell, -- You still need to execute `:set spell`
+        --        -- null_ls.builtins.diagnostics.cspell,
+        --        null_ls.builtins.code_actions.cspell,
+        --    },
+        --}
 
         -- Install linting and formating apps using Mason.
-        local mason_nullls = require 'mason-null-ls'
-        mason_nullls.setup {
-            ensure_installed = { 'stylua', 'jq', 'prettierd', 'markdownlint' },
-            automatic_installation = true,
-            automatic_setup = true,
-        }
+        -- local mason_nullls = require 'mason-null-ls'
+        -- mason_nullls.setup {
+        --     ensure_installed = { 'stylua', 'jq', 'prettierd', 'markdownlint' },
+        --     automatic_installation = true,
+        --     automatic_setup = true,
+        -- }
 
     end,
 }
