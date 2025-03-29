@@ -23,5 +23,5 @@ require('lazy').setup('plugins', {
         enabled = true,
         -- get a notification when changes are found
         notify = false,
-    },	
+    },
 })
