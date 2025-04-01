@@ -14,21 +14,6 @@ return {
         }
     },
     config = function()
-        local signs = {
-            { name = "DiagnosticSignError", text = " " },
-            { name = "DiagnosticSignWarn",  text = " " },
-            { name = "DiagnosticSignInfo",  text = " " },
-            { name = "DiagnosticSignHint",  text = "" },
-        }
-
-        for _, sign in ipairs(signs) do
-            vim.fn.sign_define(sign.name, {
-                texthl = sign.name,
-                text   = sign.text,
-                numhl  = "",
-            })
-        end
-
         local diagnostics_icons = {
             ERROR = ' ',
             WARN = '',
@@ -55,6 +40,12 @@ return {
             },
             signs = {
                 active = signs,
+                text = {
+                    [vim.diagnostic.severity.ERROR] = ' ',
+                    [vim.diagnostic.severity.WARN] = ' ',
+                    [vim.diagnostic.severity.INFO] = ' ',
+                    [vim.diagnostic.severity.HINT] = '',
+                }
             },
             update_in_insert = true,
             severity_sort    = true,

@@ -6,6 +6,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias lg='lazygit'
 alias rg='ranger'
+alias yz='yazi'
 alias j='jobs'
 # git
 alias gst='git status'
