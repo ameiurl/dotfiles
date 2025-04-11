@@ -7,8 +7,8 @@ return {
             let g:VM_custom_motions             = {'h': 'l', 'l': 'h'}
             let g:VM_maps['i']                  = 'i'
             let g:VM_maps['I']                  = 'I'
-            let g:VM_maps['Find Under']         = '<C-k>'
-            let g:VM_maps['Find Subword Under'] = '<C-k>'
+            let g:VM_maps['Find Under']         = '<C-m>'
+            let g:VM_maps['Find Subword Under'] = '<C-m>'
             let g:VM_maps['Find Next']          = ''
             let g:VM_maps['Find Prev']          = ''
             let g:VM_maps['Remove Region']      = 'q'
