@@ -42,17 +42,16 @@ map('n', 'J', [[<Esc>5<down>]])
 
 -- Bbye commands
 map('n', '<Leader>q', [[<Cmd>:q<CR>]])
-map('n', '<C-o>', [[<Cmd>b#<CR>]])
+map('n', '<leader>w', [[:w<CR>]])
 map('n', 'U', [[<C-r>]])
 map('n', 'gj', [[J]])
 map('n', 'gh', [[/<c-r>=expand("<cword>")<CR><CR>N]])
 map('n', '<Leader>/', [[:nohls<CR>]])
-map('n', '<leader>w', [[:w<CR>]])
-map('n', '<leader>sa', [[ggVG]])
 
 -- Navigate buffers
 map('n', '<C-n>', [[<Cmd>bnext<CR>]])
 map('n', '<C-p>', [[<Cmd>bprev<CR>]])
+map('n', '<C-o>', [[<Cmd>b#<CR>]])
 
 -- Stay in indent mode
 map('v', '<', [[<gv]])
