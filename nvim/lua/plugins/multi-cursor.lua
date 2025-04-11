@@ -2,7 +2,7 @@ return {
 	"mg979/vim-visual-multi",
 	init = function()
 		vim.cmd([[
-            let g:VM_leader                     = {'default': ';', 'visual': ';', 'buffer': ';'}
+            " let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
             let g:VM_maps                       = {}
             let g:VM_custom_motions             = {'h': 'l', 'l': 'h'}
             let g:VM_maps['i']                  = 'i'
