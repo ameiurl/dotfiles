@@ -2,3 +2,10 @@ source ~/.config/zsh/env.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/vi.zsh
+# if [[ -z "$TMUX" && $- == *i* ]]; then
+#     if command -v tmux &> /dev/null && [ -z "$SSH_TTY" ]; then
+#         tmux new-session -A -s main
+#     elif command -v screen &> /dev/null; then
+#         screen -r || screen -S main
+#     fi
+# fi
