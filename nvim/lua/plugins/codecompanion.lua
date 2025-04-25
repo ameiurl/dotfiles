@@ -19,10 +19,9 @@ return {
               return require("codecompanion.adapters").extend("deepseek", {
                 name = "deepseek",
                 env = {
-                  -- api_key = function()
-                  --   return os.getenv("DEEPSEEK_API_KEY")
-                  -- end,
-                    api_key = 'sk-1b3fd15b56ed47e6afe261b7c2632812'
+                  api_key = function()
+                    return os.getenv("DEEPSEEK_API_KEY")
+                  end,
                 },
                 schema = {
                   model = {
@@ -37,10 +36,9 @@ return {
                 name = "siliconflow_r1",
                 url = "https://api.siliconflow.cn/v1/chat/completions",
                 env = {
-                  -- api_key = function()
-                  --   return os.getenv("DEEPSEEK_API_KEY_S")
-                  -- end,
-                    api_key = 'sk-wgivzzqfmysojvvpbvgdammqfprahxpwjlfmzxutxmsnpkhj'
+                  api_key = function()
+                    return os.getenv("DEEPSEEK_API_KEY_S")
+                  end,
                 },
                 schema = {
                   model = {
@@ -59,10 +57,9 @@ return {
                 name = "siliconflow_v3",
                 url = "https://api.siliconflow.cn/v1/chat/completions",
                 env = {
-                  -- api_key = function()
-                  --   return os.getenv("DEEPSEEK_API_KEY_S")
-                  -- end,
-                  api_key = 'sk-wgivzzqfmysojvvpbvgdammqfprahxpwjlfmzxutxmsnpkhj'
+                  api_key = function()
+                    return os.getenv("DEEPSEEK_API_KEY_S")
+                  end,
                 },
                 schema = {
                   model = {
@@ -81,10 +78,9 @@ return {
                 name = "aliyun_deepseek",
                 url = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
                 env = {
-                  -- api_key = function()
-                  --   return os.getenv("DEEPSEEK_API_ALIYUN")
-                  -- end,
-                  api_key = 'sk-c27eff6c29b3490fa58605acbd353324'
+                  api_key = function()
+                    return os.getenv("DEEPSEEK_API_ALIYUN")
+                  end,
                 },
                 schema = {
                   model = {
@@ -103,10 +99,9 @@ return {
                 name = "aliyun_qwen",
                 env = {
                   url = "https://dashscope.aliyuncs.com",
-                  -- api_key = function()
-                  --   return os.getenv("DEEPSEEK_API_ALIYUN")
-                  -- end,
-                  api_key = 'sk-c27eff6c29b3490fa58605acbd353324',
+                  api_key = function()
+                    return os.getenv("DEEPSEEK_API_ALIYUN")
+                  end,
                   chat_url = "/compatible-mode/v1/chat/completions",
                 },
                 schema = {
