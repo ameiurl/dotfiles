@@ -47,6 +47,7 @@ map('n', 'U', [[<C-r>]])
 map('n', 'gj', [[J]])
 map('n', 'gh', [[/<c-r>=expand("<cword>")<CR><CR>N]])
 map('n', '<Leader>/', [[:nohls<CR>]])
+map('n', '<Leader>sa', [[ggVG<CR>]])
 
 -- Navigate buffers
 map('n', '<C-n>', [[<Cmd>bnext<CR>]])
