@@ -4,6 +4,30 @@ end)
 vim.keymap.set({ "n", "v", "x" },  "<leader>cp", ":CodeCompanionActions<CR>")
 
 return {
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      local copilot = require("copilot")
+      if not copilot then
+        return
+      end
+      copilot.setup({
+        suggestion = { enabled = false, auto_trigger = true },
+        panel = { enabled = false },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      local copilot_cmp = require("copilot_cmp")
+      if copilot_cmp then
+        copilot_cmp.setup()
+      end
+    end,
+  },
    {
     "olimorris/codecompanion.nvim",
     config = function()
@@ -117,7 +141,7 @@ return {
                 name = "copilot_claude",
                 schema = {
                   model = {
-                    default = "claude-3.7-sonnet",
+                    default = "claude-3.5-sonnet",
                   },
                 },
               })
@@ -125,8 +149,8 @@ return {
           },
 
           strategies = {
-            chat = { adapter = "siliconflow_v3" },
-            inline = { adapter = "siliconflow_v3" },
+            chat = { adapter = "copilot_claude" },
+            inline = { adapter = "copilot_claude" },
           },
 
           opts = {
