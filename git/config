@@ -1,0 +1,32 @@
+[user]
+	name = amei
+	email = cms1984@msn.com
+[core]
+	quotepath = false
+	autocrlf = false
+	filenode = false
+[difftool]
+	prompt = false
+	trustExitCode = true
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[alias]
+	d = difftool
+[color "diff"]
+	meta = cyan bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
+[credential]
+	helper = store
+[pull]
+	rebase = false
+[safe]
+	directory = /server
