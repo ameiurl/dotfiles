@@ -1,0 +1,20 @@
+Kingsoft/
+QtProject.conf
+VirtualBox/
+clash/
+coc/
+dconf/
+fcitx/
+google-chrome/
+microsoft-edge/
+menus/
+lazygit/*
+!lazygit/config.yaml
+mimeapps.list
+navicat/
+nvim/
+# nvim/lazy-lock.json
+composer/
+vlc/
+github-copilot/
+transmission/
