@@ -8,8 +8,8 @@ fcitx/
 google-chrome/
 microsoft-edge/
 menus/
-lazygit/*
-!lazygit/config.yaml
+# lazygit/*
+# !lazygit/config.yaml
 mimeapps.list
 navicat/
 nvim/
@@ -18,3 +18,4 @@ composer/
 vlc/
 github-copilot/
 transmission/
+yarn/

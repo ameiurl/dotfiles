@@ -1,0 +1,4 @@
+os:
+  # 使用 nvim-remote 预设
+  # 这会让 lazygit 识别 $NVIM 环境变量，利用 RPC 通信在父窗口打开文件
+  editPreset: 'nvim-remote'
