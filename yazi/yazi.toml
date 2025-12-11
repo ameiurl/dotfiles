@@ -1,0 +1,17 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+[mgr]
+# 数组代表 [父目录, 当前目录, 预览] 的比例
+# 默认通常是 [1, 4, 3]
+# 如果你想让中间（当前目录）更宽，可以增加中间的数字，例如 [1, 6, 3]
+ratio = [2, 3, 5]
