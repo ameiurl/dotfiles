@@ -30,3 +30,7 @@
 	rebase = false
 [safe]
 	directory = /server
+	directory = /server/www/adminvue
+	directory = /server/www/store_uniapp
+	directory = /server/www/mallphp
+	directory = /server/www/rsync
