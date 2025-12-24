@@ -62,6 +62,7 @@ keymap = [
 	# Navigation
 	{ on = "n", run = "leave", desc = "Go back to the parent directory" },
 
+	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
 	{ on = "<Left>", run = "leave", desc = "Go back to the parent directory" },
 	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
 
