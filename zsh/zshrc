@@ -9,3 +9,19 @@ source ~/.config/zsh/vi.zsh
 #         screen -r || screen -S main
 #     fi
 # fi
+# vs 搜索词 [文件类型]
+vs() {
+    local pattern="${1:-import}"
+    local cmd="rg -l '$pattern'"
+    
+    [[ -n "$2" ]] && cmd+=" -t $2"
+    
+    local file=$(eval "$cmd" | fzf --preview "rg -n --color=always -C 3 '$pattern' {}")
+    
+    [[ -z "$file" ]] && return
+    
+    # 获取第一个匹配的行号
+    local line=$(rg -n "$pattern" "$file" | head -1 | cut -d: -f1)
+    
+    vi +"$line" "$file"
+}
