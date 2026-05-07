@@ -60,7 +60,7 @@ keymap = [
 	{ on = "G", run = "arrow bot", desc = "Move cursor to the bottom" },
 
 	# Navigation
-	{ on = "n", run = "leave", desc = "Go back to the parent directory" },
+	# { on = "n", run = "leave", desc = "Go back to the parent directory" },
 
 	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
 	{ on = "<Left>", run = "leave", desc = "Go back to the parent directory" },
@@ -85,8 +85,8 @@ keymap = [
 	{ on = "f", run = "filter --smart", desc = "Filter files" },
 	{ on = "/", run = "find --smart", desc = "Find next file" },
 	{ on = "?", run = "find --previous --smart", desc = "Find previous file" },
-	{ on = "n", run = "find_arrow", desc = "Go to the next found" },
-	{ on = "N", run = "find_arrow --previous", desc = "Go to the previous found" },
+	# { on = "n", run = "find_arrow", desc = "Go to the next found" },
+	# { on = "N", run = "find_arrow --previous", desc = "Go to the previous found" },
 
 	# Shell
 	{ on = "<C-g>", run = "shell --confirm --block lazygit", desc = "Lazygit" },
@@ -100,8 +100,11 @@ keymap = [
 	{ on = "r", run = "open --interactive", desc = "Open selected files interactively" },
 
 	# Create
-	{ on = "T", run = "create", desc = "Create a file (ends with / for directories)" },
-	{ on = "M", run = "create --dir", desc = "Create a directory" },
+	# { on = "T", run = "create", desc = "Create a file (ends with / for directories)" },
+	# { on = "M", run = "create --dir", desc = "Create a directory" },
+    # Create
+    { on = "n", run = "create", desc = "Create a file (ends with / for directories)" },
+    { on = "N", run = "create --dir", desc = "Create a directory" },
 
 	# Rename
 	{ on = ["c", "w"], run = "rename --empty=all", desc = "Rename selected file(s)" },
