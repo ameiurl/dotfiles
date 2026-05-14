@@ -37,4 +37,4 @@ _fix_cursor() {
 }
 precmd_functions+=(_fix_cursor)
 
-KEYTIMEOUT=1
+KEYTIMEOUT=4
