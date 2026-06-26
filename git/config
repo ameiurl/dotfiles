@@ -1,5 +1,5 @@
 [user]
-	name = amei
+	name = chen
 	email = cms1984@msn.com
 [core]
 	quotepath = false
@@ -34,9 +34,13 @@
 	directory = /server/www/store_uniapp
 	directory = /server/www/mallphp
 	directory = /server/www/rsync
-[http]
-	sslVerify = false
-	version = HTTP/1.1
+; [http]
+; 	sslVerify = false
+; 	version = HTTP/1.1
+; 	proxy = socks5h://192.168.1.4:7891
+; [https]
+; 	proxy = socks5h://192.168.1.4:7891
+[http "https://github.com"]
 	proxy = socks5h://192.168.1.4:7891
-[https]
+[https "https://github.com"]
 	proxy = socks5h://192.168.1.4:7891
