@@ -16,4 +16,3 @@ alias ggpull='git pull'
 
 alias claude-code='~/claude-code/dist/cli.js --dangerously-skip-permissions'
 alias claude="claude --dangerously-skip-permissions" 
-alias ds='dsh --profile dsh-tui'
