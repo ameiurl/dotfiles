@@ -25,3 +25,31 @@ vs() {
     
     vi +"$line" "$file"
 }
+
+# tmux 根据目录/程序自动设置窗口名
+function _tmux_set_win_title {
+  [[ -z "$TMUX" ]] && return
+
+  # 获取当前最前台命令
+  local cmd="$1"
+
+  if [[ "$cmd" =~ "^dst" ]]; then
+    tmux rename-window dst
+  elif [[ "$cmd" =~ "^claude" ]]; then
+    tmux rename-window claude
+  else
+    # 取当前目录的文件夹名字
+    local dir="${PWD##*/}"
+    tmux rename-window "$dir"
+  fi
+}
+
+# preexec：执行命令之前触发（捕获你敲的命令）
+preexec() {
+  _tmux_set_win_title "$1"
+}
+
+# precmd：输出提示符之前触发（cd切换目录后更新名字）
+precmd() {
+  _tmux_set_win_title ""
+}
