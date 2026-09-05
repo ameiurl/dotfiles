@@ -26,30 +26,34 @@ vs() {
     vi +"$line" "$file"
 }
 
-# tmux 根据目录/程序自动设置窗口名
+# tmux自动窗口名 NerdFont图标：deepseek鲸鱼 / claude太阳花 / 目录
 function _tmux_set_win_title {
   [[ -z "$TMUX" ]] && return
 
-  # 获取当前最前台命令
   local cmd="$1"
 
   if [[ "$cmd" =~ "^dst" ]]; then
-    tmux rename-window dst
+    tmux rename-window "🐳 dst"
   elif [[ "$cmd" =~ "^claude" ]]; then
-    tmux rename-window claude
-  else
-    # 取当前目录的文件夹名字
+    tmux rename-window "☀️ claude"
+  elif [[ "$cmd" =~ "^npm run serve" ]]; then
+    tmux rename-window "⚡serve"
+  elif [[ "$cmd" =~ "^tail "("-f"|"-F") ]]; then
+    tmux rename-window "📜 logs"
+  elif [[ "$cmd" =~ "^(nvim|vim|vi)" ]]; then
+    # nvim打开，取当前目录basename
     local dir="${PWD##*/}"
-    tmux rename-window "$dir"
+    tmux rename-window " ${dir}"
+  else
+    local dir="${PWD##*/}"
+    tmux rename-window " ${dir}"
   fi
 }
 
-# preexec：执行命令之前触发（捕获你敲的命令）
 preexec() {
   _tmux_set_win_title "$1"
 }
 
-# precmd：输出提示符之前触发（cd切换目录后更新名字）
 precmd() {
   _tmux_set_win_title ""
 }
