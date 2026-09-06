@@ -32,7 +32,7 @@ function _tmux_set_win_title {
 
   local cmd="$1"
 
-  if [[ "$cmd" =~ "^dst" ]]; then
+  if [[ "$cmd" =~ "^(dst|dsh)" ]]; then
     tmux rename-window "🐳 dst"
   elif [[ "$cmd" =~ "^claude" ]]; then
     tmux rename-window "☀️ claude"
