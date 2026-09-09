@@ -32,6 +32,17 @@ function _tmux_set_win_title {
 
   local cmd="$1"
 
+  # 处理 fg 恢复后台进程场景
+  if [[ "$cmd" == "fg" ]]; then
+    # 获取最近后台任务的命令
+    local back_cmd=$(jobs -l | awk 'END{print $0}')
+    if [[ "$back_cmd" =~ (nvim|vim|vi) ]]; then
+      local dir="${PWD##*/}"
+      tmux rename-window " ${dir}"
+      return
+    fi
+  fi
+
   if [[ "$cmd" =~ "^dst" ]]; then
     tmux rename-window "🐳 dst"
   elif [[ "$cmd" =~ "^claude" ]]; then
