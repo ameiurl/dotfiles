@@ -38,7 +38,7 @@ function _tmux_set_win_title {
     local back_cmd=$(jobs -l | awk 'END{print $0}')
     if [[ "$back_cmd" =~ (nvim|vim|vi) ]]; then
       local dir="${PWD##*/}"
-      tmux rename-window " ${dir}"
+      tmux rename-window "✌️${dir}"
       return
     fi
   fi
@@ -54,10 +54,10 @@ function _tmux_set_win_title {
   elif [[ "$cmd" =~ "^(nvim|vim|vi)" ]]; then
     # nvim打开，取当前目录basename
     local dir="${PWD##*/}"
-    tmux rename-window " ${dir}"
+    tmux rename-window "✌️${dir}"
   else
     local dir="${PWD##*/}"
-    tmux rename-window " ${dir}"
+    tmux rename-window "📂 ${dir}"
   fi
 }
 
